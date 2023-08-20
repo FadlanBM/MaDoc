@@ -1,0 +1,16 @@
+C:\laragon\www\Desktop_c#\MacDoc\ManagemenDocument\ManagemenDocument\bin\Debug\ManagemenDocument.exe.config
+C:\laragon\www\Desktop_c#\MacDoc\ManagemenDocument\ManagemenDocument\bin\Debug\ManagemenDocument.exe
+C:\laragon\www\Desktop_c#\MacDoc\ManagemenDocument\ManagemenDocument\bin\Debug\ManagemenDocument.pdb
+C:\laragon\www\Desktop_c#\MacDoc\ManagemenDocument\ManagemenDocument\obj\Debug\ManagemenDocument.csproj.AssemblyReference.cache
+C:\laragon\www\Desktop_c#\MacDoc\ManagemenDocument\ManagemenDocument\obj\Debug\ManagemenDocument.csproj.SuggestedBindingRedirects.cache
+C:\laragon\www\Desktop_c#\MacDoc\ManagemenDocument\ManagemenDocument\obj\Debug\ManagemenDocument.Properties.Resources.resources
+C:\laragon\www\Desktop_c#\MacDoc\ManagemenDocument\ManagemenDocument\obj\Debug\ManagemenDocument.csproj.GenerateResource.cache
+C:\laragon\www\Desktop_c#\MacDoc\ManagemenDocument\ManagemenDocument\obj\Debug\ManagemenDocument.csproj.CoreCompileInputs.cache
+C:\laragon\www\Desktop_c#\MacDoc\ManagemenDocument\ManagemenDocument\obj\Debug\ManagemenDocument.exe
+C:\laragon\www\Desktop_c#\MacDoc\ManagemenDocument\ManagemenDocument\obj\Debug\ManagemenDocument.pdb
+C:\laragon\www\Desktop_c#\MacDoc\ManagemenDocument\ManagemenDocument\obj\Debug\ManagemenDocument.Admin_Add_Doc.resources
+C:\laragon\www\Desktop_c#\MacDoc\ManagemenDocument\ManagemenDocument\obj\Debug\ManagemenDocument.Admin_Dashboard.resources
+C:\laragon\www\Desktop_c#\MacDoc\ManagemenDocument\ManagemenDocument\obj\Debug\ManagemenDocument.Admin_AddUser.resources
+C:\laragon\www\Desktop_c#\MacDoc\ManagemenDocument\ManagemenDocument\obj\Debug\ManagemenDocument.Admin_ManagementUser.resources
+C:\laragon\www\Desktop_c#\MacDoc\ManagemenDocument\ManagemenDocument\obj\Debug\ManagemenDocument.Admin_AddIdentitas.resources
+C:\laragon\www\Desktop_c#\MacDoc\ManagemenDocument\ManagemenDocument\obj\Debug\ManagemenDocument.Admin_ManagementIdentitas.resources
