@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,13 +22,13 @@ namespace ManagemenDocument
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (tb_nameDoc.Text==""||tb_pemilik.Text==""||tb_pengirim.Text==""||tb_penerima.Text==""||tb_perihalDoc.Text==""||tb_agendaDoc.Text==""||tbUraianDoc.Text==""||dt_agendastart.Text==""||dt_agendafinish.Text==""||dt_tgldocumen.Text==""||dt_tglPenerima.Text=="")
+            if (tb_nameDoc.Text==""||text3.Text==""||tb_pengirim.Text==""||tb_penerima.Text==""||tb_perihalDoc.Text==""||tb_agendaDoc.Text==""||tbUraianDoc.Text==""||dt_agendastart.Text==""||dt_agendafinish.Text==""||dt_tgldocumen.Text==""||dt_tglPenerima.Text=="")
             {
                 MessageBox.Show(null, "Form belum di isi semua", "WWarning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             tb_dokumen dokumen=new tb_dokumen();
-            var pemilik = context.tb_users.Where(p => p.name == tb_pemilik.Text&&p.verify==1).FirstOrDefault();
+            var pemilik = context.tb_users.Where(p => p.name == text3.Text&&p.verify==1).FirstOrDefault();
             if (pemilik==null)
             {
                 MessageBox.Show(null, "Accunt Pemilik tidak terdaftar, Daftarkan terlebuh Dahulu", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -63,6 +64,49 @@ namespace ManagemenDocument
         private void label11_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            var fBrowserCus = new BrowserDataCustomer(this.MdiParent);
+            fBrowserCus.StartPosition = FormStartPosition.CenterParent;
+            fBrowserCus.FormClosing += (object asd, FormClosingEventArgs assd) =>
+            {
+                if (DialogResult.OK==fBrowserCus.DialogResult)
+                {
+                    var id_pemilik = fBrowserCus.getId;
+                    var data = context.tb_users.Where(u => u.id_user == int.Parse(id_pemilik)).FirstOrDefault();
+                    tb_penerima.Text = data.name;
+                }
+            };
+            fBrowserCus.Show();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            var fBrowserCus = new BrowserDataCustomer(this.MdiParent);
+            fBrowserCus.StartPosition = FormStartPosition.CenterParent;
+            fBrowserCus.FormClosing += (object asd, FormClosingEventArgs ass) =>
+            {
+                if (DialogResult.OK==fBrowserCus.DialogResult)
+                {
+                    var id_penerima = fBrowserCus.getId;
+                    var data = context.tb_users.Where(u => u.id_user == int.Parse(id_penerima)).FirstOrDefault();
+                    tb_pemilik.Text = data.name;
+                }
+            };
+            fBrowserCus.Show();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Multiselect = false;
+            openFileDialog.Filter = "(File|*jpg;*png;)";
+            if (openFileDialog.ShowDialog()==DialogResult.OK)
+            {
+                pictureBox1.Image=Image.FromFile(openFileDialog.FileName);
+            }
         }
     }
 }

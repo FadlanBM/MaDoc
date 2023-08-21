@@ -53,8 +53,10 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.tb_penerima = new System.Windows.Forms.TextBox();
-            this.tb_pemilik = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.text3 = new System.Windows.Forms.Label();
+            this.tb_pemilik = new System.Windows.Forms.TextBox();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -233,11 +235,14 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox1.Location = new System.Drawing.Point(122, 588);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(124, 135);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 22;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // label11
             // 
@@ -262,24 +267,44 @@
             // 
             this.tb_penerima.Location = new System.Drawing.Point(28, 348);
             this.tb_penerima.Name = "tb_penerima";
-            this.tb_penerima.Size = new System.Drawing.Size(408, 20);
+            this.tb_penerima.Size = new System.Drawing.Size(376, 20);
             this.tb_penerima.TabIndex = 24;
+            // 
+            // text3
+            // 
+            this.text3.AutoSize = true;
+            this.text3.Location = new System.Drawing.Point(28, 227);
+            this.text3.Name = "text3";
+            this.text3.Size = new System.Drawing.Size(89, 13);
+            this.text3.TabIndex = 27;
+            this.text3.Text = "Pemilik Dokumen";
             // 
             // tb_pemilik
             // 
-            this.tb_pemilik.AutoSize = true;
-            this.tb_pemilik.Location = new System.Drawing.Point(28, 227);
+            this.tb_pemilik.Location = new System.Drawing.Point(28, 246);
             this.tb_pemilik.Name = "tb_pemilik";
-            this.tb_pemilik.Size = new System.Drawing.Size(89, 13);
-            this.tb_pemilik.TabIndex = 27;
-            this.tb_pemilik.Text = "Pemilik Dokumen";
+            this.tb_pemilik.Size = new System.Drawing.Size(376, 20);
+            this.tb_pemilik.TabIndex = 26;
             // 
-            // textBox1
+            // button3
             // 
-            this.textBox1.Location = new System.Drawing.Point(28, 246);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(408, 20);
-            this.textBox1.TabIndex = 26;
+            this.button3.Location = new System.Drawing.Point(405, 346);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(31, 23);
+            this.button3.TabIndex = 28;
+            this.button3.Text = "...";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(405, 244);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(31, 23);
+            this.button4.TabIndex = 29;
+            this.button4.Text = "...";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // Admin_Add_Doc
             // 
@@ -287,8 +312,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(464, 576);
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.text3);
             this.Controls.Add(this.tb_pemilik);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.tb_penerima);
             this.Controls.Add(this.label11);
@@ -349,7 +376,9 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox tb_penerima;
-        private System.Windows.Forms.Label tb_pemilik;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label text3;
+        private System.Windows.Forms.TextBox tb_pemilik;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
     }
 }

@@ -33,5 +33,16 @@ namespace ManagemenDocument.Properties {
                 return ((string)(this["Db_DockumenManagementConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-FDMC7DB;Initial Catalog=DokumenManagement;Integrated Security" +
+            "=True")]
+        public string DokumenManagementConnectionString {
+            get {
+                return ((string)(this["DokumenManagementConnectionString"]));
+            }
+        }
     }
 }

@@ -22,7 +22,7 @@ namespace ManagemenDocument
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="Db_DockumenManagement")]
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="DokumenManagement")]
 	public partial class AppDbContextDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -45,7 +45,7 @@ namespace ManagemenDocument
     #endregion
 		
 		public AppDbContextDataContext() : 
-				base(global::ManagemenDocument.Properties.Settings.Default.Db_DockumenManagementConnectionString, mappingSource)
+				base(global::ManagemenDocument.Properties.Settings.Default.DokumenManagementConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -760,7 +760,7 @@ namespace ManagemenDocument
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_password", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_password", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
 		public string password
 		{
 			get
