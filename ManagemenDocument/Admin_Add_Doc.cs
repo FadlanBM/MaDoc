@@ -55,8 +55,8 @@ namespace ManagemenDocument
                 tb_dokumen dokumen = new tb_dokumen();
                 tb_penerima penerimainput = new tb_penerima();
                 dokumen.nameDokumen = tb_nameDoc.Text;
-                dokumen.agendaDokumen=tb_agendaDoc.Text;
-                dokumen.perihalDokumen=tb_perihalDoc.Text;
+                dokumen.agendaDokumen = tb_agendaDoc.Text;
+                dokumen.perihalDokumen = tb_perihalDoc.Text;
                 dokumen.pengirimDokumen = tb_pengirim.Text;
                 dokumen.id_penerima = pemilik.id_user;
                 dokumen.id_pemilik = penerima.id_user;
@@ -77,9 +77,20 @@ namespace ManagemenDocument
                 penerimainput.createdAt = DateTime.Now;
                 context.tb_penerimas.InsertOnSubmit(penerimainput);
                 context.SubmitChanges();
-                DialogResult = DialogResult.OK;
-                clearTb();
-                this.Close();
+                var fgenerateQr = new FGenerateCrCode(this.MdiParent);
+                fgenerateQr.StartPosition = FormStartPosition.CenterParent;
+                fgenerateQr.getId = dokumen.id_dokumen;
+                this.Hide();
+                fgenerateQr.FormClosing += (object asasd, FormClosingEventArgs aaa) =>
+                {
+                    if (DialogResult.OK == fgenerateQr.DialogResult)
+                    {
+                        DialogResult = DialogResult.OK;
+                        this.Close();
+                    }
+                };
+                fgenerateQr.Show();
+                clearTb();                
                 MessageBox.Show(null, "Berhasil insert data", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }

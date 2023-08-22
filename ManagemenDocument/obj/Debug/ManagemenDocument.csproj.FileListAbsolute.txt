@@ -37,3 +37,6 @@ D:\htdocs\DesktopC#\MaDoc\ManagemenDocument\obj\Debug\ManagemenDocument.Admin_De
 D:\htdocs\DesktopC#\MaDoc\ManagemenDocument\obj\Debug\ManagemenDocument.Admin_Management_Doc.resources
 D:\htdocs\DesktopC#\MaDoc\ManagemenDocument\obj\Debug\ManagemenDocument.Admin_ManagementUserBelumVerify.resources
 D:\htdocs\DesktopC#\MaDoc\ManagemenDocument\obj\Debug\ManagemenDocument.Admin_Management_User_Verify.resources
+D:\htdocs\DesktopC#\MaDoc\ManagemenDocument\bin\Debug\Zen.Barcode.Core.dll
+D:\htdocs\DesktopC#\MaDoc\ManagemenDocument\obj\Debug\ManagemenDocument.FGenerateCrCode.resources
+D:\htdocs\DesktopC#\MaDoc\ManagemenDocument\obj\Debug\ManagemenDocument.csproj.CopyComplete

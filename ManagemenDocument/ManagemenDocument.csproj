@@ -115,6 +115,12 @@
     <Compile Include="BrowserDataCustomer.Designer.cs">
       <DependentUpon>BrowserDataCustomer.cs</DependentUpon>
     </Compile>
+    <Compile Include="FGenerateCrCode.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FGenerateCrCode.Designer.cs">
+      <DependentUpon>FGenerateCrCode.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Admin_AddIdentitas.resx">
@@ -146,6 +152,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BrowserDataCustomer.resx">
       <DependentUpon>BrowserDataCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FGenerateCrCode.resx">
+      <DependentUpon>FGenerateCrCode.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
