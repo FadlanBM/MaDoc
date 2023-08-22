@@ -15,13 +15,12 @@ namespace ManagemenDocument
     {
         AppDbContextDataContext context;
         OpenFileDialog openFileDialog;
-        private string path = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + @"\image\";
+        private string path = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + @"\image\";       
         public int? getId { get; set; }
 
         public Admin_Add_Doc(Form mdi)
         {
             openFileDialog = new OpenFileDialog();
-            LoadData();
             this.MdiParent = mdi;
             context = new AppDbContextDataContext();
             InitializeComponent();
@@ -29,7 +28,7 @@ namespace ManagemenDocument
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (tb_nameDoc.Text == "" || text3.Text == "" || tb_pengirim.Text == "" || tb_penerima.Text == "" || tb_perihalDoc.Text == "" || tb_agendaDoc.Text == "" || tbUraianDoc.Text == "" || dt_agendastart.Text == "" || dt_agendafinish.Text == "" || dt_tgldocumen.Text == "" || dt_tglPenerima.Text == "")
+            if (tb_nameDoc.Text == "" || text3.Text == "" || tb_pengirim.Text == "" || tb_penerima.Text == "" || tb_perihalDoc.Text == "" || tb_agendaDoc.Text == "" || tbUraianDoc.Text == "" || dt_agendastart.Text == "" || dt_agendafinish.Text == "" || dt_tgldocumen.Text == "" || dt_tglPenerima.Text == ""||pictureBox1.Image==null)
             {
                 MessageBox.Show(null, "Form belum di isi semua", "WWarning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -56,6 +55,8 @@ namespace ManagemenDocument
                 tb_dokumen dokumen = new tb_dokumen();
                 tb_penerima penerimainput = new tb_penerima();
                 dokumen.nameDokumen = tb_nameDoc.Text;
+                dokumen.agendaDokumen=tb_agendaDoc.Text;
+                dokumen.perihalDokumen=tb_perihalDoc.Text;
                 dokumen.pengirimDokumen = tb_pengirim.Text;
                 dokumen.id_penerima = pemilik.id_user;
                 dokumen.id_pemilik = penerima.id_user;
@@ -78,6 +79,7 @@ namespace ManagemenDocument
                 context.SubmitChanges();
                 DialogResult = DialogResult.OK;
                 clearTb();
+                this.Close();
                 MessageBox.Show(null, "Berhasil insert data", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
@@ -86,20 +88,26 @@ namespace ManagemenDocument
                 var dokumen = context.tb_dokumens.Where(p => p.id_dokumen == getId).FirstOrDefault();
                 var penerimainput = context.tb_penerimas.Where(p => p.id_dokumen == dokumen.id_dokumen).FirstOrDefault();
                 var imageOld = path + dokumen.imagePath;
-                if (!File.Exists(imageOld))
+                
+                if (imageOld!=openFileDialog.FileName)
                 {
-                    File.Delete(imageOld);
+                    if (File.Exists(imageOld))
+                    {
+                        File.Delete(imageOld);
+                    }
+                    var nameIamge = DateTime.Now.Ticks.ToString() + Path.GetFileName(openFileDialog.FileName);
+                    File.Copy(openFileDialog.FileName, path + nameIamge);
+                    dokumen.imagePath = nameIamge;
                 }
                 dokumen.nameDokumen = tb_nameDoc.Text;
+                dokumen.agendaDokumen = tb_agendaDoc.Text;
+                dokumen.perihalDokumen = tb_perihalDoc.Text;
                 dokumen.pengirimDokumen = tb_pengirim.Text;
                 dokumen.id_penerima = pemilik.id_user;
                 dokumen.id_pemilik = penerima.id_user;
                 dokumen.uraianDokumen = tbUraianDoc.Text;
                 dokumen.tgl_diterima = dt_tglPenerima.Value;
-                dokumen.tgl_dokumen = dt_tgldocumen.Value;
-                var nameIamge = DateTime.Now.Ticks.ToString() + Path.GetFileName(openFileDialog.FileName);
-                File.Copy(openFileDialog.FileName, path + nameIamge);
-                dokumen.imagePath = nameIamge;
+                dokumen.tgl_dokumen = dt_tgldocumen.Value;                
                 dokumen.tgl_agendaAwal = dt_agendastart.Value;
                 dokumen.tgl_agendaAkhir = dt_agendafinish.Value;
                 dokumen.tgl_createdAt = DateTime.Now;
@@ -170,6 +178,8 @@ namespace ManagemenDocument
             var pemilik = context.tb_users.Where(p => p.id_user == data.id_pemilik).FirstOrDefault();
             var penerima = context.tb_users.Where(u => u.id_user == data.id_penerima).FirstOrDefault();
             tb_nameDoc.Text=data.nameDokumen;
+            tb_perihalDoc.Text = data.perihalDokumen;
+            tb_agendaDoc.Text = data.agendaDokumen;
             tb_pengirim.Text=data.pengirimDokumen;
             tb_penerima.Text=penerima.name;
             tb_pemilik.Text=pemilik.name;
@@ -178,6 +188,15 @@ namespace ManagemenDocument
             dt_tglPenerima.Value = data.tgl_diterima;
             dt_agendastart.Value = data.tgl_agendaAwal;
             dt_agendafinish.Value =data.tgl_agendaAkhir;
+                var nameImage = path + data.imagePath;
+                if (File.Exists(nameImage))
+                {
+                    using (var stream=File.OpenRead(nameImage))
+                    {
+                        pictureBox1.Image =new Bitmap(stream);
+                    }
+                    openFileDialog.FileName = nameImage;   
+                }
             }
         } 
 
@@ -193,7 +212,27 @@ namespace ManagemenDocument
 
         private void Admin_Add_Doc_Load(object sender, EventArgs e)
         {
+            LoadData();
+        }
+
+        private void dt_tgldocumen_ValueChanged(object sender, EventArgs e)
+        {
             
+        }
+
+        private void dt_agendafinish_ValueChanged(object sender, EventArgs e)
+        {
+            if (dt_agendastart.Value.Date>dt_agendafinish.Value.Date)
+            {
+                MessageBox.Show(null, "Agenda akhir tidak boleh kurang dari agenda awal", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                dt_agendafinish.Value=dt_agendastart.Value.Date;
+                return;
+            }
+        }
+
+        private void dt_agendastart_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

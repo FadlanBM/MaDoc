@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -83,12 +84,19 @@ namespace ManagemenDocument
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             var id = string.Empty;
+            if (e.ColumnIndex==11)
+            {
+                id = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
+                var FDetailDoc = new Admin_DetailDoc(this.MdiParent);
+                FDetailDoc.StartPosition= FormStartPosition.CenterScreen;
+                FDetailDoc.getId=int.Parse(id);
+                FDetailDoc.Show();
+            }
             if (e.ColumnIndex==12)
             {
                 id = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
                 var FaddDoc = new Admin_Add_Doc(this.MdiParent);
                 FaddDoc.StartPosition = FormStartPosition.CenterScreen;
-                MessageBox.Show(id);
                 FaddDoc.getId = int.Parse(id);
                 FaddDoc.FormClosing += (object sa, FormClosingEventArgs ads) =>
                 {
@@ -98,6 +106,33 @@ namespace ManagemenDocument
                     }
                 };
                 FaddDoc.Show();
+            }
+            if (e.ColumnIndex==13)
+            {
+                id = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
+                var data =context.tb_dokumens.Where(d=>d.id_dokumen==int.Parse(id)).FirstOrDefault();
+                var penerima=context.tb_penerimas.Where(d=>d.id_dokumen==data.id_dokumen).ToList();
+                if (data==null||penerima==null)
+                {
+                    MessageBox.Show("data tidak di temukan");
+                    return;
+                }
+                DialogResult dialog = MessageBox.Show(null, "Apakah Anda yakin ingin menghapus data ini?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (DialogResult.Yes==dialog)
+                {
+                    var path = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + @"\image\";
+                    var nameImage = path + data.imagePath;
+                    if (File.Exists(nameImage))
+                    {
+                        File.Delete(nameImage);
+                    }
+                    context.tb_dokumens.DeleteOnSubmit(data);
+                    context.tb_penerimas.DeleteAllOnSubmit(penerima);                    
+                    context.SubmitChanges();
+                    MessageBox.Show(null, "Berhasil delete data dokumen", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    loadData(); 
+                    return;
+             }
             }
         }
     }

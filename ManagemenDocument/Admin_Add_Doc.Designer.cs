@@ -172,6 +172,7 @@
             this.dt_tgldocumen.Name = "dt_tgldocumen";
             this.dt_tgldocumen.Size = new System.Drawing.Size(408, 20);
             this.dt_tgldocumen.TabIndex = 14;
+            this.dt_tgldocumen.ValueChanged += new System.EventHandler(this.dt_tgldocumen_ValueChanged);
             // 
             // label8
             // 
@@ -193,10 +194,12 @@
             // 
             // dt_agendastart
             // 
+            this.dt_agendastart.CustomFormat = "";
             this.dt_agendastart.Location = new System.Drawing.Point(31, 547);
             this.dt_agendastart.Name = "dt_agendastart";
             this.dt_agendastart.Size = new System.Drawing.Size(190, 20);
             this.dt_agendastart.TabIndex = 16;
+            this.dt_agendastart.ValueChanged += new System.EventHandler(this.dt_agendastart_ValueChanged);
             // 
             // dt_agendafinish
             // 
@@ -204,6 +207,7 @@
             this.dt_agendafinish.Name = "dt_agendafinish";
             this.dt_agendafinish.Size = new System.Drawing.Size(190, 20);
             this.dt_agendafinish.TabIndex = 17;
+            this.dt_agendafinish.ValueChanged += new System.EventHandler(this.dt_agendafinish_ValueChanged);
             // 
             // label10
             // 
@@ -216,7 +220,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(64, 748);
+            this.button2.Location = new System.Drawing.Point(92, 736);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(146, 29);
             this.button2.TabIndex = 20;
@@ -225,7 +229,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(218, 748);
+            this.button1.Location = new System.Drawing.Point(246, 736);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(146, 29);
             this.button1.TabIndex = 21;
@@ -311,7 +315,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(481, 571);
+            this.ClientSize = new System.Drawing.Size(486, 571);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.text3);

@@ -24,7 +24,6 @@ D:\htdocs\DesktopC#\MaDoc\ManagemenDocument\obj\Debug\ManagemenDocument.Admin_Ad
 D:\htdocs\DesktopC#\MaDoc\ManagemenDocument\obj\Debug\ManagemenDocument.Admin_Add_Doc.resources
 D:\htdocs\DesktopC#\MaDoc\ManagemenDocument\obj\Debug\ManagemenDocument.Admin_Dashboard.resources
 D:\htdocs\DesktopC#\MaDoc\ManagemenDocument\obj\Debug\ManagemenDocument.Admin_ManagementIdentitas.resources
-D:\htdocs\DesktopC#\MaDoc\ManagemenDocument\obj\Debug\ManagemenDocument.Admin_ManagementUser.resources
 D:\htdocs\DesktopC#\MaDoc\ManagemenDocument\obj\Debug\ManagemenDocument.Properties.Resources.resources
 D:\htdocs\DesktopC#\MaDoc\ManagemenDocument\obj\Debug\ManagemenDocument.csproj.GenerateResource.cache
 D:\htdocs\DesktopC#\MaDoc\ManagemenDocument\obj\Debug\ManagemenDocument.csproj.CoreCompileInputs.cache
@@ -34,3 +33,7 @@ D:\htdocs\DesktopC#\MaDoc\ManagemenDocument\obj\Debug\ManagemenDocument.BrowserD
 C:\laragon\www\Desktop_c#\MacDoc\ManagemenDocument\ManagemenDocument\obj\Debug\ManagemenDocument.BrowserDataCustomer.resources
 C:\laragon\www\Desktop_c#\MacDoc\ManagemenDocument\ManagemenDocument\obj\Debug\ManagemenDocument.Admin_Management_Doc.resources
 C:\laragon\www\Desktop_c#\MacDoc\ManagemenDocument\ManagemenDocument\obj\Debug\ManagemenDocument.Admin_DetailDoc.resources
+D:\htdocs\DesktopC#\MaDoc\ManagemenDocument\obj\Debug\ManagemenDocument.Admin_DetailDoc.resources
+D:\htdocs\DesktopC#\MaDoc\ManagemenDocument\obj\Debug\ManagemenDocument.Admin_Management_Doc.resources
+D:\htdocs\DesktopC#\MaDoc\ManagemenDocument\obj\Debug\ManagemenDocument.Admin_ManagementUserBelumVerify.resources
+D:\htdocs\DesktopC#\MaDoc\ManagemenDocument\obj\Debug\ManagemenDocument.Admin_Management_User_Verify.resources

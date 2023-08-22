@@ -28,7 +28,7 @@ namespace ManagemenDocument
             var data = (from c in context.tb_users
                         join idn in context.tb_identitas
                         on c.id_identitas equals idn.id_identitas
-                       /* where c.level ==1*/
+                        where c.verify == 1
                         select new
                         {
                             id=c.id_user,

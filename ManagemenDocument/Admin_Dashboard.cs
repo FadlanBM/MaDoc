@@ -34,10 +34,7 @@ namespace ManagemenDocument
 
         private void userToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var FmanagemntUser = new Admin_ManagementUser();
-            FmanagemntUser.StartPosition=FormStartPosition.CenterScreen;
-            FmanagemntUser.MdiParent = this;
-            FmanagemntUser.Show();
+            
         }
 
         private void documentToolStripMenuItem_Click(object sender, EventArgs e)
@@ -46,6 +43,22 @@ namespace ManagemenDocument
             FmanagementDoc.StartPosition=FormStartPosition.CenterScreen;
             FmanagementDoc.MdiParent = this;
             FmanagementDoc.Show();
+        }
+
+        private void belumVerifyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var FmanagemntUser = new Admin_ManagementUserBelumVerify();
+            FmanagemntUser.StartPosition = FormStartPosition.CenterScreen;
+            FmanagemntUser.MdiParent = this;
+            FmanagemntUser.Show();
+        }
+
+        private void verifyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var FmanagementUserVerify=new Admin_Management_User_Verify();
+            FmanagementUserVerify.StartPosition=FormStartPosition.CenterScreen;
+            FmanagementUserVerify.MdiParent=this;   
+            FmanagementUserVerify.Show();
         }
     }
 }

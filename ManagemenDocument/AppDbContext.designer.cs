@@ -22,7 +22,7 @@ namespace ManagemenDocument
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="Db_DockumenManagement")]
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="DokumenManagement")]
 	public partial class AppDbContextDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -45,7 +45,7 @@ namespace ManagemenDocument
     #endregion
 		
 		public AppDbContextDataContext() : 
-				base(global::ManagemenDocument.Properties.Settings.Default.Db_DockumenManagementConnectionString, mappingSource)
+				base(global::ManagemenDocument.Properties.Settings.Default.DokumenManagementConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -117,6 +117,10 @@ namespace ManagemenDocument
 		
 		private string _nameDokumen;
 		
+		private string _agendaDokumen;
+		
+		private string _perihalDokumen;
+		
 		private string _pengirimDokumen;
 		
 		private int _id_pemilik;
@@ -151,6 +155,10 @@ namespace ManagemenDocument
     partial void Onid_dokumenChanged();
     partial void OnnameDokumenChanging(string value);
     partial void OnnameDokumenChanged();
+    partial void OnagendaDokumenChanging(string value);
+    partial void OnagendaDokumenChanged();
+    partial void OnperihalDokumenChanging(string value);
+    partial void OnperihalDokumenChanged();
     partial void OnpengirimDokumenChanging(string value);
     partial void OnpengirimDokumenChanged();
     partial void Onid_pemilikChanging(int value);
@@ -217,6 +225,46 @@ namespace ManagemenDocument
 					this._nameDokumen = value;
 					this.SendPropertyChanged("nameDokumen");
 					this.OnnameDokumenChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_agendaDokumen", DbType="VarChar(50)")]
+		public string agendaDokumen
+		{
+			get
+			{
+				return this._agendaDokumen;
+			}
+			set
+			{
+				if ((this._agendaDokumen != value))
+				{
+					this.OnagendaDokumenChanging(value);
+					this.SendPropertyChanging();
+					this._agendaDokumen = value;
+					this.SendPropertyChanged("agendaDokumen");
+					this.OnagendaDokumenChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_perihalDokumen", DbType="VarChar(50)")]
+		public string perihalDokumen
+		{
+			get
+			{
+				return this._perihalDokumen;
+			}
+			set
+			{
+				if ((this._perihalDokumen != value))
+				{
+					this.OnperihalDokumenChanging(value);
+					this.SendPropertyChanging();
+					this._perihalDokumen = value;
+					this.SendPropertyChanged("perihalDokumen");
+					this.OnperihalDokumenChanged();
 				}
 			}
 		}
