@@ -22,7 +22,7 @@ namespace ManagemenDocument
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="DokumenManagement")]
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="Db_DockumenManagement")]
 	public partial class AppDbContextDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -45,7 +45,7 @@ namespace ManagemenDocument
     #endregion
 		
 		public AppDbContextDataContext() : 
-				base(global::ManagemenDocument.Properties.Settings.Default.DokumenManagementConnectionString, mappingSource)
+				base(global::ManagemenDocument.Properties.Settings.Default.Db_DockumenManagementConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -121,11 +121,7 @@ namespace ManagemenDocument
 		
 		private int _id_pemilik;
 		
-		private string _pemilikDokumen;
-		
 		private int _id_penerima;
-		
-		private string _penerimaDokumen;
 		
 		private string _uraianDokumen;
 		
@@ -138,6 +134,8 @@ namespace ManagemenDocument
 		private System.DateTime _tgl_agendaAkhir;
 		
 		private System.DateTime _tgl_createdAt;
+		
+		private string _imagePath;
 		
 		private EntitySet<tb_penerima> _tb_penerimas;
 		
@@ -157,12 +155,8 @@ namespace ManagemenDocument
     partial void OnpengirimDokumenChanged();
     partial void Onid_pemilikChanging(int value);
     partial void Onid_pemilikChanged();
-    partial void OnpemilikDokumenChanging(string value);
-    partial void OnpemilikDokumenChanged();
     partial void Onid_penerimaChanging(int value);
     partial void Onid_penerimaChanged();
-    partial void OnpenerimaDokumenChanging(string value);
-    partial void OnpenerimaDokumenChanged();
     partial void OnuraianDokumenChanging(string value);
     partial void OnuraianDokumenChanged();
     partial void Ontgl_diterimaChanging(System.DateTime value);
@@ -175,6 +169,8 @@ namespace ManagemenDocument
     partial void Ontgl_agendaAkhirChanged();
     partial void Ontgl_createdAtChanging(System.DateTime value);
     partial void Ontgl_createdAtChanged();
+    partial void OnimagePathChanging(string value);
+    partial void OnimagePathChanged();
     #endregion
 		
 		public tb_dokumen()
@@ -269,26 +265,6 @@ namespace ManagemenDocument
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pemilikDokumen", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string pemilikDokumen
-		{
-			get
-			{
-				return this._pemilikDokumen;
-			}
-			set
-			{
-				if ((this._pemilikDokumen != value))
-				{
-					this.OnpemilikDokumenChanging(value);
-					this.SendPropertyChanging();
-					this._pemilikDokumen = value;
-					this.SendPropertyChanged("pemilikDokumen");
-					this.OnpemilikDokumenChanged();
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_penerima", DbType="Int NOT NULL")]
 		public int id_penerima
 		{
@@ -309,26 +285,6 @@ namespace ManagemenDocument
 					this._id_penerima = value;
 					this.SendPropertyChanged("id_penerima");
 					this.Onid_penerimaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_penerimaDokumen", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string penerimaDokumen
-		{
-			get
-			{
-				return this._penerimaDokumen;
-			}
-			set
-			{
-				if ((this._penerimaDokumen != value))
-				{
-					this.OnpenerimaDokumenChanging(value);
-					this.SendPropertyChanging();
-					this._penerimaDokumen = value;
-					this.SendPropertyChanged("penerimaDokumen");
-					this.OnpenerimaDokumenChanged();
 				}
 			}
 		}
@@ -449,6 +405,26 @@ namespace ManagemenDocument
 					this._tgl_createdAt = value;
 					this.SendPropertyChanged("tgl_createdAt");
 					this.Ontgl_createdAtChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_imagePath", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+		public string imagePath
+		{
+			get
+			{
+				return this._imagePath;
+			}
+			set
+			{
+				if ((this._imagePath != value))
+				{
+					this.OnimagePathChanging(value);
+					this.SendPropertyChanging();
+					this._imagePath = value;
+					this.SendPropertyChanged("imagePath");
+					this.OnimagePathChanged();
 				}
 			}
 		}

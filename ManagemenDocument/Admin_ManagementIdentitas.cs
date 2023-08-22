@@ -21,7 +21,7 @@ namespace ManagemenDocument
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var fAddIden=new Admin_AddIdentitas();
+            var fAddIden=new Admin_AddIdentitas(this.MdiParent);
             fAddIden.StartPosition = FormStartPosition.CenterScreen;
             fAddIden.FormClosing += (object asd, FormClosingEventArgs asa) =>
             {
@@ -65,7 +65,7 @@ namespace ManagemenDocument
             var id=string.Empty;
             if (e.ColumnIndex == 3) {
                 id = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
-                var fAddIden = new Admin_AddIdentitas();
+                var fAddIden = new Admin_AddIdentitas(this.MdiParent);
                 fAddIden.id=int.Parse(id);
                 fAddIden.StartPosition= FormStartPosition.CenterParent;
                 fAddIden.FormClosing += (object c, FormClosingEventArgs da) =>

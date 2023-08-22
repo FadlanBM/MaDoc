@@ -14,8 +14,9 @@ namespace ManagemenDocument
     {
         public int id { get; set; }
         AppDbContextDataContext context;
-        public Admin_AddIdentitas()
+        public Admin_AddIdentitas(Form mdi)
         {
+            this.MdiParent= mdi;    
             context = new AppDbContextDataContext();
             InitializeComponent();
         }
@@ -64,6 +65,11 @@ namespace ManagemenDocument
             {
             tbload();                
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

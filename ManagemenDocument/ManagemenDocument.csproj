@@ -71,6 +71,12 @@
     <Compile Include="Admin_Dashboard.Designer.cs">
       <DependentUpon>Admin_Dashboard.cs</DependentUpon>
     </Compile>
+    <Compile Include="Admin_DetailDoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin_DetailDoc.Designer.cs">
+      <DependentUpon>Admin_DetailDoc.cs</DependentUpon>
+    </Compile>
     <Compile Include="Admin_ManagementIdentitas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -82,6 +88,12 @@
     </Compile>
     <Compile Include="Admin_ManagementUser.Designer.cs">
       <DependentUpon>Admin_ManagementUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_Management_Doc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin_Management_Doc.Designer.cs">
+      <DependentUpon>Admin_Management_Doc.cs</DependentUpon>
     </Compile>
     <Compile Include="AppDbContext.designer.cs">
       <AutoGen>True</AutoGen>
@@ -108,11 +120,17 @@
     <EmbeddedResource Include="Admin_Dashboard.resx">
       <DependentUpon>Admin_Dashboard.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Admin_DetailDoc.resx">
+      <DependentUpon>Admin_DetailDoc.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Admin_ManagementIdentitas.resx">
       <DependentUpon>Admin_ManagementIdentitas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin_ManagementUser.resx">
       <DependentUpon>Admin_ManagementUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin_Management_Doc.resx">
+      <DependentUpon>Admin_Management_Doc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BrowserDataCustomer.resx">
       <DependentUpon>BrowserDataCustomer.cs</DependentUpon>

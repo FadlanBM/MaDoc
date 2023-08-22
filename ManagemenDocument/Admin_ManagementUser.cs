@@ -50,7 +50,7 @@ namespace ManagemenDocument
                             nameIdentitas = idn.nameIdentitas,
                             alamat = c.alamat,
                             phoneNumber = c.phoneNumber,
-                            verify = c.verify == 0 ? "TIdak di verify" : "verify",
+                            verify = c.verify,
                             level = c.level == 0 ? "Admin" : "User",
                         }).ToList() ;
 
@@ -58,6 +58,7 @@ namespace ManagemenDocument
             {
                 data = data.Where(d => d.name.Contains(tb_search.Text)).ToList();
             }
+
             foreach (var item in data)
             {
                 i++;
@@ -69,8 +70,8 @@ namespace ManagemenDocument
                 dataGridView1.Rows[num].Cells[4].Value = item.nameIdentitas;
                 dataGridView1.Rows[num].Cells[5].Value = item.alamat;
                 dataGridView1.Rows[num].Cells[6].Value = item.phoneNumber;
-                dataGridView1.Rows[num].Cells[7].Value = item.verify;
-                dataGridView1.Rows[num].Cells[8].Value = item.level;
+                dataGridView1.Rows[num].Cells[7].Value = item.verify== 0 ? "TIdak di verify" : "verify";
+                dataGridView1.Rows[num].Cells[8].Value = item.level;                
             }
 
         }
@@ -88,7 +89,24 @@ namespace ManagemenDocument
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             var id = string.Empty;
-            if (e.ColumnIndex == 9)
+            if (e.ColumnIndex==9)
+            {
+                
+                id = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
+                var data = context.tb_users.Where(u => u.id_user == int.Parse(id)).FirstOrDefault();
+                if (data.verify==0)
+                {
+                    DialogResult dialog = MessageBox.Show(null, "Apakah anda yakin ingin memverifikasi data ini?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (DialogResult.Yes==dialog)
+                    {
+                         data.verify = 1;
+                         context.SubmitChanges();
+                         loadData();
+                         MessageBox.Show("Data berhasil di verifikasi");                    
+                    }
+                }
+            }
+            if (e.ColumnIndex == 10)
             {
                 id = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
                 var fAddUser = new Admin_AddUser(this.MdiParent);
@@ -103,7 +121,7 @@ namespace ManagemenDocument
                 };
                 fAddUser.Show();
             }
-            if (e.ColumnIndex==10)
+            if (e.ColumnIndex==11)
             {
                 id = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
                 DialogResult result = MessageBox.Show(null, "Apakah anda yakin ingin menghapus data ini ?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);

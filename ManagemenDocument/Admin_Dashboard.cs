@@ -22,28 +22,30 @@ namespace ManagemenDocument
 
         }
 
-        private void toolStripButton1_Click(object sender, EventArgs e)
+        
+
+        private void idnetitasTypeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var fAdd_Doc=new Admin_Add_Doc();
-            fAdd_Doc.StartPosition = FormStartPosition.CenterScreen;
-            fAdd_Doc.MdiParent = this;
-            fAdd_Doc.Show();
+            var fManagement_Identitas=new Admin_ManagementIdentitas();  
+            fManagement_Identitas.StartPosition=FormStartPosition.CenterScreen;
+            fManagement_Identitas.MdiParent = this;
+            fManagement_Identitas.Show();
         }
 
-        private void toolStripButton3_Click(object sender, EventArgs e)
+        private void userToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var fManagementIden=new Admin_ManagementIdentitas();
-            fManagementIden.StartPosition = FormStartPosition.CenterScreen;
-            fManagementIden.MdiParent= this;
-            fManagementIden.Show();
+            var FmanagemntUser = new Admin_ManagementUser();
+            FmanagemntUser.StartPosition=FormStartPosition.CenterScreen;
+            FmanagemntUser.MdiParent = this;
+            FmanagemntUser.Show();
         }
 
-        private void toolStripButton4_Click(object sender, EventArgs e)
+        private void documentToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var fManagementUser=new Admin_ManagementUser();
-            fManagementUser.MdiParent = this;
-            fManagementUser.StartPosition = FormStartPosition.CenterScreen;
-            fManagementUser.Show();
+            var FmanagementDoc = new Admin_Management_Doc();
+            FmanagementDoc.StartPosition=FormStartPosition.CenterScreen;
+            FmanagementDoc.MdiParent = this;
+            FmanagementDoc.Show();
         }
     }
 }

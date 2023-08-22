@@ -41,6 +41,7 @@
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btn_verify = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Column10 = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -59,6 +60,7 @@
             this.Column6,
             this.Column7,
             this.Column8,
+            this.btn_verify,
             this.Column9,
             this.Column10});
             this.dataGridView1.Location = new System.Drawing.Point(10, 83);
@@ -141,6 +143,13 @@
             this.Column8.HeaderText = "Level";
             this.Column8.Name = "Column8";
             // 
+            // btn_verify
+            // 
+            this.btn_verify.HeaderText = "";
+            this.btn_verify.Name = "btn_verify";
+            this.btn_verify.Text = "Verify";
+            this.btn_verify.UseColumnTextForButtonValue = true;
+            // 
             // Column9
             // 
             this.Column9.HeaderText = "";
@@ -188,6 +197,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.DataGridViewButtonColumn btn_verify;
         private System.Windows.Forms.DataGridViewButtonColumn Column9;
         private System.Windows.Forms.DataGridViewButtonColumn Column10;
     }

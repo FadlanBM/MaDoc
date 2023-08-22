@@ -216,7 +216,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(79, 748);
+            this.button2.Location = new System.Drawing.Point(64, 748);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(146, 29);
             this.button2.TabIndex = 20;
@@ -225,7 +225,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(233, 748);
+            this.button1.Location = new System.Drawing.Point(218, 748);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(146, 29);
             this.button1.TabIndex = 21;
@@ -311,7 +311,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(464, 576);
+            this.ClientSize = new System.Drawing.Size(481, 571);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.text3);
@@ -343,6 +343,7 @@
             this.Controls.Add(this.label1);
             this.Name = "Admin_Add_Doc";
             this.Text = "Admin_Add_Doc";
+            this.Load += new System.EventHandler(this.Admin_Add_Doc_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

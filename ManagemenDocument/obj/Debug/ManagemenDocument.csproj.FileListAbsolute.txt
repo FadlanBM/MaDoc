@@ -31,3 +31,6 @@ D:\htdocs\DesktopC#\MaDoc\ManagemenDocument\obj\Debug\ManagemenDocument.csproj.C
 D:\htdocs\DesktopC#\MaDoc\ManagemenDocument\obj\Debug\ManagemenDocument.exe
 D:\htdocs\DesktopC#\MaDoc\ManagemenDocument\obj\Debug\ManagemenDocument.pdb
 D:\htdocs\DesktopC#\MaDoc\ManagemenDocument\obj\Debug\ManagemenDocument.BrowserDataCustomer.resources
+C:\laragon\www\Desktop_c#\MacDoc\ManagemenDocument\ManagemenDocument\obj\Debug\ManagemenDocument.BrowserDataCustomer.resources
+C:\laragon\www\Desktop_c#\MacDoc\ManagemenDocument\ManagemenDocument\obj\Debug\ManagemenDocument.Admin_Management_Doc.resources
+C:\laragon\www\Desktop_c#\MacDoc\ManagemenDocument\ManagemenDocument\obj\Debug\ManagemenDocument.Admin_DetailDoc.resources
