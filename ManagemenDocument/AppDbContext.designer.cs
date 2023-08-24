@@ -45,7 +45,7 @@ namespace ManagemenDocument
     #endregion
 		
 		public AppDbContextDataContext() : 
-				base(global::ManagemenDocument.Properties.Settings.Default.DokumenManagementConnectionString, mappingSource)
+				base(global::ManagemenDocument.Properties.Settings.Default.DokumenManagementConnectionString1, mappingSource)
 		{
 			OnCreated();
 		}
@@ -123,6 +123,8 @@ namespace ManagemenDocument
 		
 		private string _pengirimDokumen;
 		
+		private string _token_dokumen;
+		
 		private int _id_pemilik;
 		
 		private int _id_penerima;
@@ -140,6 +142,8 @@ namespace ManagemenDocument
 		private System.DateTime _tgl_createdAt;
 		
 		private string _imagePath;
+		
+		private string _imageQrCode;
 		
 		private EntitySet<tb_penerima> _tb_penerimas;
 		
@@ -161,6 +165,8 @@ namespace ManagemenDocument
     partial void OnperihalDokumenChanged();
     partial void OnpengirimDokumenChanging(string value);
     partial void OnpengirimDokumenChanged();
+    partial void Ontoken_dokumenChanging(string value);
+    partial void Ontoken_dokumenChanged();
     partial void Onid_pemilikChanging(int value);
     partial void Onid_pemilikChanged();
     partial void Onid_penerimaChanging(int value);
@@ -179,6 +185,8 @@ namespace ManagemenDocument
     partial void Ontgl_createdAtChanged();
     partial void OnimagePathChanging(string value);
     partial void OnimagePathChanged();
+    partial void OnimageQrCodeChanging(string value);
+    partial void OnimageQrCodeChanged();
     #endregion
 		
 		public tb_dokumen()
@@ -285,6 +293,26 @@ namespace ManagemenDocument
 					this._pengirimDokumen = value;
 					this.SendPropertyChanged("pengirimDokumen");
 					this.OnpengirimDokumenChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_token_dokumen", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+		public string token_dokumen
+		{
+			get
+			{
+				return this._token_dokumen;
+			}
+			set
+			{
+				if ((this._token_dokumen != value))
+				{
+					this.Ontoken_dokumenChanging(value);
+					this.SendPropertyChanging();
+					this._token_dokumen = value;
+					this.SendPropertyChanged("token_dokumen");
+					this.Ontoken_dokumenChanged();
 				}
 			}
 		}
@@ -477,6 +505,26 @@ namespace ManagemenDocument
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_imageQrCode", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+		public string imageQrCode
+		{
+			get
+			{
+				return this._imageQrCode;
+			}
+			set
+			{
+				if ((this._imageQrCode != value))
+				{
+					this.OnimageQrCodeChanging(value);
+					this.SendPropertyChanging();
+					this._imageQrCode = value;
+					this.SendPropertyChanged("imageQrCode");
+					this.OnimageQrCodeChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tb_dokumen_tb_penerima", Storage="_tb_penerimas", ThisKey="id_dokumen", OtherKey="id_dokumen")]
 		public EntitySet<tb_penerima> tb_penerimas
 		{
@@ -601,9 +649,11 @@ namespace ManagemenDocument
 		
 		private string _name;
 		
+		private string _username;
+		
 		private string _no_identitas;
 		
-		private int _id_identitas;
+		private System.Nullable<int> _id_identitas;
 		
 		private string _alamat;
 		
@@ -633,9 +683,11 @@ namespace ManagemenDocument
     partial void Onid_userChanged();
     partial void OnnameChanging(string value);
     partial void OnnameChanged();
+    partial void OnusernameChanging(string value);
+    partial void OnusernameChanged();
     partial void Onno_identitasChanging(string value);
     partial void Onno_identitasChanged();
-    partial void Onid_identitasChanging(int value);
+    partial void Onid_identitasChanging(System.Nullable<int> value);
     partial void Onid_identitasChanged();
     partial void OnalamatChanging(string value);
     partial void OnalamatChanged();
@@ -700,7 +752,27 @@ namespace ManagemenDocument
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_no_identitas", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_username", DbType="VarChar(50)")]
+		public string username
+		{
+			get
+			{
+				return this._username;
+			}
+			set
+			{
+				if ((this._username != value))
+				{
+					this.OnusernameChanging(value);
+					this.SendPropertyChanging();
+					this._username = value;
+					this.SendPropertyChanged("username");
+					this.OnusernameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_no_identitas", DbType="VarChar(50)")]
 		public string no_identitas
 		{
 			get
@@ -720,8 +792,8 @@ namespace ManagemenDocument
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_identitas", DbType="Int NOT NULL")]
-		public int id_identitas
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_identitas", DbType="Int")]
+		public System.Nullable<int> id_identitas
 		{
 			get
 			{
@@ -744,7 +816,7 @@ namespace ManagemenDocument
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_alamat", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_alamat", DbType="VarChar(50)")]
 		public string alamat
 		{
 			get
@@ -764,7 +836,7 @@ namespace ManagemenDocument
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_phoneNumber", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_phoneNumber", DbType="VarChar(50)")]
 		public string phoneNumber
 		{
 			get
@@ -930,7 +1002,7 @@ namespace ManagemenDocument
 					}
 					else
 					{
-						this._id_identitas = default(int);
+						this._id_identitas = default(Nullable<int>);
 					}
 					this.SendPropertyChanged("tb_identita");
 				}

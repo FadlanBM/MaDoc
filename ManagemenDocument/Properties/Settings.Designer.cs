@@ -44,5 +44,16 @@ namespace ManagemenDocument.Properties {
                 return ((string)(this["DokumenManagementConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-8UJEI4N\\MSSQLSERVER01;Initial Catalog=DokumenManagement;Integ" +
+            "rated Security=True")]
+        public string DokumenManagementConnectionString1 {
+            get {
+                return ((string)(this["DokumenManagementConnectionString1"]));
+            }
+        }
     }
 }

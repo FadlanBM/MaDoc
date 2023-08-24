@@ -11,7 +11,6 @@ C:\laragon\www\Desktop_c#\MacDoc\ManagemenDocument\ManagemenDocument\obj\Debug\M
 C:\laragon\www\Desktop_c#\MacDoc\ManagemenDocument\ManagemenDocument\obj\Debug\ManagemenDocument.Admin_Add_Doc.resources
 C:\laragon\www\Desktop_c#\MacDoc\ManagemenDocument\ManagemenDocument\obj\Debug\ManagemenDocument.Admin_Dashboard.resources
 C:\laragon\www\Desktop_c#\MacDoc\ManagemenDocument\ManagemenDocument\obj\Debug\ManagemenDocument.Admin_AddUser.resources
-C:\laragon\www\Desktop_c#\MacDoc\ManagemenDocument\ManagemenDocument\obj\Debug\ManagemenDocument.Admin_ManagementUser.resources
 C:\laragon\www\Desktop_c#\MacDoc\ManagemenDocument\ManagemenDocument\obj\Debug\ManagemenDocument.Admin_AddIdentitas.resources
 C:\laragon\www\Desktop_c#\MacDoc\ManagemenDocument\ManagemenDocument\obj\Debug\ManagemenDocument.Admin_ManagementIdentitas.resources
 D:\htdocs\DesktopC#\MaDoc\ManagemenDocument\bin\Debug\ManagemenDocument.exe.config
@@ -40,3 +39,8 @@ D:\htdocs\DesktopC#\MaDoc\ManagemenDocument\obj\Debug\ManagemenDocument.Admin_Ma
 D:\htdocs\DesktopC#\MaDoc\ManagemenDocument\bin\Debug\Zen.Barcode.Core.dll
 D:\htdocs\DesktopC#\MaDoc\ManagemenDocument\obj\Debug\ManagemenDocument.FGenerateCrCode.resources
 D:\htdocs\DesktopC#\MaDoc\ManagemenDocument\obj\Debug\ManagemenDocument.csproj.CopyComplete
+C:\laragon\www\Desktop_c#\MacDoc\ManagemenDocument\ManagemenDocument\bin\Debug\Zen.Barcode.Core.dll
+C:\laragon\www\Desktop_c#\MacDoc\ManagemenDocument\ManagemenDocument\obj\Debug\ManagemenDocument.Admin_ManagementUserBelumVerify.resources
+C:\laragon\www\Desktop_c#\MacDoc\ManagemenDocument\ManagemenDocument\obj\Debug\ManagemenDocument.Admin_Management_User_Verify.resources
+C:\laragon\www\Desktop_c#\MacDoc\ManagemenDocument\ManagemenDocument\obj\Debug\ManagemenDocument.FGenerateCrCode.resources
+C:\laragon\www\Desktop_c#\MacDoc\ManagemenDocument\ManagemenDocument\obj\Debug\ManagemenDocument.csproj.CopyComplete

@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -28,7 +29,7 @@ namespace ManagemenDocument
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (tb_nameDoc.Text == "" || text3.Text == "" || tb_pengirim.Text == "" || tb_penerima.Text == "" || tb_perihalDoc.Text == "" || tb_agendaDoc.Text == "" || tbUraianDoc.Text == "" || dt_agendastart.Text == "" || dt_agendafinish.Text == "" || dt_tgldocumen.Text == "" || dt_tglPenerima.Text == ""||pictureBox1.Image==null)
+                if (tb_nameDoc.Text == "" || text3.Text == "" || tb_pengirim.Text == "" || tb_penerima.Text == "" || tb_perihalDoc.Text == "" || tb_agendaDoc.Text == "" || tbUraianDoc.Text == "" || dt_agendastart.Text == "" || dt_agendafinish.Text == "" || dt_tgldocumen.Text == "" || dt_tglPenerima.Text == ""||pictureBox1.Image==null)
             {
                 MessageBox.Show(null, "Form belum di isi semua", "WWarning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -69,6 +70,7 @@ namespace ManagemenDocument
                 dokumen.tgl_agendaAwal = dt_agendastart.Value;
                 dokumen.tgl_agendaAkhir = dt_agendafinish.Value;
                 dokumen.tgl_createdAt = DateTime.Now;
+                dokumen.token_dokumen = createToken(random());
                 context.tb_dokumens.InsertOnSubmit(dokumen);
                 context.SubmitChanges();
                 penerimainput.id_user = penerima.id_user;
@@ -244,6 +246,56 @@ namespace ManagemenDocument
         private void dt_agendastart_ValueChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private string random() { 
+            Random rd= new Random();
+            var num = rd.Next(8, 12);
+            string token = string.Empty;
+            int i = 0;
+            do {
+                var chr = rd.Next(48, 123);
+                if ((chr>48&&chr<57)||(chr>60&&chr<90)||(chr>92&&chr<122))
+                {
+                    token = token + (char)chr;
+                    i++;
+                    if (i == num)
+                        break;                    
+                }
+
+            } while (true);
+            return token;
+        }
+
+
+        private string createToken(string p) { 
+            StringBuilder sb = new StringBuilder();
+            using (var sha=SHA256.Create())
+            {
+                var baytes = sha.ComputeHash(Encoding.UTF8.GetBytes(p));
+                for (int i = 0; i < baytes.Length; i++)
+                {
+                    sb.Append(baytes[i].ToString("x2"));
+                }
+            return sb.ToString();
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            var fgenerateQr = new FGenerateCrCode(this.MdiParent);
+            fgenerateQr.StartPosition = FormStartPosition.CenterParent;
+            fgenerateQr.getId = getId;
+            this.Hide();
+            fgenerateQr.FormClosing += (object asasd, FormClosingEventArgs aaa) =>
+            {
+                if (DialogResult.OK == fgenerateQr.DialogResult)
+                {
+                    DialogResult = DialogResult.OK;
+                    this.Close();
+                }
+            };
+            fgenerateQr.Show();
         }
     }
 }
