@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -15,8 +16,13 @@ namespace ManagemenDocument
     { 
         AppDbContextDataContext context;
         public int? getId { get; set; }
+        PrintDocument printDocument;
+        SaveFileDialog saveFileDialog;
+        Image cusImage;
         public Admin_DetailDoc(Form mdi)
         {
+            printDocument=new PrintDocument();
+            saveFileDialog = new SaveFileDialog();
             this.MdiParent = mdi;
             context = new AppDbContextDataContext();
             InitializeComponent();
@@ -38,7 +44,8 @@ namespace ManagemenDocument
         private void loadData()
         {
             var data = context.tb_dokumens.Where(d => d.id_dokumen == getId).FirstOrDefault();
-            var penerima = context.tb_users.Where(a => a.id_user == data.id_penerima).FirstOrDefault();
+            var history=context.tb_histories.Where(h=>h.id_user==data.id_penerima).FirstOrDefault();
+            var penerima = context.tb_users.Where(a => a.id_user ==history.id_user ).FirstOrDefault();
             var pemilik = context.tb_users.Where(k => k.id_user == data.id_pemilik).FirstOrDefault();
 
             lb_namaDoc.Text = data.nameDokumen;
@@ -54,18 +61,59 @@ namespace ManagemenDocument
             lb_agendaFinis.Text = data.tgl_agendaAkhir.ToString();
             var path = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + @"\image\";
             var nameimage = path + data.imagePath;
+            var nameQrImage = path + data.imageQrCode;
             if (File.Exists(nameimage))
-            {
-                using (var stram = File.OpenRead(nameimage))
+            {               
+                if (File.Exists(nameQrImage))
                 {
-                    pictureBox1.Image = new Bitmap(stram);
+                    MessageBox.Show(nameQrImage);
+                    using (var stram = File.OpenRead(nameimage))
+                    {
+                        pictureBox1.Image = new Bitmap(stram);
+                    }
+                    using (var strams = File.OpenRead(nameQrImage))
+                    {
+                        pictureBox2.Image = new Bitmap(strams);
+                        cusImage=new Bitmap(strams);
+                    }
                 }
             }
+           
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+           saveFileDialog.RestoreDirectory = true;
+            saveFileDialog.FilterIndex = 1;
+            if (DialogResult.OK==saveFileDialog.ShowDialog())
+            {
+                cusImage.Save(Path.GetDirectoryName(saveFileDialog.FileName + "\\" + Path.GetFileName(saveFileDialog.FileName) + ".jpg"));
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            printDocument.PrintPage += printDokumen_printPage;
+            PrintDialog printDialog = new PrintDialog();
+            printDialog.Document = printDocument;
+            if (DialogResult.OK==printDialog.ShowDialog())
+            {
+                printDocument.PrinterSettings.PrinterName = "Microsoft Print to PDF";
+                printDocument.Print();
+            }
+        }
+
+        private void printDokumen_printPage(object seder,PrintPageEventArgs e) {
+            e.Graphics.DrawImage(cusImage, new Point(0, 0));
+        }
+
+        private void imageToPrint(object sass,PrintPageEventArgs e) {
+            e.Graphics.DrawImage(cusImage, 0, 0, e.PageBounds.Width, e.PageBounds.Height);
         }
     }
 }

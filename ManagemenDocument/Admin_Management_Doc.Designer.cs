@@ -129,7 +129,7 @@
             // 
             // Column8
             // 
-            this.Column8.HeaderText = "Nama Penerima";
+            this.Column8.HeaderText = "Nama Penerima Awal";
             this.Column8.Name = "Column8";
             // 
             // Column9

@@ -4,8 +4,8 @@
     <Type Name="tb_dokumen">
       <Column Name="id_dokumen" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="nameDokumen" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="agendaDokumen" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="perihalDokumen" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="agendaDokumen" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="perihalDokumen" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
       <Column Name="pengirimDokumen" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="token_dokumen" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="id_pemilik" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
@@ -18,9 +18,9 @@
       <Column Name="tgl_createdAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="imagePath" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="imageQrCode" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
-      <Association Name="tb_dokumen_tb_penerima" Member="tb_penerimas" ThisKey="id_dokumen" OtherKey="id_dokumen" Type="tb_penerima" />
-      <Association Name="tb_user_tb_dokumen" Member="tb_user" ThisKey="id_pemilik" OtherKey="id_user" Type="tb_user" IsForeignKey="true" />
-      <Association Name="tb_user_tb_dokumen1" Member="tb_user1" ThisKey="id_penerima" OtherKey="id_user" Type="tb_user" IsForeignKey="true" />
+      <Association Name="tb_dokumen_tb_history" Member="tb_histories" ThisKey="id_dokumen" OtherKey="id_dokumen" Type="tb_history" />
+      <Association Name="tb_user_tb_dokumen" Member="tb_user" ThisKey="id_penerima" OtherKey="id_user" Type="tb_user" IsForeignKey="true" />
+      <Association Name="tb_user_tb_dokumen1" Member="tb_user1" ThisKey="id_pemilik" OtherKey="id_user" Type="tb_user" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.tb_user" Member="tb_users">
@@ -36,10 +36,19 @@
       <Column Name="verify" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="[level]" Member="level" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="createdAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Association Name="tb_user_tb_dokumen" Member="tb_dokumens" ThisKey="id_user" OtherKey="id_pemilik" Type="tb_dokumen" />
-      <Association Name="tb_user_tb_dokumen1" Member="tb_dokumens1" ThisKey="id_user" OtherKey="id_penerima" Type="tb_dokumen" />
-      <Association Name="tb_user_tb_penerima" Member="tb_penerimas" ThisKey="id_user" OtherKey="id_user" Type="tb_penerima" />
+      <Association Name="tb_user_tb_dokumen" Member="tb_dokumens" ThisKey="id_user" OtherKey="id_penerima" Type="tb_dokumen" />
+      <Association Name="tb_user_tb_dokumen1" Member="tb_dokumens1" ThisKey="id_user" OtherKey="id_pemilik" Type="tb_dokumen" />
       <Association Name="tb_identita_tb_user" Member="tb_identita" ThisKey="id_identitas" OtherKey="id_identitas" Type="tb_identita" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tb_history" Member="tb_histories">
+    <Type Name="tb_history">
+      <Column Name="id_history" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="id_user" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="id_dokumen" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nama_user" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="createdAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="tb_dokumen_tb_history" Member="tb_dokumen" ThisKey="id_dokumen" OtherKey="id_dokumen" Type="tb_dokumen" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.tb_identitas" Member="tb_identitas">
@@ -47,17 +56,6 @@
       <Column Name="id_identitas" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="nameIdentitas" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Association Name="tb_identita_tb_user" Member="tb_users" ThisKey="id_identitas" OtherKey="id_identitas" Type="tb_user" />
-    </Type>
-  </Table>
-  <Table Name="dbo.tb_penerima" Member="tb_penerimas">
-    <Type Name="tb_penerima">
-      <Column Name="id_penerima" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="id_user" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="id_dokumen" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="namaPenerima" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="createdAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Association Name="tb_user_tb_penerima" Member="tb_user" ThisKey="id_user" OtherKey="id_user" Type="tb_user" IsForeignKey="true" />
-      <Association Name="tb_dokumen_tb_penerima" Member="tb_dokumen" ThisKey="id_dokumen" OtherKey="id_dokumen" Type="tb_dokumen" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

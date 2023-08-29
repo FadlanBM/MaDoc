@@ -54,13 +54,13 @@ namespace ManagemenDocument
             if (getId == null)
             {
                 tb_dokumen dokumen = new tb_dokumen();
-                tb_penerima penerimainput = new tb_penerima();
+                tb_history penerimainput = new tb_history();
                 dokumen.nameDokumen = tb_nameDoc.Text;
                 dokumen.agendaDokumen = tb_agendaDoc.Text;
                 dokumen.perihalDokumen = tb_perihalDoc.Text;
                 dokumen.pengirimDokumen = tb_pengirim.Text;
-                dokumen.id_penerima = pemilik.id_user;
-                dokumen.id_pemilik = penerima.id_user;
+                dokumen.id_penerima = penerima.id_user ;  
+                dokumen.id_pemilik = pemilik.id_user;
                 dokumen.uraianDokumen = tbUraianDoc.Text;
                 dokumen.tgl_diterima = dt_tglPenerima.Value;
                 dokumen.tgl_dokumen = dt_tgldocumen.Value;
@@ -75,14 +75,14 @@ namespace ManagemenDocument
                 context.SubmitChanges();
                 penerimainput.id_user = penerima.id_user;
                 penerimainput.id_dokumen = dokumen.id_dokumen;
-                penerimainput.namaPenerima = penerima.name;
+                penerimainput.nama_user = penerima.name;
                 penerimainput.createdAt = DateTime.Now;
-                context.tb_penerimas.InsertOnSubmit(penerimainput);
+                context.tb_histories.InsertOnSubmit(penerimainput);
                 context.SubmitChanges();
                 var fgenerateQr = new FGenerateCrCode(this.MdiParent);
                 fgenerateQr.StartPosition = FormStartPosition.CenterParent;
                 fgenerateQr.getId = dokumen.id_dokumen;
-                this.Hide();
+                this.Enabled = false;
                 fgenerateQr.FormClosing += (object asasd, FormClosingEventArgs aaa) =>
                 {
                     if (DialogResult.OK == fgenerateQr.DialogResult)
@@ -99,7 +99,7 @@ namespace ManagemenDocument
             else
             {
                 var dokumen = context.tb_dokumens.Where(p => p.id_dokumen == getId).FirstOrDefault();
-                var penerimainput = context.tb_penerimas.Where(p => p.id_dokumen == dokumen.id_dokumen).FirstOrDefault();
+                var penerimainput = context.tb_histories.Where(p => p.id_dokumen == dokumen.id_dokumen).FirstOrDefault();
                 var imageOld = path + dokumen.imagePath;
                 
                 if (imageOld!=openFileDialog.FileName)
@@ -116,8 +116,8 @@ namespace ManagemenDocument
                 dokumen.agendaDokumen = tb_agendaDoc.Text;
                 dokumen.perihalDokumen = tb_perihalDoc.Text;
                 dokumen.pengirimDokumen = tb_pengirim.Text;
-                dokumen.id_penerima = pemilik.id_user;
-                dokumen.id_pemilik = penerima.id_user;
+                dokumen.id_penerima = penerima.id_user;
+                dokumen.id_pemilik = pemilik.id_user;
                 dokumen.uraianDokumen = tbUraianDoc.Text;
                 dokumen.tgl_diterima = dt_tglPenerima.Value;
                 dokumen.tgl_dokumen = dt_tgldocumen.Value;                
@@ -126,7 +126,7 @@ namespace ManagemenDocument
                 dokumen.tgl_createdAt = DateTime.Now;
                 penerimainput.id_user = penerima.id_user;
                 penerimainput.id_dokumen = dokumen.id_dokumen;
-                penerimainput.namaPenerima = penerima.name;
+                penerimainput.nama_user = penerima.name;
                 penerimainput.createdAt = DateTime.Now;
                 context.SubmitChanges();
                 clearTb();
@@ -188,8 +188,9 @@ namespace ManagemenDocument
             if (getId!=null)
             {                
             var data = context.tb_dokumens.Where(d => d.id_dokumen == getId).FirstOrDefault();
+            var history=context.tb_histories.Where(h=>h.id_user==data.id_penerima).FirstOrDefault();
             var pemilik = context.tb_users.Where(p => p.id_user == data.id_pemilik).FirstOrDefault();
-            var penerima = context.tb_users.Where(u => u.id_user == data.id_penerima).FirstOrDefault();
+            var penerima = context.tb_users.Where(u => u.id_user == history.id_user ).FirstOrDefault();
             tb_nameDoc.Text=data.nameDokumen;
             tb_perihalDoc.Text = data.perihalDokumen;
             tb_agendaDoc.Text = data.agendaDokumen;
@@ -296,6 +297,11 @@ namespace ManagemenDocument
                 }
             };
             fgenerateQr.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            DialogResult=DialogResult.Cancel;
         }
     }
 }

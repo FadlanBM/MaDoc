@@ -227,6 +227,7 @@
             this.button2.TabIndex = 20;
             this.button2.Text = "Cancel";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -264,9 +265,9 @@
             this.label12.AutoSize = true;
             this.label12.Location = new System.Drawing.Point(28, 329);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(82, 13);
+            this.label12.Size = new System.Drawing.Size(108, 13);
             this.label12.TabIndex = 25;
-            this.label12.Text = "Nama Penerima";
+            this.label12.Text = "Nama Penerima Awal";
             // 
             // tb_penerima
             // 
@@ -326,7 +327,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(503, 571);
+            this.ClientSize = new System.Drawing.Size(520, 571);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);

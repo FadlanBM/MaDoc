@@ -32,13 +32,15 @@ namespace ManagemenDocument
         }
 
         private void button1_Click(object sender, EventArgs e)
-        {
+        {           
             if (!Directory.Exists(path)) 
                 Directory.CreateDirectory(path);
             var nameImage = DateTime.Now.Ticks.ToString()+".jpg";
             var saveImage=context.tb_dokumens.Where(d=>d.id_dokumen==getId).FirstOrDefault();
             cusimage.Save(path+"\\"+nameImage);
             DialogResult = DialogResult.OK;
+            saveImage.imageQrCode = nameImage;
+            context.SubmitChanges();
             this.Close();
         }
 
@@ -46,12 +48,7 @@ namespace ManagemenDocument
         {
             var token=context.tb_dokumens.Where(d=>d.id_dokumen==getId).FirstOrDefault();
             if (token!=null)
-            {
-                if (createToken(token.token_dokumen)==createToken(token.token_dokumen))
-                {
-                    MessageBox.Show("Sama");
-                }
-
+            {   
                 Zen.Barcode.CodeQrBarcodeDraw qrdraw = Zen.Barcode.BarcodeDrawFactory.CodeQr;
                 cusimage = qrdraw.Draw(token.token_dokumen, 200);
                 pictureBox1.Image = cusimage;
@@ -84,13 +81,20 @@ namespace ManagemenDocument
 
         private void button3_Click(object sender, EventArgs e)
         {
-            printDocument.PrintPage += new PrintPageEventHandler(imagetoPrint);
+            /*printDocument.PrintPage += new PrintPageEventHandler(imagetoPrint);*/
+            printDocument.PrintPage += PrintDocument_PrintPage;
             PrintDialog print=new PrintDialog();
             print.Document = printDocument;
             if (DialogResult.OK==print.ShowDialog())
             {
+                printDocument.PrinterSettings.PrinterName= "Microsoft Print to PDF";
                 printDocument.Print();
             }
+        }
+
+        private void PrintDocument_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            e.Graphics.DrawImage(cusimage,new Point(0,0));
         }
 
         private void imagetoPrint(object sass,PrintPageEventArgs e) {

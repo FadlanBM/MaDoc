@@ -71,12 +71,16 @@ namespace ManagemenDocument
         {
             var FaddDokumen = new Admin_Add_Doc(this.MdiParent);
             FaddDokumen.StartPosition = FormStartPosition.CenterScreen;
+            this.Enabled = false;
             FaddDokumen.FormClosing += (object adsd, FormClosingEventArgs sad) =>
             {
                 if (DialogResult.OK == FaddDokumen.DialogResult)
                 {
                     loadData();
+                    this.Enabled=true;  
                 }
+                if (DialogResult.Cancel == FaddDokumen.DialogResult)
+                    this.Enabled = true;
             };
             FaddDokumen.Show();
         }
@@ -111,7 +115,7 @@ namespace ManagemenDocument
             {
                 id = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
                 var data =context.tb_dokumens.Where(d=>d.id_dokumen==int.Parse(id)).FirstOrDefault();
-                var penerima=context.tb_penerimas.Where(d=>d.id_dokumen==data.id_dokumen).ToList();
+                var penerima=context.tb_histories.Where(d=>d.id_dokumen==data.id_dokumen).ToList();
                 if (data==null||penerima==null)
                 {
                     MessageBox.Show("data tidak di temukan");
@@ -127,7 +131,7 @@ namespace ManagemenDocument
                         File.Delete(nameImage);
                     }
                     context.tb_dokumens.DeleteOnSubmit(data);
-                    context.tb_penerimas.DeleteAllOnSubmit(penerima);                    
+                    context.tb_histories.DeleteAllOnSubmit(penerima);                    
                     context.SubmitChanges();
                     MessageBox.Show(null, "Berhasil delete data dokumen", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     loadData(); 

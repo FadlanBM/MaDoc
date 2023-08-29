@@ -36,12 +36,12 @@ namespace ManagemenDocument
     partial void Inserttb_user(tb_user instance);
     partial void Updatetb_user(tb_user instance);
     partial void Deletetb_user(tb_user instance);
+    partial void Inserttb_history(tb_history instance);
+    partial void Updatetb_history(tb_history instance);
+    partial void Deletetb_history(tb_history instance);
     partial void Inserttb_identita(tb_identita instance);
     partial void Updatetb_identita(tb_identita instance);
     partial void Deletetb_identita(tb_identita instance);
-    partial void Inserttb_penerima(tb_penerima instance);
-    partial void Updatetb_penerima(tb_penerima instance);
-    partial void Deletetb_penerima(tb_penerima instance);
     #endregion
 		
 		public AppDbContextDataContext() : 
@@ -90,19 +90,19 @@ namespace ManagemenDocument
 			}
 		}
 		
+		public System.Data.Linq.Table<tb_history> tb_histories
+		{
+			get
+			{
+				return this.GetTable<tb_history>();
+			}
+		}
+		
 		public System.Data.Linq.Table<tb_identita> tb_identitas
 		{
 			get
 			{
 				return this.GetTable<tb_identita>();
-			}
-		}
-		
-		public System.Data.Linq.Table<tb_penerima> tb_penerimas
-		{
-			get
-			{
-				return this.GetTable<tb_penerima>();
 			}
 		}
 	}
@@ -145,7 +145,7 @@ namespace ManagemenDocument
 		
 		private string _imageQrCode;
 		
-		private EntitySet<tb_penerima> _tb_penerimas;
+		private EntitySet<tb_history> _tb_histories;
 		
 		private EntityRef<tb_user> _tb_user;
 		
@@ -191,7 +191,7 @@ namespace ManagemenDocument
 		
 		public tb_dokumen()
 		{
-			this._tb_penerimas = new EntitySet<tb_penerima>(new Action<tb_penerima>(this.attach_tb_penerimas), new Action<tb_penerima>(this.detach_tb_penerimas));
+			this._tb_histories = new EntitySet<tb_history>(new Action<tb_history>(this.attach_tb_histories), new Action<tb_history>(this.detach_tb_histories));
 			this._tb_user = default(EntityRef<tb_user>);
 			this._tb_user1 = default(EntityRef<tb_user>);
 			OnCreated();
@@ -237,7 +237,7 @@ namespace ManagemenDocument
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_agendaDokumen", DbType="VarChar(50)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_agendaDokumen", DbType="VarChar(200)")]
 		public string agendaDokumen
 		{
 			get
@@ -257,7 +257,7 @@ namespace ManagemenDocument
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_perihalDokumen", DbType="VarChar(50)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_perihalDokumen", DbType="VarChar(200)")]
 		public string perihalDokumen
 		{
 			get
@@ -328,7 +328,7 @@ namespace ManagemenDocument
 			{
 				if ((this._id_pemilik != value))
 				{
-					if (this._tb_user.HasLoadedOrAssignedValue)
+					if (this._tb_user1.HasLoadedOrAssignedValue)
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
@@ -352,7 +352,7 @@ namespace ManagemenDocument
 			{
 				if ((this._id_penerima != value))
 				{
-					if (this._tb_user1.HasLoadedOrAssignedValue)
+					if (this._tb_user.HasLoadedOrAssignedValue)
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
@@ -525,20 +525,20 @@ namespace ManagemenDocument
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tb_dokumen_tb_penerima", Storage="_tb_penerimas", ThisKey="id_dokumen", OtherKey="id_dokumen")]
-		public EntitySet<tb_penerima> tb_penerimas
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tb_dokumen_tb_history", Storage="_tb_histories", ThisKey="id_dokumen", OtherKey="id_dokumen")]
+		public EntitySet<tb_history> tb_histories
 		{
 			get
 			{
-				return this._tb_penerimas;
+				return this._tb_histories;
 			}
 			set
 			{
-				this._tb_penerimas.Assign(value);
+				this._tb_histories.Assign(value);
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tb_user_tb_dokumen", Storage="_tb_user", ThisKey="id_pemilik", OtherKey="id_user", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tb_user_tb_dokumen", Storage="_tb_user", ThisKey="id_penerima", OtherKey="id_user", IsForeignKey=true)]
 		public tb_user tb_user
 		{
 			get
@@ -561,18 +561,18 @@ namespace ManagemenDocument
 					if ((value != null))
 					{
 						value.tb_dokumens.Add(this);
-						this._id_pemilik = value.id_user;
+						this._id_penerima = value.id_user;
 					}
 					else
 					{
-						this._id_pemilik = default(int);
+						this._id_penerima = default(int);
 					}
 					this.SendPropertyChanged("tb_user");
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tb_user_tb_dokumen1", Storage="_tb_user1", ThisKey="id_penerima", OtherKey="id_user", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tb_user_tb_dokumen1", Storage="_tb_user1", ThisKey="id_pemilik", OtherKey="id_user", IsForeignKey=true)]
 		public tb_user tb_user1
 		{
 			get
@@ -595,11 +595,11 @@ namespace ManagemenDocument
 					if ((value != null))
 					{
 						value.tb_dokumens1.Add(this);
-						this._id_penerima = value.id_user;
+						this._id_pemilik = value.id_user;
 					}
 					else
 					{
-						this._id_penerima = default(int);
+						this._id_pemilik = default(int);
 					}
 					this.SendPropertyChanged("tb_user1");
 				}
@@ -626,13 +626,13 @@ namespace ManagemenDocument
 			}
 		}
 		
-		private void attach_tb_penerimas(tb_penerima entity)
+		private void attach_tb_histories(tb_history entity)
 		{
 			this.SendPropertyChanging();
 			entity.tb_dokumen = this;
 		}
 		
-		private void detach_tb_penerimas(tb_penerima entity)
+		private void detach_tb_histories(tb_history entity)
 		{
 			this.SendPropertyChanging();
 			entity.tb_dokumen = null;
@@ -671,8 +671,6 @@ namespace ManagemenDocument
 		
 		private EntitySet<tb_dokumen> _tb_dokumens1;
 		
-		private EntitySet<tb_penerima> _tb_penerimas;
-		
 		private EntityRef<tb_identita> _tb_identita;
 		
     #region Extensibility Method Definitions
@@ -707,7 +705,6 @@ namespace ManagemenDocument
 		{
 			this._tb_dokumens = new EntitySet<tb_dokumen>(new Action<tb_dokumen>(this.attach_tb_dokumens), new Action<tb_dokumen>(this.detach_tb_dokumens));
 			this._tb_dokumens1 = new EntitySet<tb_dokumen>(new Action<tb_dokumen>(this.attach_tb_dokumens1), new Action<tb_dokumen>(this.detach_tb_dokumens1));
-			this._tb_penerimas = new EntitySet<tb_penerima>(new Action<tb_penerima>(this.attach_tb_penerimas), new Action<tb_penerima>(this.detach_tb_penerimas));
 			this._tb_identita = default(EntityRef<tb_identita>);
 			OnCreated();
 		}
@@ -936,7 +933,7 @@ namespace ManagemenDocument
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tb_user_tb_dokumen", Storage="_tb_dokumens", ThisKey="id_user", OtherKey="id_pemilik")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tb_user_tb_dokumen", Storage="_tb_dokumens", ThisKey="id_user", OtherKey="id_penerima")]
 		public EntitySet<tb_dokumen> tb_dokumens
 		{
 			get
@@ -949,7 +946,7 @@ namespace ManagemenDocument
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tb_user_tb_dokumen1", Storage="_tb_dokumens1", ThisKey="id_user", OtherKey="id_penerima")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tb_user_tb_dokumen1", Storage="_tb_dokumens1", ThisKey="id_user", OtherKey="id_pemilik")]
 		public EntitySet<tb_dokumen> tb_dokumens1
 		{
 			get
@@ -959,19 +956,6 @@ namespace ManagemenDocument
 			set
 			{
 				this._tb_dokumens1.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tb_user_tb_penerima", Storage="_tb_penerimas", ThisKey="id_user", OtherKey="id_user")]
-		public EntitySet<tb_penerima> tb_penerimas
-		{
-			get
-			{
-				return this._tb_penerimas;
-			}
-			set
-			{
-				this._tb_penerimas.Assign(value);
 			}
 		}
 		
@@ -1052,17 +1036,204 @@ namespace ManagemenDocument
 			this.SendPropertyChanging();
 			entity.tb_user1 = null;
 		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tb_history")]
+	public partial class tb_history : INotifyPropertyChanging, INotifyPropertyChanged
+	{
 		
-		private void attach_tb_penerimas(tb_penerima entity)
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id_history;
+		
+		private int _id_user;
+		
+		private int _id_dokumen;
+		
+		private string _nama_user;
+		
+		private System.DateTime _createdAt;
+		
+		private EntityRef<tb_dokumen> _tb_dokumen;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onid_historyChanging(int value);
+    partial void Onid_historyChanged();
+    partial void Onid_userChanging(int value);
+    partial void Onid_userChanged();
+    partial void Onid_dokumenChanging(int value);
+    partial void Onid_dokumenChanged();
+    partial void Onnama_userChanging(string value);
+    partial void Onnama_userChanged();
+    partial void OncreatedAtChanging(System.DateTime value);
+    partial void OncreatedAtChanged();
+    #endregion
+		
+		public tb_history()
 		{
-			this.SendPropertyChanging();
-			entity.tb_user = this;
+			this._tb_dokumen = default(EntityRef<tb_dokumen>);
+			OnCreated();
 		}
 		
-		private void detach_tb_penerimas(tb_penerima entity)
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_history", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id_history
 		{
-			this.SendPropertyChanging();
-			entity.tb_user = null;
+			get
+			{
+				return this._id_history;
+			}
+			set
+			{
+				if ((this._id_history != value))
+				{
+					this.Onid_historyChanging(value);
+					this.SendPropertyChanging();
+					this._id_history = value;
+					this.SendPropertyChanged("id_history");
+					this.Onid_historyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_user", DbType="Int NOT NULL")]
+		public int id_user
+		{
+			get
+			{
+				return this._id_user;
+			}
+			set
+			{
+				if ((this._id_user != value))
+				{
+					this.Onid_userChanging(value);
+					this.SendPropertyChanging();
+					this._id_user = value;
+					this.SendPropertyChanged("id_user");
+					this.Onid_userChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_dokumen", DbType="Int NOT NULL")]
+		public int id_dokumen
+		{
+			get
+			{
+				return this._id_dokumen;
+			}
+			set
+			{
+				if ((this._id_dokumen != value))
+				{
+					if (this._tb_dokumen.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onid_dokumenChanging(value);
+					this.SendPropertyChanging();
+					this._id_dokumen = value;
+					this.SendPropertyChanged("id_dokumen");
+					this.Onid_dokumenChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nama_user", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string nama_user
+		{
+			get
+			{
+				return this._nama_user;
+			}
+			set
+			{
+				if ((this._nama_user != value))
+				{
+					this.Onnama_userChanging(value);
+					this.SendPropertyChanging();
+					this._nama_user = value;
+					this.SendPropertyChanged("nama_user");
+					this.Onnama_userChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_createdAt", DbType="DateTime NOT NULL")]
+		public System.DateTime createdAt
+		{
+			get
+			{
+				return this._createdAt;
+			}
+			set
+			{
+				if ((this._createdAt != value))
+				{
+					this.OncreatedAtChanging(value);
+					this.SendPropertyChanging();
+					this._createdAt = value;
+					this.SendPropertyChanged("createdAt");
+					this.OncreatedAtChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tb_dokumen_tb_history", Storage="_tb_dokumen", ThisKey="id_dokumen", OtherKey="id_dokumen", IsForeignKey=true)]
+		public tb_dokumen tb_dokumen
+		{
+			get
+			{
+				return this._tb_dokumen.Entity;
+			}
+			set
+			{
+				tb_dokumen previousValue = this._tb_dokumen.Entity;
+				if (((previousValue != value) 
+							|| (this._tb_dokumen.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tb_dokumen.Entity = null;
+						previousValue.tb_histories.Remove(this);
+					}
+					this._tb_dokumen.Entity = value;
+					if ((value != null))
+					{
+						value.tb_histories.Add(this);
+						this._id_dokumen = value.id_dokumen;
+					}
+					else
+					{
+						this._id_dokumen = default(int);
+					}
+					this.SendPropertyChanged("tb_dokumen");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 	
@@ -1177,246 +1348,6 @@ namespace ManagemenDocument
 		{
 			this.SendPropertyChanging();
 			entity.tb_identita = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tb_penerima")]
-	public partial class tb_penerima : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _id_penerima;
-		
-		private int _id_user;
-		
-		private int _id_dokumen;
-		
-		private string _namaPenerima;
-		
-		private System.DateTime _createdAt;
-		
-		private EntityRef<tb_user> _tb_user;
-		
-		private EntityRef<tb_dokumen> _tb_dokumen;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void Onid_penerimaChanging(int value);
-    partial void Onid_penerimaChanged();
-    partial void Onid_userChanging(int value);
-    partial void Onid_userChanged();
-    partial void Onid_dokumenChanging(int value);
-    partial void Onid_dokumenChanged();
-    partial void OnnamaPenerimaChanging(string value);
-    partial void OnnamaPenerimaChanged();
-    partial void OncreatedAtChanging(System.DateTime value);
-    partial void OncreatedAtChanged();
-    #endregion
-		
-		public tb_penerima()
-		{
-			this._tb_user = default(EntityRef<tb_user>);
-			this._tb_dokumen = default(EntityRef<tb_dokumen>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_penerima", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int id_penerima
-		{
-			get
-			{
-				return this._id_penerima;
-			}
-			set
-			{
-				if ((this._id_penerima != value))
-				{
-					this.Onid_penerimaChanging(value);
-					this.SendPropertyChanging();
-					this._id_penerima = value;
-					this.SendPropertyChanged("id_penerima");
-					this.Onid_penerimaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_user", DbType="Int NOT NULL")]
-		public int id_user
-		{
-			get
-			{
-				return this._id_user;
-			}
-			set
-			{
-				if ((this._id_user != value))
-				{
-					if (this._tb_user.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Onid_userChanging(value);
-					this.SendPropertyChanging();
-					this._id_user = value;
-					this.SendPropertyChanged("id_user");
-					this.Onid_userChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_dokumen", DbType="Int NOT NULL")]
-		public int id_dokumen
-		{
-			get
-			{
-				return this._id_dokumen;
-			}
-			set
-			{
-				if ((this._id_dokumen != value))
-				{
-					if (this._tb_dokumen.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Onid_dokumenChanging(value);
-					this.SendPropertyChanging();
-					this._id_dokumen = value;
-					this.SendPropertyChanged("id_dokumen");
-					this.Onid_dokumenChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_namaPenerima", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string namaPenerima
-		{
-			get
-			{
-				return this._namaPenerima;
-			}
-			set
-			{
-				if ((this._namaPenerima != value))
-				{
-					this.OnnamaPenerimaChanging(value);
-					this.SendPropertyChanging();
-					this._namaPenerima = value;
-					this.SendPropertyChanged("namaPenerima");
-					this.OnnamaPenerimaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_createdAt", DbType="DateTime NOT NULL")]
-		public System.DateTime createdAt
-		{
-			get
-			{
-				return this._createdAt;
-			}
-			set
-			{
-				if ((this._createdAt != value))
-				{
-					this.OncreatedAtChanging(value);
-					this.SendPropertyChanging();
-					this._createdAt = value;
-					this.SendPropertyChanged("createdAt");
-					this.OncreatedAtChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tb_user_tb_penerima", Storage="_tb_user", ThisKey="id_user", OtherKey="id_user", IsForeignKey=true)]
-		public tb_user tb_user
-		{
-			get
-			{
-				return this._tb_user.Entity;
-			}
-			set
-			{
-				tb_user previousValue = this._tb_user.Entity;
-				if (((previousValue != value) 
-							|| (this._tb_user.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._tb_user.Entity = null;
-						previousValue.tb_penerimas.Remove(this);
-					}
-					this._tb_user.Entity = value;
-					if ((value != null))
-					{
-						value.tb_penerimas.Add(this);
-						this._id_user = value.id_user;
-					}
-					else
-					{
-						this._id_user = default(int);
-					}
-					this.SendPropertyChanged("tb_user");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tb_dokumen_tb_penerima", Storage="_tb_dokumen", ThisKey="id_dokumen", OtherKey="id_dokumen", IsForeignKey=true)]
-		public tb_dokumen tb_dokumen
-		{
-			get
-			{
-				return this._tb_dokumen.Entity;
-			}
-			set
-			{
-				tb_dokumen previousValue = this._tb_dokumen.Entity;
-				if (((previousValue != value) 
-							|| (this._tb_dokumen.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._tb_dokumen.Entity = null;
-						previousValue.tb_penerimas.Remove(this);
-					}
-					this._tb_dokumen.Entity = value;
-					if ((value != null))
-					{
-						value.tb_penerimas.Add(this);
-						this._id_dokumen = value.id_dokumen;
-					}
-					else
-					{
-						this._id_dokumen = default(int);
-					}
-					this.SendPropertyChanged("tb_dokumen");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
 		}
 	}
 }
