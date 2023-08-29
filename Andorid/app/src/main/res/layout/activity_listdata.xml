@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ListDataActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginHorizontal="@dimen/_20sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:id="@+id/liner1"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/btn_back"
+            android:layout_width="30dp"
+            android:layout_height="@dimen/_30sdp"
+            android:src="@drawable/baseline_arrow_back_24" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="List data dokumen"
+            android:paddingTop="@dimen/_5sdp"
+            android:paddingStart="@dimen/_20sdp"
+            android:fontFamily="@font/poppinsbold"
+            android:textSize="@dimen/_14sdp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginHorizontal="@dimen/_20sdp"
+        android:id="@+id/liner2"
+        android:layout_below="@+id/liner1">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nama Dokumen"
+            android:textSize="@dimen/_12ssp"
+            android:fontFamily="@font/poppinsbold"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:text="Kunjungan Smk N1 Bali"
+            android:textSize="@dimen/_12ssp"
+            android:fontFamily="@font/poppinsregular"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Agenda Dokumen"
+            android:textSize="@dimen/_12ssp"
+            android:fontFamily="@font/poppinsbold"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:text="Kunjungan industri ke PT Global Intermedia Nusantara"
+            android:textSize="@dimen/_12ssp"
+            android:fontFamily="@font/poppinsregular"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Perihal Dokumen"
+            android:textSize="@dimen/_12ssp"
+            android:fontFamily="@font/poppinsbold"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:text="Kunjungan Industri"
+            android:textSize="@dimen/_12ssp"
+            android:fontFamily="@font/poppinsregular"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nama Pengirim"
+            android:textSize="@dimen/_12ssp"
+            android:fontFamily="@font/poppinsbold"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:text="Kepala sekolah Smk N1 Bali"
+            android:textSize="@dimen/_12ssp"
+            android:fontFamily="@font/poppinsregular"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Uraian Dokumen"
+            android:textSize="@dimen/_12ssp"
+            android:fontFamily="@font/poppinsbold"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:text="Kepala sekolah Smk N1 Bali"
+            android:textSize="@dimen/_12ssp"
+            android:fontFamily="@font/poppinsregular"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tanggal Diterima"
+            android:textSize="@dimen/_12ssp"
+            android:fontFamily="@font/poppinsbold"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:text="12/12/2023 | 12:12"
+            android:textSize="@dimen/_12ssp"
+            android:fontFamily="@font/poppinsregular"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tanggal Dokumen"
+            android:textSize="@dimen/_12ssp"
+            android:fontFamily="@font/poppinsbold"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:text="12/12/2023 | 12:12"
+            android:textSize="@dimen/_12ssp"
+            android:fontFamily="@font/poppinsregular"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tanggal Agenda"
+            android:textSize="@dimen/_12ssp"
+            android:fontFamily="@font/poppinsbold"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:text="12/12/2023 | 12:12"
+                android:textSize="@dimen/_12ssp"
+                android:fontFamily="@font/poppinsregular"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:text="->"
+                android:textColor="#000000"
+                android:textSize="@dimen/_12ssp"
+                android:fontFamily="@font/poppinsregular"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:text="12/12/2023 | 12:12"
+                android:textSize="@dimen/_12ssp"
+                android:textColor="#E30E0E"
+                android:fontFamily="@font/poppinsregular"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Attachment Dokumen"
+            android:textSize="@dimen/_12ssp"
+            android:fontFamily="@font/poppinsbold"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:src="@drawable/baseline_download_for_offline_24"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_4sdp"
+                android:text="Download Dokumen"
+                android:layout_marginTop="@dimen/_1sdp"
+                android:textSize="@dimen/_12ssp"
+                android:fontFamily="@font/robotobold"/>
+        </LinearLayout>
+    </LinearLayout>
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="20sp"
+            android:layout_marginHorizontal="@dimen/_20sdp"
+            android:layout_height="@dimen/_50sdp"
+            app:cornerRadius="@dimen/_10sdp"
+            android:backgroundTint="#A9907E"
+            android:text="Konfirmasi Dokumen"
+            android:id="@+id/btn_konfirmasi"/>
+
+</RelativeLayout>
