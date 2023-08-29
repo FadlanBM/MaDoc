@@ -54,6 +54,7 @@ namespace ManagemenDocument
             lb_pemilikDoc.Text = pemilik.name;
             lb_penerima.Text = penerima.name;
             lb_pengirim.Text = data.pengirimDokumen;
+            tb_penerimaAwal.Text = data.penerima_pertama;
             lb_uraianDoc.Text = data.uraianDokumen;
             lb_tglDiterima.Text = data.tgl_diterima.ToString();
             lb_tglDoc.Text = data.tgl_dokumen.ToString();
@@ -66,7 +67,6 @@ namespace ManagemenDocument
             {               
                 if (File.Exists(nameQrImage))
                 {
-                    MessageBox.Show(nameQrImage);
                     using (var stram = File.OpenRead(nameimage))
                     {
                         pictureBox1.Image = new Bitmap(stram);
@@ -114,6 +114,28 @@ namespace ManagemenDocument
 
         private void imageToPrint(object sass,PrintPageEventArgs e) {
             e.Graphics.DrawImage(cusImage, 0, 0, e.PageBounds.Width, e.PageBounds.Height);
+        }
+
+        private void label14_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+           Admin_ListPenerima FlistPenerima=new Admin_ListPenerima(this.MdiParent);
+            FlistPenerima.StartPosition = FormStartPosition.CenterScreen;
+            FlistPenerima.MdiParent = this.MdiParent;
+            FlistPenerima.getId = getId;
+            this.Enabled = false;
+            FlistPenerima.FormClosing += (object asa, FormClosingEventArgs aaa) =>
+            {
+                if (DialogResult.OK==FlistPenerima.DialogResult)
+                {
+                    this.Enabled = true;                    
+                }
+            };
+            FlistPenerima.Show();
         }
     }
 }

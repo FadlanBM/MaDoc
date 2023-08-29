@@ -47,8 +47,12 @@ namespace ManagemenDocument
                             tgl_doc=d.tgl_dokumen,
                             agendaAwal=d.tgl_agendaAwal,
                             agendaAkhir=d.tgl_agendaAkhir,
-                        });
+                        }).ToList();
             int i = 0;
+            if (tb_search.Text.Length!=0)
+            {
+                data = data.Where(d => d.nameDoc.ToLower().Contains(tb_search.Text.ToLower())|d.pengirimDoc.ToLower().Contains(tb_search.Text.ToLower()) |d.pemilik.ToLower().Contains(tb_search.Text.ToLower()) |d.pemilik.ToLower().Contains(tb_search.Text.ToLower())).ToList();
+            }
             foreach (var item in data)
             {
                 i++;
@@ -138,6 +142,11 @@ namespace ManagemenDocument
                     return;
              }
             }
+        }
+
+        private void tb_search_TextChanged(object sender, EventArgs e)
+        {
+            loadData();
         }
     }
 }

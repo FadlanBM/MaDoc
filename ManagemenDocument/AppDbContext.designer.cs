@@ -45,7 +45,7 @@ namespace ManagemenDocument
     #endregion
 		
 		public AppDbContextDataContext() : 
-				base(global::ManagemenDocument.Properties.Settings.Default.DokumenManagementConnectionString1, mappingSource)
+				base(global::ManagemenDocument.Properties.Settings.Default.DokumenManagementConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -131,6 +131,8 @@ namespace ManagemenDocument
 		
 		private string _uraianDokumen;
 		
+		private string _penerima_pertama;
+		
 		private System.DateTime _tgl_diterima;
 		
 		private System.DateTime _tgl_dokumen;
@@ -173,6 +175,8 @@ namespace ManagemenDocument
     partial void Onid_penerimaChanged();
     partial void OnuraianDokumenChanging(string value);
     partial void OnuraianDokumenChanged();
+    partial void Onpenerima_pertamaChanging(string value);
+    partial void Onpenerima_pertamaChanged();
     partial void Ontgl_diterimaChanging(System.DateTime value);
     partial void Ontgl_diterimaChanged();
     partial void Ontgl_dokumenChanging(System.DateTime value);
@@ -381,6 +385,26 @@ namespace ManagemenDocument
 					this._uraianDokumen = value;
 					this.SendPropertyChanged("uraianDokumen");
 					this.OnuraianDokumenChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_penerima_pertama", DbType="VarChar(50)")]
+		public string penerima_pertama
+		{
+			get
+			{
+				return this._penerima_pertama;
+			}
+			set
+			{
+				if ((this._penerima_pertama != value))
+				{
+					this.Onpenerima_pertamaChanging(value);
+					this.SendPropertyChanging();
+					this._penerima_pertama = value;
+					this.SendPropertyChanged("penerima_pertama");
+					this.Onpenerima_pertamaChanged();
 				}
 			}
 		}
@@ -1050,8 +1074,6 @@ namespace ManagemenDocument
 		
 		private int _id_dokumen;
 		
-		private string _nama_user;
-		
 		private System.DateTime _createdAt;
 		
 		private EntityRef<tb_dokumen> _tb_dokumen;
@@ -1066,8 +1088,6 @@ namespace ManagemenDocument
     partial void Onid_userChanged();
     partial void Onid_dokumenChanging(int value);
     partial void Onid_dokumenChanged();
-    partial void Onnama_userChanging(string value);
-    partial void Onnama_userChanged();
     partial void OncreatedAtChanging(System.DateTime value);
     partial void OncreatedAtChanged();
     #endregion
@@ -1138,26 +1158,6 @@ namespace ManagemenDocument
 					this._id_dokumen = value;
 					this.SendPropertyChanged("id_dokumen");
 					this.Onid_dokumenChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nama_user", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string nama_user
-		{
-			get
-			{
-				return this._nama_user;
-			}
-			set
-			{
-				if ((this._nama_user != value))
-				{
-					this.Onnama_userChanging(value);
-					this.SendPropertyChanging();
-					this._nama_user = value;
-					this.SendPropertyChanged("nama_user");
-					this.Onnama_userChanged();
 				}
 			}
 		}

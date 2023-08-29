@@ -58,6 +58,9 @@
             this.lb_agendaStart = new System.Windows.Forms.TextBox();
             this.lb_agendaFinis = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.tb_penerimaAwal = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -97,7 +100,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(564, 256);
+            this.label9.Location = new System.Drawing.Point(564, 245);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(131, 13);
             this.label9.TabIndex = 45;
@@ -107,7 +110,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(562, 201);
+            this.label8.Location = new System.Drawing.Point(562, 189);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(110, 13);
             this.label8.TabIndex = 43;
@@ -117,7 +120,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(562, 136);
+            this.label7.Location = new System.Drawing.Point(562, 133);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(103, 13);
             this.label7.TabIndex = 41;
@@ -187,7 +190,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(564, 315);
+            this.label11.Location = new System.Drawing.Point(568, 300);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(137, 13);
             this.label11.TabIndex = 69;
@@ -303,7 +306,7 @@
             // lb_tglDiterima
             // 
             this.lb_tglDiterima.Enabled = false;
-            this.lb_tglDiterima.Location = new System.Drawing.Point(567, 156);
+            this.lb_tglDiterima.Location = new System.Drawing.Point(567, 153);
             this.lb_tglDiterima.Name = "lb_tglDiterima";
             this.lb_tglDiterima.Size = new System.Drawing.Size(235, 20);
             this.lb_tglDiterima.TabIndex = 83;
@@ -311,7 +314,7 @@
             // lb_tglDoc
             // 
             this.lb_tglDoc.Enabled = false;
-            this.lb_tglDoc.Location = new System.Drawing.Point(567, 219);
+            this.lb_tglDoc.Location = new System.Drawing.Point(567, 207);
             this.lb_tglDoc.Name = "lb_tglDoc";
             this.lb_tglDoc.Size = new System.Drawing.Size(235, 20);
             this.lb_tglDoc.TabIndex = 84;
@@ -319,7 +322,7 @@
             // lb_agendaStart
             // 
             this.lb_agendaStart.Enabled = false;
-            this.lb_agendaStart.Location = new System.Drawing.Point(567, 276);
+            this.lb_agendaStart.Location = new System.Drawing.Point(567, 265);
             this.lb_agendaStart.Name = "lb_agendaStart";
             this.lb_agendaStart.Size = new System.Drawing.Size(235, 20);
             this.lb_agendaStart.TabIndex = 85;
@@ -327,26 +330,58 @@
             // lb_agendaFinis
             // 
             this.lb_agendaFinis.Enabled = false;
-            this.lb_agendaFinis.Location = new System.Drawing.Point(565, 332);
+            this.lb_agendaFinis.Location = new System.Drawing.Point(569, 317);
             this.lb_agendaFinis.Name = "lb_agendaFinis";
-            this.lb_agendaFinis.Size = new System.Drawing.Size(235, 20);
+            this.lb_agendaFinis.Size = new System.Drawing.Size(233, 20);
             this.lb_agendaFinis.TabIndex = 86;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(287, 447);
+            this.button2.Location = new System.Drawing.Point(287, 452);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(515, 32);
+            this.button2.Size = new System.Drawing.Size(243, 27);
             this.button2.TabIndex = 72;
             this.button2.Text = "Close";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(555, 452);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(245, 27);
+            this.button1.TabIndex = 87;
+            this.button1.Text = "List Penerima";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // tb_penerimaAwal
+            // 
+            this.tb_penerimaAwal.Enabled = false;
+            this.tb_penerimaAwal.Location = new System.Drawing.Point(571, 373);
+            this.tb_penerimaAwal.Name = "tb_penerimaAwal";
+            this.tb_penerimaAwal.Size = new System.Drawing.Size(231, 20);
+            this.tb_penerimaAwal.TabIndex = 89;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(568, 353);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(145, 13);
+            this.label14.TabIndex = 88;
+            this.label14.Text = "Nama Penerima Pertama";
+            this.label14.Click += new System.EventHandler(this.label14_Click);
             // 
             // Admin_DetailDoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(816, 491);
+            this.Controls.Add(this.tb_penerimaAwal);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.lb_agendaFinis);
             this.Controls.Add(this.lb_agendaStart);
             this.Controls.Add(this.lb_tglDoc);
@@ -419,5 +454,8 @@
         private System.Windows.Forms.TextBox lb_agendaStart;
         private System.Windows.Forms.TextBox lb_agendaFinis;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox tb_penerimaAwal;
+        private System.Windows.Forms.Label label14;
     }
 }

@@ -44,3 +44,4 @@ C:\laragon\www\Desktop_c#\MacDoc\ManagemenDocument\ManagemenDocument\obj\Debug\M
 C:\laragon\www\Desktop_c#\MacDoc\ManagemenDocument\ManagemenDocument\obj\Debug\ManagemenDocument.Admin_Management_User_Verify.resources
 C:\laragon\www\Desktop_c#\MacDoc\ManagemenDocument\ManagemenDocument\obj\Debug\ManagemenDocument.FGenerateCrCode.resources
 C:\laragon\www\Desktop_c#\MacDoc\ManagemenDocument\ManagemenDocument\obj\Debug\ManagemenDocument.csproj.CopyComplete
+D:\htdocs\DesktopC#\MaDoc\ManagemenDocument\obj\Debug\ManagemenDocument.Admin_ListPenerima.resources

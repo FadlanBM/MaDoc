@@ -60,6 +60,7 @@ namespace ManagemenDocument
                 dokumen.perihalDokumen = tb_perihalDoc.Text;
                 dokumen.pengirimDokumen = tb_pengirim.Text;
                 dokumen.id_penerima = penerima.id_user ;  
+                dokumen.penerima_pertama=penerima.name;
                 dokumen.id_pemilik = pemilik.id_user;
                 dokumen.uraianDokumen = tbUraianDoc.Text;
                 dokumen.tgl_diterima = dt_tglPenerima.Value;
@@ -75,7 +76,6 @@ namespace ManagemenDocument
                 context.SubmitChanges();
                 penerimainput.id_user = penerima.id_user;
                 penerimainput.id_dokumen = dokumen.id_dokumen;
-                penerimainput.nama_user = penerima.name;
                 penerimainput.createdAt = DateTime.Now;
                 context.tb_histories.InsertOnSubmit(penerimainput);
                 context.SubmitChanges();
@@ -126,7 +126,6 @@ namespace ManagemenDocument
                 dokumen.tgl_createdAt = DateTime.Now;
                 penerimainput.id_user = penerima.id_user;
                 penerimainput.id_dokumen = dokumen.id_dokumen;
-                penerimainput.nama_user = penerima.name;
                 penerimainput.createdAt = DateTime.Now;
                 context.SubmitChanges();
                 clearTb();

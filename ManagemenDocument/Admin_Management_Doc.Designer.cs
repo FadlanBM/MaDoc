@@ -65,6 +65,7 @@
             this.tb_search.Name = "tb_search";
             this.tb_search.Size = new System.Drawing.Size(251, 20);
             this.tb_search.TabIndex = 10;
+            this.tb_search.TextChanged += new System.EventHandler(this.tb_search_TextChanged);
             // 
             // label1
             // 

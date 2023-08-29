@@ -121,6 +121,12 @@
     <Compile Include="FGenerateCrCode.Designer.cs">
       <DependentUpon>FGenerateCrCode.cs</DependentUpon>
     </Compile>
+    <Compile Include="Admin_ListPenerima.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin_ListPenerima.Designer.cs">
+      <DependentUpon>Admin_ListPenerima.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Admin_AddIdentitas.resx">
@@ -137,6 +143,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Admin_DetailDoc.resx">
       <DependentUpon>Admin_DetailDoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin_ListPenerima.resx">
+      <DependentUpon>Admin_ListPenerima.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin_ManagementIdentitas.resx">
       <DependentUpon>Admin_ManagementIdentitas.cs</DependentUpon>
