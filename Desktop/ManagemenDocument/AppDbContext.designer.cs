@@ -30,12 +30,12 @@ namespace ManagemenDocument
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void Inserttb_dokumen(tb_dokumen instance);
-    partial void Updatetb_dokumen(tb_dokumen instance);
-    partial void Deletetb_dokumen(tb_dokumen instance);
     partial void Inserttb_user(tb_user instance);
     partial void Updatetb_user(tb_user instance);
     partial void Deletetb_user(tb_user instance);
+    partial void Inserttb_dokumen(tb_dokumen instance);
+    partial void Updatetb_dokumen(tb_dokumen instance);
+    partial void Deletetb_dokumen(tb_dokumen instance);
     partial void Inserttb_history(tb_history instance);
     partial void Updatetb_history(tb_history instance);
     partial void Deletetb_history(tb_history instance);
@@ -45,7 +45,7 @@ namespace ManagemenDocument
     #endregion
 		
 		public AppDbContextDataContext() : 
-				base(global::ManagemenDocument.Properties.Settings.Default.DokumenManagementConnectionString, mappingSource)
+				base(global::ManagemenDocument.Properties.Settings.Default.DokumenManagementConnectionString1, mappingSource)
 		{
 			OnCreated();
 		}
@@ -74,19 +74,19 @@ namespace ManagemenDocument
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<tb_dokumen> tb_dokumens
-		{
-			get
-			{
-				return this.GetTable<tb_dokumen>();
-			}
-		}
-		
 		public System.Data.Linq.Table<tb_user> tb_users
 		{
 			get
 			{
 				return this.GetTable<tb_user>();
+			}
+		}
+		
+		public System.Data.Linq.Table<tb_dokumen> tb_dokumens
+		{
+			get
+			{
+				return this.GetTable<tb_dokumen>();
 			}
 		}
 		
@@ -104,562 +104,6 @@ namespace ManagemenDocument
 			{
 				return this.GetTable<tb_identita>();
 			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tb_dokumen")]
-	public partial class tb_dokumen : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _id_dokumen;
-		
-		private string _nameDokumen;
-		
-		private string _agendaDokumen;
-		
-		private string _perihalDokumen;
-		
-		private string _pengirimDokumen;
-		
-		private string _token_dokumen;
-		
-		private int _id_pemilik;
-		
-		private int _id_penerima;
-		
-		private string _uraianDokumen;
-		
-		private string _penerima_pertama;
-		
-		private System.DateTime _tgl_diterima;
-		
-		private System.DateTime _tgl_dokumen;
-		
-		private System.DateTime _tgl_agendaAwal;
-		
-		private System.DateTime _tgl_agendaAkhir;
-		
-		private System.DateTime _tgl_createdAt;
-		
-		private string _imagePath;
-		
-		private string _imageQrCode;
-		
-		private EntitySet<tb_history> _tb_histories;
-		
-		private EntityRef<tb_user> _tb_user;
-		
-		private EntityRef<tb_user> _tb_user1;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void Onid_dokumenChanging(int value);
-    partial void Onid_dokumenChanged();
-    partial void OnnameDokumenChanging(string value);
-    partial void OnnameDokumenChanged();
-    partial void OnagendaDokumenChanging(string value);
-    partial void OnagendaDokumenChanged();
-    partial void OnperihalDokumenChanging(string value);
-    partial void OnperihalDokumenChanged();
-    partial void OnpengirimDokumenChanging(string value);
-    partial void OnpengirimDokumenChanged();
-    partial void Ontoken_dokumenChanging(string value);
-    partial void Ontoken_dokumenChanged();
-    partial void Onid_pemilikChanging(int value);
-    partial void Onid_pemilikChanged();
-    partial void Onid_penerimaChanging(int value);
-    partial void Onid_penerimaChanged();
-    partial void OnuraianDokumenChanging(string value);
-    partial void OnuraianDokumenChanged();
-    partial void Onpenerima_pertamaChanging(string value);
-    partial void Onpenerima_pertamaChanged();
-    partial void Ontgl_diterimaChanging(System.DateTime value);
-    partial void Ontgl_diterimaChanged();
-    partial void Ontgl_dokumenChanging(System.DateTime value);
-    partial void Ontgl_dokumenChanged();
-    partial void Ontgl_agendaAwalChanging(System.DateTime value);
-    partial void Ontgl_agendaAwalChanged();
-    partial void Ontgl_agendaAkhirChanging(System.DateTime value);
-    partial void Ontgl_agendaAkhirChanged();
-    partial void Ontgl_createdAtChanging(System.DateTime value);
-    partial void Ontgl_createdAtChanged();
-    partial void OnimagePathChanging(string value);
-    partial void OnimagePathChanged();
-    partial void OnimageQrCodeChanging(string value);
-    partial void OnimageQrCodeChanged();
-    #endregion
-		
-		public tb_dokumen()
-		{
-			this._tb_histories = new EntitySet<tb_history>(new Action<tb_history>(this.attach_tb_histories), new Action<tb_history>(this.detach_tb_histories));
-			this._tb_user = default(EntityRef<tb_user>);
-			this._tb_user1 = default(EntityRef<tb_user>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_dokumen", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int id_dokumen
-		{
-			get
-			{
-				return this._id_dokumen;
-			}
-			set
-			{
-				if ((this._id_dokumen != value))
-				{
-					this.Onid_dokumenChanging(value);
-					this.SendPropertyChanging();
-					this._id_dokumen = value;
-					this.SendPropertyChanged("id_dokumen");
-					this.Onid_dokumenChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nameDokumen", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string nameDokumen
-		{
-			get
-			{
-				return this._nameDokumen;
-			}
-			set
-			{
-				if ((this._nameDokumen != value))
-				{
-					this.OnnameDokumenChanging(value);
-					this.SendPropertyChanging();
-					this._nameDokumen = value;
-					this.SendPropertyChanged("nameDokumen");
-					this.OnnameDokumenChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_agendaDokumen", DbType="VarChar(200)")]
-		public string agendaDokumen
-		{
-			get
-			{
-				return this._agendaDokumen;
-			}
-			set
-			{
-				if ((this._agendaDokumen != value))
-				{
-					this.OnagendaDokumenChanging(value);
-					this.SendPropertyChanging();
-					this._agendaDokumen = value;
-					this.SendPropertyChanged("agendaDokumen");
-					this.OnagendaDokumenChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_perihalDokumen", DbType="VarChar(200)")]
-		public string perihalDokumen
-		{
-			get
-			{
-				return this._perihalDokumen;
-			}
-			set
-			{
-				if ((this._perihalDokumen != value))
-				{
-					this.OnperihalDokumenChanging(value);
-					this.SendPropertyChanging();
-					this._perihalDokumen = value;
-					this.SendPropertyChanged("perihalDokumen");
-					this.OnperihalDokumenChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pengirimDokumen", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string pengirimDokumen
-		{
-			get
-			{
-				return this._pengirimDokumen;
-			}
-			set
-			{
-				if ((this._pengirimDokumen != value))
-				{
-					this.OnpengirimDokumenChanging(value);
-					this.SendPropertyChanging();
-					this._pengirimDokumen = value;
-					this.SendPropertyChanged("pengirimDokumen");
-					this.OnpengirimDokumenChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_token_dokumen", DbType="Text", UpdateCheck=UpdateCheck.Never)]
-		public string token_dokumen
-		{
-			get
-			{
-				return this._token_dokumen;
-			}
-			set
-			{
-				if ((this._token_dokumen != value))
-				{
-					this.Ontoken_dokumenChanging(value);
-					this.SendPropertyChanging();
-					this._token_dokumen = value;
-					this.SendPropertyChanged("token_dokumen");
-					this.Ontoken_dokumenChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_pemilik", DbType="Int NOT NULL")]
-		public int id_pemilik
-		{
-			get
-			{
-				return this._id_pemilik;
-			}
-			set
-			{
-				if ((this._id_pemilik != value))
-				{
-					if (this._tb_user1.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Onid_pemilikChanging(value);
-					this.SendPropertyChanging();
-					this._id_pemilik = value;
-					this.SendPropertyChanged("id_pemilik");
-					this.Onid_pemilikChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_penerima", DbType="Int NOT NULL")]
-		public int id_penerima
-		{
-			get
-			{
-				return this._id_penerima;
-			}
-			set
-			{
-				if ((this._id_penerima != value))
-				{
-					if (this._tb_user.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Onid_penerimaChanging(value);
-					this.SendPropertyChanging();
-					this._id_penerima = value;
-					this.SendPropertyChanged("id_penerima");
-					this.Onid_penerimaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_uraianDokumen", DbType="Text NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
-		public string uraianDokumen
-		{
-			get
-			{
-				return this._uraianDokumen;
-			}
-			set
-			{
-				if ((this._uraianDokumen != value))
-				{
-					this.OnuraianDokumenChanging(value);
-					this.SendPropertyChanging();
-					this._uraianDokumen = value;
-					this.SendPropertyChanged("uraianDokumen");
-					this.OnuraianDokumenChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_penerima_pertama", DbType="VarChar(50)")]
-		public string penerima_pertama
-		{
-			get
-			{
-				return this._penerima_pertama;
-			}
-			set
-			{
-				if ((this._penerima_pertama != value))
-				{
-					this.Onpenerima_pertamaChanging(value);
-					this.SendPropertyChanging();
-					this._penerima_pertama = value;
-					this.SendPropertyChanged("penerima_pertama");
-					this.Onpenerima_pertamaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tgl_diterima", DbType="DateTime NOT NULL")]
-		public System.DateTime tgl_diterima
-		{
-			get
-			{
-				return this._tgl_diterima;
-			}
-			set
-			{
-				if ((this._tgl_diterima != value))
-				{
-					this.Ontgl_diterimaChanging(value);
-					this.SendPropertyChanging();
-					this._tgl_diterima = value;
-					this.SendPropertyChanged("tgl_diterima");
-					this.Ontgl_diterimaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tgl_dokumen", DbType="DateTime NOT NULL")]
-		public System.DateTime tgl_dokumen
-		{
-			get
-			{
-				return this._tgl_dokumen;
-			}
-			set
-			{
-				if ((this._tgl_dokumen != value))
-				{
-					this.Ontgl_dokumenChanging(value);
-					this.SendPropertyChanging();
-					this._tgl_dokumen = value;
-					this.SendPropertyChanged("tgl_dokumen");
-					this.Ontgl_dokumenChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tgl_agendaAwal", DbType="DateTime NOT NULL")]
-		public System.DateTime tgl_agendaAwal
-		{
-			get
-			{
-				return this._tgl_agendaAwal;
-			}
-			set
-			{
-				if ((this._tgl_agendaAwal != value))
-				{
-					this.Ontgl_agendaAwalChanging(value);
-					this.SendPropertyChanging();
-					this._tgl_agendaAwal = value;
-					this.SendPropertyChanged("tgl_agendaAwal");
-					this.Ontgl_agendaAwalChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tgl_agendaAkhir", DbType="DateTime NOT NULL")]
-		public System.DateTime tgl_agendaAkhir
-		{
-			get
-			{
-				return this._tgl_agendaAkhir;
-			}
-			set
-			{
-				if ((this._tgl_agendaAkhir != value))
-				{
-					this.Ontgl_agendaAkhirChanging(value);
-					this.SendPropertyChanging();
-					this._tgl_agendaAkhir = value;
-					this.SendPropertyChanged("tgl_agendaAkhir");
-					this.Ontgl_agendaAkhirChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tgl_createdAt", DbType="DateTime NOT NULL")]
-		public System.DateTime tgl_createdAt
-		{
-			get
-			{
-				return this._tgl_createdAt;
-			}
-			set
-			{
-				if ((this._tgl_createdAt != value))
-				{
-					this.Ontgl_createdAtChanging(value);
-					this.SendPropertyChanging();
-					this._tgl_createdAt = value;
-					this.SendPropertyChanged("tgl_createdAt");
-					this.Ontgl_createdAtChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_imagePath", DbType="Text", UpdateCheck=UpdateCheck.Never)]
-		public string imagePath
-		{
-			get
-			{
-				return this._imagePath;
-			}
-			set
-			{
-				if ((this._imagePath != value))
-				{
-					this.OnimagePathChanging(value);
-					this.SendPropertyChanging();
-					this._imagePath = value;
-					this.SendPropertyChanged("imagePath");
-					this.OnimagePathChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_imageQrCode", DbType="Text", UpdateCheck=UpdateCheck.Never)]
-		public string imageQrCode
-		{
-			get
-			{
-				return this._imageQrCode;
-			}
-			set
-			{
-				if ((this._imageQrCode != value))
-				{
-					this.OnimageQrCodeChanging(value);
-					this.SendPropertyChanging();
-					this._imageQrCode = value;
-					this.SendPropertyChanged("imageQrCode");
-					this.OnimageQrCodeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tb_dokumen_tb_history", Storage="_tb_histories", ThisKey="id_dokumen", OtherKey="id_dokumen")]
-		public EntitySet<tb_history> tb_histories
-		{
-			get
-			{
-				return this._tb_histories;
-			}
-			set
-			{
-				this._tb_histories.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tb_user_tb_dokumen", Storage="_tb_user", ThisKey="id_penerima", OtherKey="id_user", IsForeignKey=true)]
-		public tb_user tb_user
-		{
-			get
-			{
-				return this._tb_user.Entity;
-			}
-			set
-			{
-				tb_user previousValue = this._tb_user.Entity;
-				if (((previousValue != value) 
-							|| (this._tb_user.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._tb_user.Entity = null;
-						previousValue.tb_dokumens.Remove(this);
-					}
-					this._tb_user.Entity = value;
-					if ((value != null))
-					{
-						value.tb_dokumens.Add(this);
-						this._id_penerima = value.id_user;
-					}
-					else
-					{
-						this._id_penerima = default(int);
-					}
-					this.SendPropertyChanged("tb_user");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tb_user_tb_dokumen1", Storage="_tb_user1", ThisKey="id_pemilik", OtherKey="id_user", IsForeignKey=true)]
-		public tb_user tb_user1
-		{
-			get
-			{
-				return this._tb_user1.Entity;
-			}
-			set
-			{
-				tb_user previousValue = this._tb_user1.Entity;
-				if (((previousValue != value) 
-							|| (this._tb_user1.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._tb_user1.Entity = null;
-						previousValue.tb_dokumens1.Remove(this);
-					}
-					this._tb_user1.Entity = value;
-					if ((value != null))
-					{
-						value.tb_dokumens1.Add(this);
-						this._id_pemilik = value.id_user;
-					}
-					else
-					{
-						this._id_pemilik = default(int);
-					}
-					this.SendPropertyChanged("tb_user1");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_tb_histories(tb_history entity)
-		{
-			this.SendPropertyChanging();
-			entity.tb_dokumen = this;
-		}
-		
-		private void detach_tb_histories(tb_history entity)
-		{
-			this.SendPropertyChanging();
-			entity.tb_dokumen = null;
 		}
 	}
 	
@@ -773,7 +217,7 @@ namespace ManagemenDocument
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_username", DbType="VarChar(50)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_username", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
 		public string username
 		{
 			get
@@ -1062,6 +506,562 @@ namespace ManagemenDocument
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tb_dokumen")]
+	public partial class tb_dokumen : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id_dokumen;
+		
+		private string _nameDokumen;
+		
+		private string _agendaDokumen;
+		
+		private string _perihalDokumen;
+		
+		private string _pengirimDokumen;
+		
+		private string _token_dokumen;
+		
+		private string _penerima_pertama;
+		
+		private int _id_pemilik;
+		
+		private int _id_penerima;
+		
+		private string _uraianDokumen;
+		
+		private System.DateTime _tgl_diterima;
+		
+		private System.DateTime _tgl_dokumen;
+		
+		private System.DateTime _tgl_agendaAwal;
+		
+		private System.DateTime _tgl_agendaAkhir;
+		
+		private System.DateTime _tgl_createdAt;
+		
+		private string _imagePath;
+		
+		private string _imageQrCode;
+		
+		private EntitySet<tb_history> _tb_histories;
+		
+		private EntityRef<tb_user> _tb_user;
+		
+		private EntityRef<tb_user> _tb_user1;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onid_dokumenChanging(int value);
+    partial void Onid_dokumenChanged();
+    partial void OnnameDokumenChanging(string value);
+    partial void OnnameDokumenChanged();
+    partial void OnagendaDokumenChanging(string value);
+    partial void OnagendaDokumenChanged();
+    partial void OnperihalDokumenChanging(string value);
+    partial void OnperihalDokumenChanged();
+    partial void OnpengirimDokumenChanging(string value);
+    partial void OnpengirimDokumenChanged();
+    partial void Ontoken_dokumenChanging(string value);
+    partial void Ontoken_dokumenChanged();
+    partial void Onpenerima_pertamaChanging(string value);
+    partial void Onpenerima_pertamaChanged();
+    partial void Onid_pemilikChanging(int value);
+    partial void Onid_pemilikChanged();
+    partial void Onid_penerimaChanging(int value);
+    partial void Onid_penerimaChanged();
+    partial void OnuraianDokumenChanging(string value);
+    partial void OnuraianDokumenChanged();
+    partial void Ontgl_diterimaChanging(System.DateTime value);
+    partial void Ontgl_diterimaChanged();
+    partial void Ontgl_dokumenChanging(System.DateTime value);
+    partial void Ontgl_dokumenChanged();
+    partial void Ontgl_agendaAwalChanging(System.DateTime value);
+    partial void Ontgl_agendaAwalChanged();
+    partial void Ontgl_agendaAkhirChanging(System.DateTime value);
+    partial void Ontgl_agendaAkhirChanged();
+    partial void Ontgl_createdAtChanging(System.DateTime value);
+    partial void Ontgl_createdAtChanged();
+    partial void OnimagePathChanging(string value);
+    partial void OnimagePathChanged();
+    partial void OnimageQrCodeChanging(string value);
+    partial void OnimageQrCodeChanged();
+    #endregion
+		
+		public tb_dokumen()
+		{
+			this._tb_histories = new EntitySet<tb_history>(new Action<tb_history>(this.attach_tb_histories), new Action<tb_history>(this.detach_tb_histories));
+			this._tb_user = default(EntityRef<tb_user>);
+			this._tb_user1 = default(EntityRef<tb_user>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_dokumen", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id_dokumen
+		{
+			get
+			{
+				return this._id_dokumen;
+			}
+			set
+			{
+				if ((this._id_dokumen != value))
+				{
+					this.Onid_dokumenChanging(value);
+					this.SendPropertyChanging();
+					this._id_dokumen = value;
+					this.SendPropertyChanged("id_dokumen");
+					this.Onid_dokumenChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nameDokumen", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string nameDokumen
+		{
+			get
+			{
+				return this._nameDokumen;
+			}
+			set
+			{
+				if ((this._nameDokumen != value))
+				{
+					this.OnnameDokumenChanging(value);
+					this.SendPropertyChanging();
+					this._nameDokumen = value;
+					this.SendPropertyChanged("nameDokumen");
+					this.OnnameDokumenChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_agendaDokumen", DbType="VarChar(200) NOT NULL", CanBeNull=false)]
+		public string agendaDokumen
+		{
+			get
+			{
+				return this._agendaDokumen;
+			}
+			set
+			{
+				if ((this._agendaDokumen != value))
+				{
+					this.OnagendaDokumenChanging(value);
+					this.SendPropertyChanging();
+					this._agendaDokumen = value;
+					this.SendPropertyChanged("agendaDokumen");
+					this.OnagendaDokumenChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_perihalDokumen", DbType="VarChar(200) NOT NULL", CanBeNull=false)]
+		public string perihalDokumen
+		{
+			get
+			{
+				return this._perihalDokumen;
+			}
+			set
+			{
+				if ((this._perihalDokumen != value))
+				{
+					this.OnperihalDokumenChanging(value);
+					this.SendPropertyChanging();
+					this._perihalDokumen = value;
+					this.SendPropertyChanged("perihalDokumen");
+					this.OnperihalDokumenChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pengirimDokumen", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string pengirimDokumen
+		{
+			get
+			{
+				return this._pengirimDokumen;
+			}
+			set
+			{
+				if ((this._pengirimDokumen != value))
+				{
+					this.OnpengirimDokumenChanging(value);
+					this.SendPropertyChanging();
+					this._pengirimDokumen = value;
+					this.SendPropertyChanged("pengirimDokumen");
+					this.OnpengirimDokumenChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_token_dokumen", DbType="Text NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
+		public string token_dokumen
+		{
+			get
+			{
+				return this._token_dokumen;
+			}
+			set
+			{
+				if ((this._token_dokumen != value))
+				{
+					this.Ontoken_dokumenChanging(value);
+					this.SendPropertyChanging();
+					this._token_dokumen = value;
+					this.SendPropertyChanged("token_dokumen");
+					this.Ontoken_dokumenChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_penerima_pertama", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string penerima_pertama
+		{
+			get
+			{
+				return this._penerima_pertama;
+			}
+			set
+			{
+				if ((this._penerima_pertama != value))
+				{
+					this.Onpenerima_pertamaChanging(value);
+					this.SendPropertyChanging();
+					this._penerima_pertama = value;
+					this.SendPropertyChanged("penerima_pertama");
+					this.Onpenerima_pertamaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_pemilik", DbType="Int NOT NULL")]
+		public int id_pemilik
+		{
+			get
+			{
+				return this._id_pemilik;
+			}
+			set
+			{
+				if ((this._id_pemilik != value))
+				{
+					if (this._tb_user1.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onid_pemilikChanging(value);
+					this.SendPropertyChanging();
+					this._id_pemilik = value;
+					this.SendPropertyChanged("id_pemilik");
+					this.Onid_pemilikChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_penerima", DbType="Int NOT NULL")]
+		public int id_penerima
+		{
+			get
+			{
+				return this._id_penerima;
+			}
+			set
+			{
+				if ((this._id_penerima != value))
+				{
+					if (this._tb_user.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onid_penerimaChanging(value);
+					this.SendPropertyChanging();
+					this._id_penerima = value;
+					this.SendPropertyChanged("id_penerima");
+					this.Onid_penerimaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_uraianDokumen", DbType="Text NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
+		public string uraianDokumen
+		{
+			get
+			{
+				return this._uraianDokumen;
+			}
+			set
+			{
+				if ((this._uraianDokumen != value))
+				{
+					this.OnuraianDokumenChanging(value);
+					this.SendPropertyChanging();
+					this._uraianDokumen = value;
+					this.SendPropertyChanged("uraianDokumen");
+					this.OnuraianDokumenChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tgl_diterima", DbType="DateTime NOT NULL")]
+		public System.DateTime tgl_diterima
+		{
+			get
+			{
+				return this._tgl_diterima;
+			}
+			set
+			{
+				if ((this._tgl_diterima != value))
+				{
+					this.Ontgl_diterimaChanging(value);
+					this.SendPropertyChanging();
+					this._tgl_diterima = value;
+					this.SendPropertyChanged("tgl_diterima");
+					this.Ontgl_diterimaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tgl_dokumen", DbType="DateTime NOT NULL")]
+		public System.DateTime tgl_dokumen
+		{
+			get
+			{
+				return this._tgl_dokumen;
+			}
+			set
+			{
+				if ((this._tgl_dokumen != value))
+				{
+					this.Ontgl_dokumenChanging(value);
+					this.SendPropertyChanging();
+					this._tgl_dokumen = value;
+					this.SendPropertyChanged("tgl_dokumen");
+					this.Ontgl_dokumenChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tgl_agendaAwal", DbType="DateTime NOT NULL")]
+		public System.DateTime tgl_agendaAwal
+		{
+			get
+			{
+				return this._tgl_agendaAwal;
+			}
+			set
+			{
+				if ((this._tgl_agendaAwal != value))
+				{
+					this.Ontgl_agendaAwalChanging(value);
+					this.SendPropertyChanging();
+					this._tgl_agendaAwal = value;
+					this.SendPropertyChanged("tgl_agendaAwal");
+					this.Ontgl_agendaAwalChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tgl_agendaAkhir", DbType="DateTime NOT NULL")]
+		public System.DateTime tgl_agendaAkhir
+		{
+			get
+			{
+				return this._tgl_agendaAkhir;
+			}
+			set
+			{
+				if ((this._tgl_agendaAkhir != value))
+				{
+					this.Ontgl_agendaAkhirChanging(value);
+					this.SendPropertyChanging();
+					this._tgl_agendaAkhir = value;
+					this.SendPropertyChanged("tgl_agendaAkhir");
+					this.Ontgl_agendaAkhirChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tgl_createdAt", DbType="DateTime NOT NULL")]
+		public System.DateTime tgl_createdAt
+		{
+			get
+			{
+				return this._tgl_createdAt;
+			}
+			set
+			{
+				if ((this._tgl_createdAt != value))
+				{
+					this.Ontgl_createdAtChanging(value);
+					this.SendPropertyChanging();
+					this._tgl_createdAt = value;
+					this.SendPropertyChanged("tgl_createdAt");
+					this.Ontgl_createdAtChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_imagePath", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+		public string imagePath
+		{
+			get
+			{
+				return this._imagePath;
+			}
+			set
+			{
+				if ((this._imagePath != value))
+				{
+					this.OnimagePathChanging(value);
+					this.SendPropertyChanging();
+					this._imagePath = value;
+					this.SendPropertyChanged("imagePath");
+					this.OnimagePathChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_imageQrCode", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+		public string imageQrCode
+		{
+			get
+			{
+				return this._imageQrCode;
+			}
+			set
+			{
+				if ((this._imageQrCode != value))
+				{
+					this.OnimageQrCodeChanging(value);
+					this.SendPropertyChanging();
+					this._imageQrCode = value;
+					this.SendPropertyChanged("imageQrCode");
+					this.OnimageQrCodeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tb_dokumen_tb_history", Storage="_tb_histories", ThisKey="id_dokumen", OtherKey="id_dokumen")]
+		public EntitySet<tb_history> tb_histories
+		{
+			get
+			{
+				return this._tb_histories;
+			}
+			set
+			{
+				this._tb_histories.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tb_user_tb_dokumen", Storage="_tb_user", ThisKey="id_penerima", OtherKey="id_user", IsForeignKey=true)]
+		public tb_user tb_user
+		{
+			get
+			{
+				return this._tb_user.Entity;
+			}
+			set
+			{
+				tb_user previousValue = this._tb_user.Entity;
+				if (((previousValue != value) 
+							|| (this._tb_user.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tb_user.Entity = null;
+						previousValue.tb_dokumens.Remove(this);
+					}
+					this._tb_user.Entity = value;
+					if ((value != null))
+					{
+						value.tb_dokumens.Add(this);
+						this._id_penerima = value.id_user;
+					}
+					else
+					{
+						this._id_penerima = default(int);
+					}
+					this.SendPropertyChanged("tb_user");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tb_user_tb_dokumen1", Storage="_tb_user1", ThisKey="id_pemilik", OtherKey="id_user", IsForeignKey=true)]
+		public tb_user tb_user1
+		{
+			get
+			{
+				return this._tb_user1.Entity;
+			}
+			set
+			{
+				tb_user previousValue = this._tb_user1.Entity;
+				if (((previousValue != value) 
+							|| (this._tb_user1.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tb_user1.Entity = null;
+						previousValue.tb_dokumens1.Remove(this);
+					}
+					this._tb_user1.Entity = value;
+					if ((value != null))
+					{
+						value.tb_dokumens1.Add(this);
+						this._id_pemilik = value.id_user;
+					}
+					else
+					{
+						this._id_pemilik = default(int);
+					}
+					this.SendPropertyChanged("tb_user1");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_tb_histories(tb_history entity)
+		{
+			this.SendPropertyChanging();
+			entity.tb_dokumen = this;
+		}
+		
+		private void detach_tb_histories(tb_history entity)
+		{
+			this.SendPropertyChanging();
+			entity.tb_dokumen = null;
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tb_history")]
 	public partial class tb_history : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -1073,6 +1073,8 @@ namespace ManagemenDocument
 		private int _id_user;
 		
 		private int _id_dokumen;
+		
+		private string _nama_user;
 		
 		private System.DateTime _createdAt;
 		
@@ -1088,6 +1090,8 @@ namespace ManagemenDocument
     partial void Onid_userChanged();
     partial void Onid_dokumenChanging(int value);
     partial void Onid_dokumenChanged();
+    partial void Onnama_userChanging(string value);
+    partial void Onnama_userChanged();
     partial void OncreatedAtChanging(System.DateTime value);
     partial void OncreatedAtChanged();
     #endregion
@@ -1158,6 +1162,26 @@ namespace ManagemenDocument
 					this._id_dokumen = value;
 					this.SendPropertyChanged("id_dokumen");
 					this.Onid_dokumenChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nama_user", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string nama_user
+		{
+			get
+			{
+				return this._nama_user;
+			}
+			set
+			{
+				if ((this._nama_user != value))
+				{
+					this.Onnama_userChanging(value);
+					this.SendPropertyChanging();
+					this._nama_user = value;
+					this.SendPropertyChanged("nama_user");
+					this.Onnama_userChanged();
 				}
 			}
 		}

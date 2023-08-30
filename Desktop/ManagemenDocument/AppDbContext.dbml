@@ -1,34 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DokumenManagement" Class="AppDbContextDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-FDMC7DB;Initial Catalog=DokumenManagement;Integrated Security=True" SettingsObjectName="ManagemenDocument.Properties.Settings" SettingsPropertyName="DokumenManagementConnectionString" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.tb_dokumen" Member="tb_dokumens">
-    <Type Name="tb_dokumen">
-      <Column Name="id_dokumen" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="nameDokumen" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="agendaDokumen" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
-      <Column Name="perihalDokumen" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
-      <Column Name="pengirimDokumen" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="token_dokumen" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="id_pemilik" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="id_penerima" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="uraianDokumen" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
-      <Column Name="penerima_pertama" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="tgl_diterima" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="tgl_dokumen" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="tgl_agendaAwal" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="tgl_agendaAkhir" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="tgl_createdAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="imagePath" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="imageQrCode" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
-      <Association Name="tb_dokumen_tb_history" Member="tb_histories" ThisKey="id_dokumen" OtherKey="id_dokumen" Type="tb_history" />
-      <Association Name="tb_user_tb_dokumen" Member="tb_user" ThisKey="id_penerima" OtherKey="id_user" Type="tb_user" IsForeignKey="true" />
-      <Association Name="tb_user_tb_dokumen1" Member="tb_user1" ThisKey="id_pemilik" OtherKey="id_user" Type="tb_user" IsForeignKey="true" />
-    </Type>
-  </Table>
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-8UJEI4N\MSSQLSERVER01;Initial Catalog=DokumenManagement;Integrated Security=True" SettingsObjectName="ManagemenDocument.Properties.Settings" SettingsPropertyName="DokumenManagementConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.tb_user" Member="tb_users">
     <Type Name="tb_user">
       <Column Name="id_user" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="username" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="username" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="no_identitas" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="id_identitas" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="alamat" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
@@ -42,11 +18,36 @@
       <Association Name="tb_identita_tb_user" Member="tb_identita" ThisKey="id_identitas" OtherKey="id_identitas" Type="tb_identita" IsForeignKey="true" />
     </Type>
   </Table>
+  <Table Name="dbo.tb_dokumen" Member="tb_dokumens">
+    <Type Name="tb_dokumen">
+      <Column Name="id_dokumen" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nameDokumen" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="agendaDokumen" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="perihalDokumen" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="pengirimDokumen" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="token_dokumen" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="penerima_pertama" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="id_pemilik" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="id_penerima" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="uraianDokumen" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="tgl_diterima" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="tgl_dokumen" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="tgl_agendaAwal" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="tgl_agendaAkhir" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="tgl_createdAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="imagePath" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="imageQrCode" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="tb_dokumen_tb_history" Member="tb_histories" ThisKey="id_dokumen" OtherKey="id_dokumen" Type="tb_history" />
+      <Association Name="tb_user_tb_dokumen" Member="tb_user" ThisKey="id_penerima" OtherKey="id_user" Type="tb_user" IsForeignKey="true" />
+      <Association Name="tb_user_tb_dokumen1" Member="tb_user1" ThisKey="id_pemilik" OtherKey="id_user" Type="tb_user" IsForeignKey="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.tb_history" Member="tb_histories">
     <Type Name="tb_history">
       <Column Name="id_history" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="id_user" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="id_dokumen" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nama_user" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="createdAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Association Name="tb_dokumen_tb_history" Member="tb_dokumen" ThisKey="id_dokumen" OtherKey="id_dokumen" Type="tb_dokumen" IsForeignKey="true" />
     </Type>

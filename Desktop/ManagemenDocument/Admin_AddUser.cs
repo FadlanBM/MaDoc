@@ -26,7 +26,7 @@ namespace ManagemenDocument
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (tb_nama.Text == "" || tb_noIdentitas.Text == "" || cb_nameidentitas.Text == "" || tb_alamat.Text == "" || tb_phoneNumber.Text == "" ||level==null)
+            if (tb_nama.Text == "" || tb_noIdentitas.Text == "" || cb_nameidentitas.Text == "" || tb_alamat.Text == "" || tb_phoneNumber.Text == "" ||level==null||tb_username.Text.Length==0)
             {
                 MessageBox.Show(null, "Form belum di isi semua", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -37,6 +37,7 @@ namespace ManagemenDocument
                   var identity=context.tb_identitas.Where(c=>c.nameIdentitas==cb_nameidentitas.Text).FirstOrDefault();
            tb_user user=new tb_user();
             user.name = tb_nama.Text;
+            user.username=tb_username.Text;
             user.no_identitas = tb_noIdentitas.Text;
             user.id_identitas = identity.id_identitas;
             user.alamat=tb_alamat.Text;

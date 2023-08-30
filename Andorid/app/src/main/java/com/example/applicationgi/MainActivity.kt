@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         binding= ActivityMainBinding.inflate(layoutInflater);
         setContentView(binding.root)
 
-        var item= arrayListOf("Show All","Selesai","Belum Selesai")
+        var item= arrayListOf("Show All","Selesai","Belum Selesai","Belum Selesai","Belum Selesai")
         var autoComplete:AutoCompleteTextView=findViewById(R.id.cb_ordelist)
         var adapter=ArrayAdapter(this,R.layout.item_text,item)
 
