@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Toast
 import com.example.applicationgi.databinding.ActivityRegisterBinding
+import com.example.applicationgi.util.BaseApi
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import org.json.JSONArray
@@ -33,7 +34,18 @@ class RegisterActivity : AppCompatActivity() {
         GetIdentitas(binding,this).execute()
 
         binding.btnRegister.setOnClickListener {
-            postAccunt().execute()
+            if (binding.tbNameLogin.length()==0)
+                binding.tbNameLogin.setError("Form Name belum terisi")
+            if (binding.tbUsernameLogin.length()==0)
+                binding.tbUsernameLogin.setError("Form Username belum terisi")
+            if (binding.tbPasswordLogin.length()==0)
+                binding.tbPasswordLogin.setError("Form Password belum terisi")
+            if (binding.tbNoIdentitas.length()==0)
+                binding.tbNoIdentitas.setError("Form No Identitas belum terisi")
+            else
+            postAccunt(binding,this).execute()
+
+            startActivity(Intent(this,LoginActivity::class.java))
         }
         binding.tbToLogin.setOnClickListener {
             startActivity(Intent(this,LoginActivity::class.java))
@@ -41,7 +53,7 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     @Suppress("DEPRECATION")
-    class postAccunt():AsyncTask<String,String,String>(){
+    class postAccunt(private val binding: ActivityRegisterBinding,private val context: Context):AsyncTask<String,String,String>(){
         override fun onPreExecute() {
             super.onPreExecute()
         }
@@ -50,15 +62,15 @@ class RegisterActivity : AppCompatActivity() {
             var result=""
             try {
                 var jsonObject=JSONObject()
-                jsonObject.put("name","admin")
-                jsonObject.put("username","Admin")
-                jsonObject.put("password","admin")
-                jsonObject.put("noIdentitas","18318381")
-                jsonObject.put("idIdentitas","2")
+                jsonObject.put("name",binding.tbNameLogin.text)
+                jsonObject.put("username",binding.tbUsernameLogin.text)
+                jsonObject.put("password",binding.tbPasswordLogin.text)
+                jsonObject.put("noIdentitas",binding.tbNoIdentitas.text)
+                jsonObject.put("idIdentitas",binding.comboBoxListIdent.text)
                 var jsonObjectString=jsonObject.toString()
                 var con:HttpURLConnection?=null
                 try {
-                    var url=URL("http://192.168.43.23:5150/api/Register/")
+                    var url=URL(BaseApi.BASEAPI+"api/Register/")
                     con=url.openConnection() as HttpURLConnection
                     con.requestMethod="POST"
                     con.setRequestProperty("Content-Type","application/json")
@@ -73,12 +85,13 @@ class RegisterActivity : AppCompatActivity() {
                         Log.e("Success","Berhasil Input data")
                     }
                 }catch (ex:Exception){
-                    Log.d("Error Http","Error : $ex")
+                    Log.e("Error Http","Error : $ex")
 
                 }
             }catch (e:Exception){
-                Log.d("Error Http","Error : $e")
+                Log.e("Error Http","Error : $e")
             }
+            Log.e("Success","Berhasil adsjahidhshdsk")
             return "Ok"
         }
 
@@ -96,7 +109,7 @@ class RegisterActivity : AppCompatActivity() {
         override fun doInBackground(vararg params: String?): String {
             var resould=""
             var httpURLConnection:HttpURLConnection?=null
-                var url=URL("http://192.168.43.23:5150/api/Identitas/")
+                var url=URL(BaseApi.BASEAPI+"api/Identitas/")
                 httpURLConnection=url.openConnection() as HttpURLConnection
                 var inputStream=httpURLConnection!!.inputStream
                 var inputStreamReader=InputStreamReader(inputStream)

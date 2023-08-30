@@ -11,6 +11,7 @@ import android.os.Handler
 import android.util.Log
 import android.widget.Toast
 import com.example.applicationgi.databinding.ActivityLoginBinding
+import com.example.applicationgi.util.BaseApi
 import org.json.JSONObject
 import org.json.JSONStringer
 import java.io.InputStreamReader
@@ -56,7 +57,7 @@ class LoginActivity : AppCompatActivity() {
                var jsonObjectString=jsonObject.toString()
                var httpURLConnection:HttpURLConnection?=null
                try {
-                   var url=URL("http://192.168.2.129:7105/Api/Auth/")
+                   var url=URL(BaseApi.BASEAPI+"Api/Auth/")
                    httpURLConnection=url.openConnection() as HttpURLConnection
                    httpURLConnection.requestMethod="POST"
                    httpURLConnection.setRequestProperty("Content-Type","application/json")
