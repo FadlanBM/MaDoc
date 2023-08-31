@@ -20,6 +20,7 @@ import com.budiyev.android.codescanner.ErrorCallback
 import com.budiyev.android.codescanner.ScanMode
 import com.example.applicationgi.databinding.ActivityQrcodeScanBinding
 import com.example.applicationgi.util.BaseApi
+import com.example.applicationgi.util.GetId
 import com.github.drjacky.imagepicker.ImagePicker
 import com.github.drjacky.imagepicker.constant.ImageProvider
 import com.squareup.picasso.Picasso
@@ -47,57 +48,6 @@ class QRCodeScanActivity : AppCompatActivity() {
             ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.CAMERA),123)
         }else{
             startScan()
-        }
-    }
-
-    @Suppress("DEPRECATION")
-    class postTokenDoc(private val context: Context,private val token:String):AsyncTask<String,String,String>(){
-        override fun onPreExecute() {
-            super.onPreExecute()
-        }
-
-        override fun doInBackground(vararg params: String?): String {
-            var resoult=""
-            try {
-                var jsonObject=JSONObject()
-                jsonObject.put("token",token)
-                var jsonObjectString=jsonObject.toString()
-                var httpURLConnection:HttpURLConnection?=null
-                try {
-                    var url=URL(BaseApi.BASEAPI+"api/QrValidation")
-                    httpURLConnection=url.openConnection() as HttpURLConnection
-                    httpURLConnection.requestMethod="POST"
-                    httpURLConnection.setRequestProperty("Content-Type","application/json")
-                    httpURLConnection.setRequestProperty("Accept","text/plain")
-
-                    var outputStream=httpURLConnection.outputStream
-                    var outputStreamWriter=OutputStreamWriter(outputStream)
-                    outputStreamWriter.write(jsonObjectString)
-                    outputStreamWriter.flush()
-
-                    var inputStream=httpURLConnection.inputStream
-                    var inputStreamReader=InputStreamReader(inputStream)
-                    var data=inputStreamReader.read()
-
-                    while (data!=-1){
-                        resoult +=data.toChar()
-                        data=inputStreamReader.read()
-                    }
-
-                    if (httpURLConnection.responseCode==HttpURLConnection.HTTP_OK){
-                        context.startActivity(Intent(context,ListDataActivity::class.java))
-                    }
-                }catch (ex:Exception){
-                    Log.e("Error","Error $ex")
-                }
-            }catch (e:Exception){
-                Log.e("Error","Error Http : $e")
-            }
-            return resoult
-        }
-
-        override fun onPostExecute(result: String?) {
-            super.onPostExecute(result)
         }
     }
 
@@ -156,5 +106,61 @@ class QRCodeScanActivity : AppCompatActivity() {
             codeScanner?.releaseResources()
         }
         super.onPause()
+    }
+
+    @Suppress("DEPRECATION")
+    class postTokenDoc(private val context: Context,private val token:String):AsyncTask<String,String,String>(){
+        override fun onPreExecute() {
+            super.onPreExecute()
+        }
+
+        override fun doInBackground(vararg params: String?): String {
+            var resoult=""
+            try {
+                var jsonObject=JSONObject()
+                jsonObject.put("tokenDokumen",token)
+                var jsonObjectString=jsonObject.toString()
+                var httpURLConnection:HttpURLConnection?=null
+                try {
+                    var url=URL(BaseApi.BASEAPI+"api/QrValidation/")
+                    httpURLConnection=url.openConnection() as HttpURLConnection
+                    httpURLConnection.requestMethod="POST"
+                    httpURLConnection.setRequestProperty("Content-Type","application/json")
+                    httpURLConnection.setRequestProperty("Accept","text/plain")
+
+                    var outputStream=httpURLConnection.outputStream
+                    var outputStreamWriter=OutputStreamWriter(outputStream)
+                    outputStreamWriter.write(jsonObjectString)
+                    outputStreamWriter.flush()
+
+                    var inputStream=httpURLConnection.inputStream
+                    var inputStreamReader=InputStreamReader(`inputStream`)
+                    var data=inputStreamReader.read()
+                    Log.e("idDoc",data.toString())
+
+                    while (data!=-1){
+                        resoult +=data.toChar()
+                        data=inputStreamReader.read()
+                    }
+
+                    if (httpURLConnection.responseCode==HttpURLConnection.HTTP_OK){
+                        var jsonObject=JSONObject(resoult)
+                        var id=jsonObject.getString("token")
+                        GetId.getId=id
+                        Log.e("idDoc",jsonObject.toString())
+                        context.startActivity(Intent(context,ListDataActivity::class.java))
+                    }
+                }catch (ex:Exception){
+                    Log.e("Error","Error $ex")
+                }
+            }catch (e:Exception){
+                Log.e("Error","Error Http : $e")
+            }
+            return resoult
+        }
+
+        override fun onPostExecute(result: String?) {
+            super.onPostExecute(result)
+        }
     }
 }

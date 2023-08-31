@@ -6,6 +6,6 @@
         </trust-anchors>
     </base-config>
     <domain-config cleartextTrafficPermitted="true">
-        <domain includeSubdomains="true">http://192.168.43.23:5202</domain>
+        <domain includeSubdomains="true">http://192.168.2.179:5202</domain>
     </domain-config>
 </network-security-config>
