@@ -80,7 +80,8 @@ public partial class AppDbContext : DbContext
                 .HasColumnType("datetime")
                 .HasColumnName("tgl_dokumen");
             entity.Property(e => e.TokenDokumen)
-                .HasColumnType("text")
+                .HasMaxLength(100)
+                .IsUnicode(false)
                 .HasColumnName("token_dokumen");
             entity.Property(e => e.UraianDokumen)
                 .HasColumnType("text")
@@ -109,11 +110,6 @@ public partial class AppDbContext : DbContext
                 .HasColumnName("createdAt");
             entity.Property(e => e.IdDokumen).HasColumnName("id_dokumen");
             entity.Property(e => e.IdUser).HasColumnName("id_user");
-            entity.Property(e => e.NamaUser)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("nama_user");
-
             entity.HasOne(d => d.IdDokumenNavigation).WithMany(p => p.TbHistories)
                 .HasForeignKey(d => d.IdDokumen)
                 .OnDelete(DeleteBehavior.ClientSetNull)

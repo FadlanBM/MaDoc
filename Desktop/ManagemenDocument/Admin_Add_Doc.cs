@@ -128,6 +128,7 @@ namespace ManagemenDocument
                 penerimainput.id_dokumen = dokumen.id_dokumen;
                 penerimainput.createdAt = DateTime.Now;
                 context.SubmitChanges();
+                DialogResult=DialogResult.OK;
                 clearTb();
                 MessageBox.Show(null, "Berhasil Update data", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;

@@ -12,6 +12,7 @@ import android.util.Log
 import android.widget.Toast
 import com.example.applicationgi.databinding.ActivityLoginBinding
 import com.example.applicationgi.util.BaseApi
+import com.example.applicationgi.util.SharePref
 import org.json.JSONObject
 import org.json.JSONStringer
 import java.io.InputStreamReader
@@ -52,12 +53,12 @@ class LoginActivity : AppCompatActivity() {
                 var result=""
            try {
                var jsonObject=JSONObject()
-               jsonObject.put("name",binding.tbUsername.text)
+               jsonObject.put("username",binding.tbUsername.text)
                jsonObject.put("password",binding.tbPassword.text)
                var jsonObjectString=jsonObject.toString()
                var httpURLConnection:HttpURLConnection?=null
                try {
-                   var url=URL(BaseApi.BASEAPI+"Api/Auth/")
+                   var url=URL(BaseApi.BASEAPI+"api/Auth/")
                    httpURLConnection=url.openConnection() as HttpURLConnection
                    httpURLConnection.requestMethod="POST"
                    httpURLConnection.setRequestProperty("Content-Type","application/json")
@@ -89,7 +90,11 @@ class LoginActivity : AppCompatActivity() {
                    if (httpURLConnection.responseCode==HttpURLConnection.HTTP_OK){
                        var jsonObject=JSONObject(result)
                        var token=jsonObject.getString("token")
+                       var sp=SharePref(context)
+                       sp.setToken(token)
                        Log.e("Token",token)
+                       var activity=Intent(context,MainActivity::class.java)
+                       context.startActivity(activity)
                    }
                }catch (ex:Exception){
                    Log.d("ErrorConnection",ex.toString())

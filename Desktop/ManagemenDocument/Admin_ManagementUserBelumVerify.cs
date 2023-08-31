@@ -33,7 +33,7 @@ namespace ManagemenDocument
             fAddUser.Show();
         }
 
-        private void loadData() {
+        private void loadData() {   
             int i = 0;
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.RowHeadersVisible = false;

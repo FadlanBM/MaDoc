@@ -30,12 +30,12 @@ namespace ManagemenDocument
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void Inserttb_user(tb_user instance);
-    partial void Updatetb_user(tb_user instance);
-    partial void Deletetb_user(tb_user instance);
     partial void Inserttb_dokumen(tb_dokumen instance);
     partial void Updatetb_dokumen(tb_dokumen instance);
     partial void Deletetb_dokumen(tb_dokumen instance);
+    partial void Inserttb_user(tb_user instance);
+    partial void Updatetb_user(tb_user instance);
+    partial void Deletetb_user(tb_user instance);
     partial void Inserttb_history(tb_history instance);
     partial void Updatetb_history(tb_history instance);
     partial void Deletetb_history(tb_history instance);
@@ -74,19 +74,19 @@ namespace ManagemenDocument
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<tb_user> tb_users
-		{
-			get
-			{
-				return this.GetTable<tb_user>();
-			}
-		}
-		
 		public System.Data.Linq.Table<tb_dokumen> tb_dokumens
 		{
 			get
 			{
 				return this.GetTable<tb_dokumen>();
+			}
+		}
+		
+		public System.Data.Linq.Table<tb_user> tb_users
+		{
+			get
+			{
+				return this.GetTable<tb_user>();
 			}
 		}
 		
@@ -104,405 +104,6 @@ namespace ManagemenDocument
 			{
 				return this.GetTable<tb_identita>();
 			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tb_user")]
-	public partial class tb_user : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _id_user;
-		
-		private string _name;
-		
-		private string _username;
-		
-		private string _no_identitas;
-		
-		private System.Nullable<int> _id_identitas;
-		
-		private string _alamat;
-		
-		private string _phoneNumber;
-		
-		private string _password;
-		
-		private int _verify;
-		
-		private int _level;
-		
-		private System.DateTime _createdAt;
-		
-		private EntitySet<tb_dokumen> _tb_dokumens;
-		
-		private EntitySet<tb_dokumen> _tb_dokumens1;
-		
-		private EntityRef<tb_identita> _tb_identita;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void Onid_userChanging(int value);
-    partial void Onid_userChanged();
-    partial void OnnameChanging(string value);
-    partial void OnnameChanged();
-    partial void OnusernameChanging(string value);
-    partial void OnusernameChanged();
-    partial void Onno_identitasChanging(string value);
-    partial void Onno_identitasChanged();
-    partial void Onid_identitasChanging(System.Nullable<int> value);
-    partial void Onid_identitasChanged();
-    partial void OnalamatChanging(string value);
-    partial void OnalamatChanged();
-    partial void OnphoneNumberChanging(string value);
-    partial void OnphoneNumberChanged();
-    partial void OnpasswordChanging(string value);
-    partial void OnpasswordChanged();
-    partial void OnverifyChanging(int value);
-    partial void OnverifyChanged();
-    partial void OnlevelChanging(int value);
-    partial void OnlevelChanged();
-    partial void OncreatedAtChanging(System.DateTime value);
-    partial void OncreatedAtChanged();
-    #endregion
-		
-		public tb_user()
-		{
-			this._tb_dokumens = new EntitySet<tb_dokumen>(new Action<tb_dokumen>(this.attach_tb_dokumens), new Action<tb_dokumen>(this.detach_tb_dokumens));
-			this._tb_dokumens1 = new EntitySet<tb_dokumen>(new Action<tb_dokumen>(this.attach_tb_dokumens1), new Action<tb_dokumen>(this.detach_tb_dokumens1));
-			this._tb_identita = default(EntityRef<tb_identita>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_user", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int id_user
-		{
-			get
-			{
-				return this._id_user;
-			}
-			set
-			{
-				if ((this._id_user != value))
-				{
-					this.Onid_userChanging(value);
-					this.SendPropertyChanging();
-					this._id_user = value;
-					this.SendPropertyChanged("id_user");
-					this.Onid_userChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_name", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string name
-		{
-			get
-			{
-				return this._name;
-			}
-			set
-			{
-				if ((this._name != value))
-				{
-					this.OnnameChanging(value);
-					this.SendPropertyChanging();
-					this._name = value;
-					this.SendPropertyChanged("name");
-					this.OnnameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_username", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string username
-		{
-			get
-			{
-				return this._username;
-			}
-			set
-			{
-				if ((this._username != value))
-				{
-					this.OnusernameChanging(value);
-					this.SendPropertyChanging();
-					this._username = value;
-					this.SendPropertyChanged("username");
-					this.OnusernameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_no_identitas", DbType="VarChar(50)")]
-		public string no_identitas
-		{
-			get
-			{
-				return this._no_identitas;
-			}
-			set
-			{
-				if ((this._no_identitas != value))
-				{
-					this.Onno_identitasChanging(value);
-					this.SendPropertyChanging();
-					this._no_identitas = value;
-					this.SendPropertyChanged("no_identitas");
-					this.Onno_identitasChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_identitas", DbType="Int")]
-		public System.Nullable<int> id_identitas
-		{
-			get
-			{
-				return this._id_identitas;
-			}
-			set
-			{
-				if ((this._id_identitas != value))
-				{
-					if (this._tb_identita.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Onid_identitasChanging(value);
-					this.SendPropertyChanging();
-					this._id_identitas = value;
-					this.SendPropertyChanged("id_identitas");
-					this.Onid_identitasChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_alamat", DbType="VarChar(50)")]
-		public string alamat
-		{
-			get
-			{
-				return this._alamat;
-			}
-			set
-			{
-				if ((this._alamat != value))
-				{
-					this.OnalamatChanging(value);
-					this.SendPropertyChanging();
-					this._alamat = value;
-					this.SendPropertyChanged("alamat");
-					this.OnalamatChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_phoneNumber", DbType="VarChar(50)")]
-		public string phoneNumber
-		{
-			get
-			{
-				return this._phoneNumber;
-			}
-			set
-			{
-				if ((this._phoneNumber != value))
-				{
-					this.OnphoneNumberChanging(value);
-					this.SendPropertyChanging();
-					this._phoneNumber = value;
-					this.SendPropertyChanged("phoneNumber");
-					this.OnphoneNumberChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_password", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
-		public string password
-		{
-			get
-			{
-				return this._password;
-			}
-			set
-			{
-				if ((this._password != value))
-				{
-					this.OnpasswordChanging(value);
-					this.SendPropertyChanging();
-					this._password = value;
-					this.SendPropertyChanged("password");
-					this.OnpasswordChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_verify", DbType="Int NOT NULL")]
-		public int verify
-		{
-			get
-			{
-				return this._verify;
-			}
-			set
-			{
-				if ((this._verify != value))
-				{
-					this.OnverifyChanging(value);
-					this.SendPropertyChanging();
-					this._verify = value;
-					this.SendPropertyChanged("verify");
-					this.OnverifyChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[level]", Storage="_level", DbType="Int NOT NULL")]
-		public int level
-		{
-			get
-			{
-				return this._level;
-			}
-			set
-			{
-				if ((this._level != value))
-				{
-					this.OnlevelChanging(value);
-					this.SendPropertyChanging();
-					this._level = value;
-					this.SendPropertyChanged("level");
-					this.OnlevelChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_createdAt", DbType="DateTime NOT NULL")]
-		public System.DateTime createdAt
-		{
-			get
-			{
-				return this._createdAt;
-			}
-			set
-			{
-				if ((this._createdAt != value))
-				{
-					this.OncreatedAtChanging(value);
-					this.SendPropertyChanging();
-					this._createdAt = value;
-					this.SendPropertyChanged("createdAt");
-					this.OncreatedAtChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tb_user_tb_dokumen", Storage="_tb_dokumens", ThisKey="id_user", OtherKey="id_penerima")]
-		public EntitySet<tb_dokumen> tb_dokumens
-		{
-			get
-			{
-				return this._tb_dokumens;
-			}
-			set
-			{
-				this._tb_dokumens.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tb_user_tb_dokumen1", Storage="_tb_dokumens1", ThisKey="id_user", OtherKey="id_pemilik")]
-		public EntitySet<tb_dokumen> tb_dokumens1
-		{
-			get
-			{
-				return this._tb_dokumens1;
-			}
-			set
-			{
-				this._tb_dokumens1.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tb_identita_tb_user", Storage="_tb_identita", ThisKey="id_identitas", OtherKey="id_identitas", IsForeignKey=true)]
-		public tb_identita tb_identita
-		{
-			get
-			{
-				return this._tb_identita.Entity;
-			}
-			set
-			{
-				tb_identita previousValue = this._tb_identita.Entity;
-				if (((previousValue != value) 
-							|| (this._tb_identita.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._tb_identita.Entity = null;
-						previousValue.tb_users.Remove(this);
-					}
-					this._tb_identita.Entity = value;
-					if ((value != null))
-					{
-						value.tb_users.Add(this);
-						this._id_identitas = value.id_identitas;
-					}
-					else
-					{
-						this._id_identitas = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("tb_identita");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_tb_dokumens(tb_dokumen entity)
-		{
-			this.SendPropertyChanging();
-			entity.tb_user = this;
-		}
-		
-		private void detach_tb_dokumens(tb_dokumen entity)
-		{
-			this.SendPropertyChanging();
-			entity.tb_user = null;
-		}
-		
-		private void attach_tb_dokumens1(tb_dokumen entity)
-		{
-			this.SendPropertyChanging();
-			entity.tb_user1 = this;
-		}
-		
-		private void detach_tb_dokumens1(tb_dokumen entity)
-		{
-			this.SendPropertyChanging();
-			entity.tb_user1 = null;
 		}
 	}
 	
@@ -1062,6 +663,405 @@ namespace ManagemenDocument
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tb_user")]
+	public partial class tb_user : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id_user;
+		
+		private string _name;
+		
+		private string _username;
+		
+		private string _no_identitas;
+		
+		private System.Nullable<int> _id_identitas;
+		
+		private string _alamat;
+		
+		private string _phoneNumber;
+		
+		private string _password;
+		
+		private int _verify;
+		
+		private int _level;
+		
+		private System.DateTime _createdAt;
+		
+		private EntitySet<tb_dokumen> _tb_dokumens;
+		
+		private EntitySet<tb_dokumen> _tb_dokumens1;
+		
+		private EntityRef<tb_identita> _tb_identita;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onid_userChanging(int value);
+    partial void Onid_userChanged();
+    partial void OnnameChanging(string value);
+    partial void OnnameChanged();
+    partial void OnusernameChanging(string value);
+    partial void OnusernameChanged();
+    partial void Onno_identitasChanging(string value);
+    partial void Onno_identitasChanged();
+    partial void Onid_identitasChanging(System.Nullable<int> value);
+    partial void Onid_identitasChanged();
+    partial void OnalamatChanging(string value);
+    partial void OnalamatChanged();
+    partial void OnphoneNumberChanging(string value);
+    partial void OnphoneNumberChanged();
+    partial void OnpasswordChanging(string value);
+    partial void OnpasswordChanged();
+    partial void OnverifyChanging(int value);
+    partial void OnverifyChanged();
+    partial void OnlevelChanging(int value);
+    partial void OnlevelChanged();
+    partial void OncreatedAtChanging(System.DateTime value);
+    partial void OncreatedAtChanged();
+    #endregion
+		
+		public tb_user()
+		{
+			this._tb_dokumens = new EntitySet<tb_dokumen>(new Action<tb_dokumen>(this.attach_tb_dokumens), new Action<tb_dokumen>(this.detach_tb_dokumens));
+			this._tb_dokumens1 = new EntitySet<tb_dokumen>(new Action<tb_dokumen>(this.attach_tb_dokumens1), new Action<tb_dokumen>(this.detach_tb_dokumens1));
+			this._tb_identita = default(EntityRef<tb_identita>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_user", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id_user
+		{
+			get
+			{
+				return this._id_user;
+			}
+			set
+			{
+				if ((this._id_user != value))
+				{
+					this.Onid_userChanging(value);
+					this.SendPropertyChanging();
+					this._id_user = value;
+					this.SendPropertyChanged("id_user");
+					this.Onid_userChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_name", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string name
+		{
+			get
+			{
+				return this._name;
+			}
+			set
+			{
+				if ((this._name != value))
+				{
+					this.OnnameChanging(value);
+					this.SendPropertyChanging();
+					this._name = value;
+					this.SendPropertyChanged("name");
+					this.OnnameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_username", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string username
+		{
+			get
+			{
+				return this._username;
+			}
+			set
+			{
+				if ((this._username != value))
+				{
+					this.OnusernameChanging(value);
+					this.SendPropertyChanging();
+					this._username = value;
+					this.SendPropertyChanged("username");
+					this.OnusernameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_no_identitas", DbType="VarChar(50)")]
+		public string no_identitas
+		{
+			get
+			{
+				return this._no_identitas;
+			}
+			set
+			{
+				if ((this._no_identitas != value))
+				{
+					this.Onno_identitasChanging(value);
+					this.SendPropertyChanging();
+					this._no_identitas = value;
+					this.SendPropertyChanged("no_identitas");
+					this.Onno_identitasChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_identitas", DbType="Int")]
+		public System.Nullable<int> id_identitas
+		{
+			get
+			{
+				return this._id_identitas;
+			}
+			set
+			{
+				if ((this._id_identitas != value))
+				{
+					if (this._tb_identita.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onid_identitasChanging(value);
+					this.SendPropertyChanging();
+					this._id_identitas = value;
+					this.SendPropertyChanged("id_identitas");
+					this.Onid_identitasChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_alamat", DbType="VarChar(50)")]
+		public string alamat
+		{
+			get
+			{
+				return this._alamat;
+			}
+			set
+			{
+				if ((this._alamat != value))
+				{
+					this.OnalamatChanging(value);
+					this.SendPropertyChanging();
+					this._alamat = value;
+					this.SendPropertyChanged("alamat");
+					this.OnalamatChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_phoneNumber", DbType="VarChar(50)")]
+		public string phoneNumber
+		{
+			get
+			{
+				return this._phoneNumber;
+			}
+			set
+			{
+				if ((this._phoneNumber != value))
+				{
+					this.OnphoneNumberChanging(value);
+					this.SendPropertyChanging();
+					this._phoneNumber = value;
+					this.SendPropertyChanged("phoneNumber");
+					this.OnphoneNumberChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_password", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+		public string password
+		{
+			get
+			{
+				return this._password;
+			}
+			set
+			{
+				if ((this._password != value))
+				{
+					this.OnpasswordChanging(value);
+					this.SendPropertyChanging();
+					this._password = value;
+					this.SendPropertyChanged("password");
+					this.OnpasswordChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_verify", DbType="Int NOT NULL")]
+		public int verify
+		{
+			get
+			{
+				return this._verify;
+			}
+			set
+			{
+				if ((this._verify != value))
+				{
+					this.OnverifyChanging(value);
+					this.SendPropertyChanging();
+					this._verify = value;
+					this.SendPropertyChanged("verify");
+					this.OnverifyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[level]", Storage="_level", DbType="Int NOT NULL")]
+		public int level
+		{
+			get
+			{
+				return this._level;
+			}
+			set
+			{
+				if ((this._level != value))
+				{
+					this.OnlevelChanging(value);
+					this.SendPropertyChanging();
+					this._level = value;
+					this.SendPropertyChanged("level");
+					this.OnlevelChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_createdAt", DbType="DateTime NOT NULL")]
+		public System.DateTime createdAt
+		{
+			get
+			{
+				return this._createdAt;
+			}
+			set
+			{
+				if ((this._createdAt != value))
+				{
+					this.OncreatedAtChanging(value);
+					this.SendPropertyChanging();
+					this._createdAt = value;
+					this.SendPropertyChanged("createdAt");
+					this.OncreatedAtChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tb_user_tb_dokumen", Storage="_tb_dokumens", ThisKey="id_user", OtherKey="id_penerima")]
+		public EntitySet<tb_dokumen> tb_dokumens
+		{
+			get
+			{
+				return this._tb_dokumens;
+			}
+			set
+			{
+				this._tb_dokumens.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tb_user_tb_dokumen1", Storage="_tb_dokumens1", ThisKey="id_user", OtherKey="id_pemilik")]
+		public EntitySet<tb_dokumen> tb_dokumens1
+		{
+			get
+			{
+				return this._tb_dokumens1;
+			}
+			set
+			{
+				this._tb_dokumens1.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tb_identita_tb_user", Storage="_tb_identita", ThisKey="id_identitas", OtherKey="id_identitas", IsForeignKey=true)]
+		public tb_identita tb_identita
+		{
+			get
+			{
+				return this._tb_identita.Entity;
+			}
+			set
+			{
+				tb_identita previousValue = this._tb_identita.Entity;
+				if (((previousValue != value) 
+							|| (this._tb_identita.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tb_identita.Entity = null;
+						previousValue.tb_users.Remove(this);
+					}
+					this._tb_identita.Entity = value;
+					if ((value != null))
+					{
+						value.tb_users.Add(this);
+						this._id_identitas = value.id_identitas;
+					}
+					else
+					{
+						this._id_identitas = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("tb_identita");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_tb_dokumens(tb_dokumen entity)
+		{
+			this.SendPropertyChanging();
+			entity.tb_user = this;
+		}
+		
+		private void detach_tb_dokumens(tb_dokumen entity)
+		{
+			this.SendPropertyChanging();
+			entity.tb_user = null;
+		}
+		
+		private void attach_tb_dokumens1(tb_dokumen entity)
+		{
+			this.SendPropertyChanging();
+			entity.tb_user1 = this;
+		}
+		
+		private void detach_tb_dokumens1(tb_dokumen entity)
+		{
+			this.SendPropertyChanging();
+			entity.tb_user1 = null;
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tb_history")]
 	public partial class tb_history : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -1073,8 +1073,6 @@ namespace ManagemenDocument
 		private int _id_user;
 		
 		private int _id_dokumen;
-		
-		private string _nama_user;
 		
 		private System.DateTime _createdAt;
 		
@@ -1090,8 +1088,6 @@ namespace ManagemenDocument
     partial void Onid_userChanged();
     partial void Onid_dokumenChanging(int value);
     partial void Onid_dokumenChanged();
-    partial void Onnama_userChanging(string value);
-    partial void Onnama_userChanged();
     partial void OncreatedAtChanging(System.DateTime value);
     partial void OncreatedAtChanged();
     #endregion
@@ -1162,26 +1158,6 @@ namespace ManagemenDocument
 					this._id_dokumen = value;
 					this.SendPropertyChanged("id_dokumen");
 					this.Onid_dokumenChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nama_user", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string nama_user
-		{
-			get
-			{
-				return this._nama_user;
-			}
-			set
-			{
-				if ((this._nama_user != value))
-				{
-					this.Onnama_userChanging(value);
-					this.SendPropertyChanging();
-					this._nama_user = value;
-					this.SendPropertyChanged("nama_user");
-					this.Onnama_userChanged();
 				}
 			}
 		}

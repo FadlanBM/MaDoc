@@ -92,7 +92,7 @@ namespace ManagemenDocument
             saveFileDialog.FilterIndex = 1;
             if (DialogResult.OK==saveFileDialog.ShowDialog())
             {
-                cusImage.Save(Path.GetDirectoryName(saveFileDialog.FileName + "\\" + Path.GetFileName(saveFileDialog.FileName) + ".jpg"));
+                cusImage.Save(Path.GetDirectoryName(saveFileDialog.FileName + "\\" + Path.GetFileName(saveFileDialog.FileName) +".jpg"));
             }
         }
 

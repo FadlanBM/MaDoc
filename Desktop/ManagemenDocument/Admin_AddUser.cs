@@ -26,15 +26,16 @@ namespace ManagemenDocument
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (tb_nama.Text == "" || tb_noIdentitas.Text == "" || cb_nameidentitas.Text == "" || tb_alamat.Text == "" || tb_phoneNumber.Text == "" ||level==null||tb_username.Text.Length==0)
-            {
-                MessageBox.Show(null, "Form belum di isi semua", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
+           
             if (id==null)
             {
-                  var identity=context.tb_identitas.Where(c=>c.nameIdentitas==cb_nameidentitas.Text).FirstOrDefault();
+                if (tb_nama.Text == "" || tb_noIdentitas.Text == "" || cb_nameidentitas.Text == "" || tb_alamat.Text == "" || tb_phoneNumber.Text == "" || level == null || tb_username.Text.Length == 0)
+                {
+                    MessageBox.Show(null, "Form belum di isi semua", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                var identity =context.tb_identitas.Where(c=>c.nameIdentitas==cb_nameidentitas.Text).FirstOrDefault();
            tb_user user=new tb_user();
             user.name = tb_nama.Text;
             user.username=tb_username.Text;
@@ -62,8 +63,24 @@ namespace ManagemenDocument
             }
             else
             {
+                if ( tb_noIdentitas.Text == "" || cb_nameidentitas.Text == "" || level == null || tb_username.Text.Length == 0)
+                {
+                    MessageBox.Show(null, "Form belum di isi semua", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 var user = context.tb_users.Where(u => u.id_user == id).FirstOrDefault();
                 var identity = context.tb_identitas.Where(c => c.nameIdentitas == cb_nameidentitas.Text).FirstOrDefault();
+                var password = context.tb_users.Where(us => us.password ==createSha(tb_password.Text)).FirstOrDefault();
+                if (password!=null)
+                {
+                    MessageBox.Show("Password tidak boleh sama dengan yang lama", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                if (tb_password.Text.Length!=0)
+                {
+                    user.password = createSha(tb_password.Text);
+                }
                 user.name = tb_nama.Text;
                 user.no_identitas = tb_noIdentitas.Text;
                 user.id_identitas = identity.id_identitas;
@@ -77,7 +94,6 @@ namespace ManagemenDocument
                 {
                     user.password = createSha(tb_password.Text);
                 }
-                user.verify = 0;
                 user.level = (int)level;
                 user.createdAt = DateTime.Now;
                 context.SubmitChanges();

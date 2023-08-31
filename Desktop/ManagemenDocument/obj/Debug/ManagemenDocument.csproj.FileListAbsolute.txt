@@ -69,3 +69,4 @@ C:\laragon\www\Desktop_c#\MacDoc\ManagemenDocument\Desktop\ManagemenDocument\obj
 C:\laragon\www\Desktop_c#\MacDoc\ManagemenDocument\Desktop\ManagemenDocument\obj\Debug\ManagemenDocument.csproj.CopyComplete
 C:\laragon\www\Desktop_c#\MacDoc\ManagemenDocument\Desktop\ManagemenDocument\obj\Debug\ManagemenDocument.exe
 C:\laragon\www\Desktop_c#\MacDoc\ManagemenDocument\Desktop\ManagemenDocument\obj\Debug\ManagemenDocument.pdb
+C:\laragon\www\Desktop_c#\MacDoc\ManagemenDocument\Desktop\ManagemenDocument\obj\Debug\ManagemenDocument.FLogin.resources

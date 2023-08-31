@@ -1,23 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DokumenManagement" Class="AppDbContextDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-8UJEI4N\MSSQLSERVER01;Initial Catalog=DokumenManagement;Integrated Security=True" SettingsObjectName="ManagemenDocument.Properties.Settings" SettingsPropertyName="DokumenManagementConnectionString1" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.tb_user" Member="tb_users">
-    <Type Name="tb_user">
-      <Column Name="id_user" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="username" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="no_identitas" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="id_identitas" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="alamat" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="phoneNumber" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="password" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
-      <Column Name="verify" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="[level]" Member="level" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="createdAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Association Name="tb_user_tb_dokumen" Member="tb_dokumens" ThisKey="id_user" OtherKey="id_penerima" Type="tb_dokumen" />
-      <Association Name="tb_user_tb_dokumen1" Member="tb_dokumens1" ThisKey="id_user" OtherKey="id_pemilik" Type="tb_dokumen" />
-      <Association Name="tb_identita_tb_user" Member="tb_identita" ThisKey="id_identitas" OtherKey="id_identitas" Type="tb_identita" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.tb_dokumen" Member="tb_dokumens">
     <Type Name="tb_dokumen">
       <Column Name="id_dokumen" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -42,12 +24,29 @@
       <Association Name="tb_user_tb_dokumen1" Member="tb_user1" ThisKey="id_pemilik" OtherKey="id_user" Type="tb_user" IsForeignKey="true" />
     </Type>
   </Table>
+  <Table Name="dbo.tb_user" Member="tb_users">
+    <Type Name="tb_user">
+      <Column Name="id_user" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="username" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="no_identitas" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="id_identitas" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="alamat" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="phoneNumber" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="password" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="verify" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="[level]" Member="level" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="createdAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="tb_user_tb_dokumen" Member="tb_dokumens" ThisKey="id_user" OtherKey="id_penerima" Type="tb_dokumen" />
+      <Association Name="tb_user_tb_dokumen1" Member="tb_dokumens1" ThisKey="id_user" OtherKey="id_pemilik" Type="tb_dokumen" />
+      <Association Name="tb_identita_tb_user" Member="tb_identita" ThisKey="id_identitas" OtherKey="id_identitas" Type="tb_identita" IsForeignKey="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.tb_history" Member="tb_histories">
     <Type Name="tb_history">
       <Column Name="id_history" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="id_user" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="id_dokumen" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="nama_user" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="createdAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Association Name="tb_dokumen_tb_history" Member="tb_dokumen" ThisKey="id_dokumen" OtherKey="id_dokumen" Type="tb_dokumen" IsForeignKey="true" />
     </Type>

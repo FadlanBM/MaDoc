@@ -11,8 +11,6 @@ public partial class TbHistory
 
     public int IdDokumen { get; set; }
 
-    public string NamaUser { get; set; } = null!;
-
     public DateTime CreatedAt { get; set; }
 
     public virtual TbDokuman IdDokumenNavigation { get; set; } = null!;

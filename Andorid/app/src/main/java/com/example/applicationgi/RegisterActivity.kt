@@ -42,10 +42,11 @@ class RegisterActivity : AppCompatActivity() {
                 binding.tbPasswordLogin.setError("Form Password belum terisi")
             if (binding.tbNoIdentitas.length()==0)
                 binding.tbNoIdentitas.setError("Form No Identitas belum terisi")
-            else
-            postAccunt(binding,this).execute()
+            else {
+                postAccunt(binding,this).execute()
+                startActivity(Intent(this,LoginActivity::class.java))
+            }
 
-            startActivity(Intent(this,LoginActivity::class.java))
         }
         binding.tbToLogin.setOnClickListener {
             startActivity(Intent(this,LoginActivity::class.java))

@@ -3,6 +3,7 @@ package com.example.applicationgi
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.AdapterView
@@ -11,6 +12,7 @@ import android.widget.AutoCompleteTextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.example.applicationgi.databinding.ActivityMainBinding
+import com.example.applicationgi.util.SharePref
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding:ActivityMainBinding;
@@ -23,6 +25,10 @@ class MainActivity : AppCompatActivity() {
         var autoComplete:AutoCompleteTextView=findViewById(R.id.cb_ordelist)
         var adapter=ArrayAdapter(this,R.layout.item_text,item)
 
+        var sf=SharePref(this)
+        if (sf.getToken()==null){
+            startActivity(Intent(this,LoginActivity::class.java))
+        }
         autoComplete.setAdapter(adapter)
         autoComplete.onItemClickListener=AdapterView.OnItemClickListener { adapterView, view, i, l ->
             val itemselected =adapterView.getItemAtPosition(i)
