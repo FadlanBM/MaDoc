@@ -1,5 +1,6 @@
 ﻿using Api.Models;
 using Api.Request;
+using Api.Response;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -24,9 +25,24 @@ namespace Api.Controllers
             var data =await dbContext.TbDokumen.Where(d=>d.TokenDokumen == request.TokenDokumen).FirstOrDefaultAsync();
             if (data != null)
             {
-                return Ok(data.IdDokumen);
+                return Ok(new QrTokenResponse{ 
+                    token=data.IdDokumen.ToString()
+                });
             }
             return BadRequest();
+        }
+
+        [HttpGet("{id}")]
+        public
+            async Task<IActionResult> getDataDoc(string id) { 
+            var data=await dbContext.TbDokumen.Where(d => d.IdDokumen==int.Parse(id)).FirstOrDefaultAsync();
+            if (data != null) {
+                return Ok(data);
+            }
+            else
+            {
+                return NotFound();
+            }
         }
 
         private string getToken(string s) { 

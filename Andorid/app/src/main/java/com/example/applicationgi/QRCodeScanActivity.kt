@@ -116,6 +116,7 @@ class QRCodeScanActivity : AppCompatActivity() {
             runOnUiThread{
                 postTokenDoc(this,it.text).execute()
                 Toast.makeText(this,"Scan resoult ${it.text}",Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this,ListDataActivity::class.java))
             }
         }
         codeScanner.errorCallback= ErrorCallback {
