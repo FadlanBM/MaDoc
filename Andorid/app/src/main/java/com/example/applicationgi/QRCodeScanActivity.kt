@@ -7,6 +7,7 @@ import android.content.pm.PackageManager
 import android.os.AsyncTask
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
@@ -20,6 +21,7 @@ import com.budiyev.android.codescanner.ErrorCallback
 import com.budiyev.android.codescanner.ScanMode
 import com.example.applicationgi.databinding.ActivityQrcodeScanBinding
 import com.example.applicationgi.util.BaseApi
+import com.example.applicationgi.util.GetData
 import com.github.drjacky.imagepicker.ImagePicker
 import com.github.drjacky.imagepicker.constant.ImageProvider
 import com.squareup.picasso.Picasso
@@ -60,7 +62,7 @@ class QRCodeScanActivity : AppCompatActivity() {
             var resoult=""
             try {
                 var jsonObject=JSONObject()
-                jsonObject.put("token",token)
+                jsonObject.put("tokenDokumen",token)
                 var jsonObjectString=jsonObject.toString()
                 var httpURLConnection:HttpURLConnection?=null
                 try {
@@ -69,7 +71,12 @@ class QRCodeScanActivity : AppCompatActivity() {
                     httpURLConnection.requestMethod="POST"
                     httpURLConnection.setRequestProperty("Content-Type","application/json")
                     httpURLConnection.setRequestProperty("Accept","text/plain")
-
+                    if (httpURLConnection.responseCode==HttpURLConnection.HTTP_BAD_REQUEST){
+                        var handler=Handler(context.mainLooper)
+                        handler.post(Runnable {
+                            Toast.makeText(context,"Qr Code yang anda Scan tidak di temukan",Toast.LENGTH_SHORT).show()
+                        })
+                    }
                     var outputStream=httpURLConnection.outputStream
                     var outputStreamWriter=OutputStreamWriter(outputStream)
                     outputStreamWriter.write(jsonObjectString)
@@ -85,8 +92,13 @@ class QRCodeScanActivity : AppCompatActivity() {
                     }
 
                     if (httpURLConnection.responseCode==HttpURLConnection.HTTP_OK){
+                        var jsonObject=JSONObject(resoult)
+                        var iddoc=jsonObject.getString("token")
+                        GetData.setId=iddoc
                         context.startActivity(Intent(context,ListDataActivity::class.java))
                     }
+
+
                 }catch (ex:Exception){
                     Log.e("Error","Error $ex")
                 }
@@ -115,8 +127,6 @@ class QRCodeScanActivity : AppCompatActivity() {
         codeScanner.decodeCallback= DecodeCallback {
             runOnUiThread{
                 postTokenDoc(this,it.text).execute()
-                Toast.makeText(this,"Scan resoult ${it.text}",Toast.LENGTH_SHORT).show()
-                startActivity(Intent(this,ListDataActivity::class.java))
             }
         }
         codeScanner.errorCallback= ErrorCallback {

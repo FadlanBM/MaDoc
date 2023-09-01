@@ -49,10 +49,11 @@ namespace Api.Controllers
             if (user.Level == 0)
                 role = "Admin";
             if (user.Level == 1)
-                role = "User";
+                role = "User";         
 
             List<Claim> claims=new List<Claim>() { 
                 new Claim(ClaimTypes.Name,user.Username),
+                new Claim(ClaimTypes.SerialNumber,user.IdUser.ToString()),
                 new Claim(ClaimTypes.Role,role)
             };
 
