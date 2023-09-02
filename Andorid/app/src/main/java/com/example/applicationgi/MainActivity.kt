@@ -1,16 +1,25 @@
 package com.example.applicationgi
 
+import android.content.ClipData.Item
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.ContactsContract
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.recyclerview.widget.RecyclerView
+import com.example.applicationgi.Adapter.MyHolder
 import com.example.applicationgi.databinding.ActivityMainBinding
 import com.example.applicationgi.util.SharePref
 
@@ -34,7 +43,7 @@ class MainActivity : AppCompatActivity() {
             val itemselected =adapterView.getItemAtPosition(i)
             Toast.makeText(this,"Item : $itemselected",Toast.LENGTH_SHORT).show()
         }
-        binding.btnDetailDoc.setOnClickListener {
+        /*binding.btnDetailDoc.setOnClickListener {
             startActivity(Intent(this,ListDataActivity::class.java))
         }
         binding.btnListPenerima.setOnClickListener {
@@ -42,8 +51,10 @@ class MainActivity : AppCompatActivity() {
         }
         binding.btnScanqr.setOnClickListener {
             startActivity(Intent(this,QRCodeScanActivity::class.java))
-        }
+        }*/
     }
+
+
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.cusotm_menu,menu)
