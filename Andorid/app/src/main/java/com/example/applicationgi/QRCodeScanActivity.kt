@@ -71,17 +71,17 @@ class QRCodeScanActivity : AppCompatActivity() {
                     httpURLConnection.requestMethod="POST"
                     httpURLConnection.setRequestProperty("Content-Type","application/json")
                     httpURLConnection.setRequestProperty("Accept","text/plain")
+
+                    var outputStream=httpURLConnection.outputStream
+                    var outputStreamWriter=OutputStreamWriter(outputStream)
+                    outputStreamWriter.write(jsonObjectString)
+                    outputStreamWriter.flush()
                     if (httpURLConnection.responseCode==HttpURLConnection.HTTP_BAD_REQUEST){
                         var handler=Handler(context.mainLooper)
                         handler.post(Runnable {
                             Toast.makeText(context,"Qr Code yang anda Scan tidak di temukan",Toast.LENGTH_SHORT).show()
                         })
                     }
-                    var outputStream=httpURLConnection.outputStream
-                    var outputStreamWriter=OutputStreamWriter(outputStream)
-                    outputStreamWriter.write(jsonObjectString)
-                    outputStreamWriter.flush()
-
                     var inputStream=httpURLConnection.inputStream
                     var inputStreamReader=InputStreamReader(inputStream)
                     var data=inputStreamReader.read()

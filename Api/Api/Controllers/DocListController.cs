@@ -26,11 +26,12 @@ namespace Api.Controllers
                              join u in dbContext.TbUsers
                              on h.IdUser equals u.IdUser
                              where h.IdUser==int.Parse(User.FindFirstValue(ClaimTypes.SerialNumber))
+
                              select new { 
                                 nameDoc=d.NameDokumen,
                                 namaPenerimaPertama=d.PenerimaPertama,
                                 namapenerima=u.Name
-                             }).FirstOrDefaultAsync();
+                             }).ToListAsync();
                return Ok(data);
 
         }

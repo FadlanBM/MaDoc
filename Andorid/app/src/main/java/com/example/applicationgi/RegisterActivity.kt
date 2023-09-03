@@ -142,8 +142,17 @@ class RegisterActivity : AppCompatActivity() {
             return null
         }
         override fun onPostExecute(result: String?) {
+
             var nilai=JSONArray(result)
-            val item= jsonArrayToArrayList(JSONArray(nilai.toString().replace("{","").replace("}","").replace("nama","").replace("=","").replace(":","").replace("\"","")))
+            val item =ArrayList<String>()
+            for (i in 0 until nilai.length()){
+                val jsonObject=nilai.getJSONObject(i)
+                val name=jsonObject.getString("nama")
+                item.add(name)
+            }
+            Log.e("Show Data",nilai.toString())
+//            val item= jsonArrayToArrayList(JSONArray(nilai.toString().replace("{","").replace("}","").replace("nama","").replace("=","").replace(":","").replace("\"","")))
+            Log.e("Show Data",item.toString())
             var autoComplite:AutoCompleteTextView=binding.comboBoxListIdent
             var adapter=ArrayAdapter(context,R.layout.item_listiden,item)
 

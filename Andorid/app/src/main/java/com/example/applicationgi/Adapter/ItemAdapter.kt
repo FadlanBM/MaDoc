@@ -1,17 +1,12 @@
 package com.example.applicationgi.Adapter
 
-import android.content.Context
-import android.provider.ContactsContract.RawContacts.Data
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.activity.R
-import androidx.appcompat.view.menu.ActionMenuItemView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.applicationgi.ListDataActivity
 
-class DocAdapter(private val items: List<MyHolder>):RecyclerView.Adapter<DocAdapter.ViewHolder>(){
+class ItemAdapter(private val items: List<Item>):RecyclerView.Adapter<ItemAdapter.ViewHolder>(){
 
     class ViewHolder(itemView: View):RecyclerView.ViewHolder(itemView) {
         val nameTextView:TextView=itemView.findViewById(com.example.applicationgi.R.id.lb_nameDoc)

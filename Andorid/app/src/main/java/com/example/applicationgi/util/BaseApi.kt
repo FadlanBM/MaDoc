@@ -1,5 +1,5 @@
 package com.example.applicationgi.util
 
 object BaseApi {
-    const val BASEAPI="http://192.168.43.23:5202/"
+    const val BASEAPI="http://192.168.2.129:5202/"
 }

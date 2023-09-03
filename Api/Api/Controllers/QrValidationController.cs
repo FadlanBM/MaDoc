@@ -45,8 +45,25 @@ namespace Api.Controllers
             var user = await dbContext.TbUsers.Where(u => u.IdUser == int.Parse(User.FindFirstValue(ClaimTypes.SerialNumber))).FirstOrDefaultAsync();
             if (user != null)
             {
-                DateTime time=DateTime.Now;
-                TbHistory hsi= new TbHistory(); 
+                var kindisi1 = await dbContext.TbHistories.Where(his => his.IdDokumen == int.Parse(id)).FirstOrDefaultAsync();
+                var  kondisi2 = await dbContext.TbHistories.Where(hi => hi.IdUser == int.Parse(User.FindFirstValue(ClaimTypes.SerialNumber))).FirstOrDefaultAsync();
+
+                if (kondisi2.IdDokumen!=null && kondisi2.IdUser!=null)
+                {
+                    DateTime time=DateTime.Now;
+                    TbHistory hsi = new TbHistory();
+                    data.IdPenerima = user.IdUser;
+                    data.TglDiterima = time;
+                    await dbContext.SaveChangesAsync();
+                    hsi.IdDokumen = data.IdDokumen;
+                    hsi.IdUser = user.IdUser;
+                    hsi.CreatedAt = time;
+                    await dbContext.SaveChangesAsync();
+                    return Ok();
+                }
+                else {
+                 DateTime time = DateTime.Now;
+                 TbHistory hsi = new TbHistory();
                 data.IdPenerima = user.IdUser;
                 data.TglDiterima=time;
                 await dbContext.SaveChangesAsync();
@@ -56,6 +73,8 @@ namespace Api.Controllers
                 await dbContext.TbHistories.AddAsync(hsi);
                 await dbContext.SaveChangesAsync();
                 return Ok();
+                }
+                
             }
             else
             {
