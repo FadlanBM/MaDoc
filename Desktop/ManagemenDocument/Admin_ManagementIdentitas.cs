@@ -23,11 +23,17 @@ namespace ManagemenDocument
         {
             var fAddIden=new Admin_AddIdentitas(this.MdiParent);
             fAddIden.StartPosition = FormStartPosition.CenterScreen;
+            this.Enabled = false;
             fAddIden.FormClosing += (object asd, FormClosingEventArgs asa) =>
             {
                 if (DialogResult.OK == fAddIden.DialogResult)
                 {
+                    this.Enabled = true;
                     LoadData();
+                }
+                if (DialogResult.Cancel==fAddIden.DialogResult)
+                {
+                    this.Enabled = true;
                 }
             };
             fAddIden.Show();

@@ -27,7 +27,7 @@ namespace ManagemenDocument
 
         private void button2_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Environment.Exit(0);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -45,6 +45,7 @@ namespace ManagemenDocument
 
             if (user.password==getSHA(tb_password.Text))
             {
+                Helper.helper.id = user;
                 new Admin_Dashboard().Show();
                 this.Hide();
             }

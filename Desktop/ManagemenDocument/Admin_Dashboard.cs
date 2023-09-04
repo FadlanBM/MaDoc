@@ -15,6 +15,9 @@ namespace ManagemenDocument
         public Admin_Dashboard()
         {
             InitializeComponent();
+            timer1.Interval = 1000;
+            timer1.Tick += timerLoad;
+            timer1.Start();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -22,7 +25,9 @@ namespace ManagemenDocument
 
         }
 
-        
+        private void timerLoad(object sender, EventArgs e) {
+            toolStripLabel2.Text = DateTime.Now.ToString("dd/MM/yyyy | HH:mm:ss");
+        }
 
         private void idnetitasTypeToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -59,6 +64,65 @@ namespace ManagemenDocument
             FmanagementUserVerify.StartPosition=FormStartPosition.CenterScreen;
             FmanagementUserVerify.MdiParent=this;   
             FmanagementUserVerify.Show();
+        }
+
+        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            var FaddDokumen = new Admin_Management_Doc();
+            FaddDokumen.StartPosition=FormStartPosition.CenterScreen;
+            FaddDokumen.MdiParent=this;
+            FaddDokumen.Show(); 
+        }
+
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            var FverifyUser=new Admin_Management_User_Verify();
+            FverifyUser.StartPosition = FormStartPosition.CenterScreen;
+            FverifyUser.MdiParent=this;
+            FverifyUser.Show();
+        }
+
+        private void toolStripLabel3_Click(object sender, EventArgs e)
+        {
+            Environment.Exit(0);
+        }
+
+        private void toolStripLabel1_Click(object sender, EventArgs e)
+        {
+            new FLogin().Show();
+            this.Close();
+        }
+
+        private void settingAccuntToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var Fsettings = new AdminEditAccunt();
+            Fsettings.StartPosition = FormStartPosition.CenterScreen;
+            Fsettings.MdiParent=this;
+            Fsettings.Show();
+        }
+
+        private void resetPasswordToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var FresetPass = new FResetPassword();
+            FresetPass.StartPosition = FormStartPosition.CenterScreen;
+            FresetPass.MdiParent=this;
+            FresetPass.Show();  
+        }
+
+        private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new FLogin().Show();
+            this.Close();
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Environment.Exit(0);
         }
     }
 }

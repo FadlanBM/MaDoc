@@ -23,11 +23,18 @@ namespace ManagemenDocument
         {
             var fAddUser=new Admin_AddUser(this.MdiParent);
             fAddUser.StartPosition = FormStartPosition.CenterScreen;
+            this.Enabled = false;
             fAddUser.FormClosing+=(object ss,FormClosingEventArgs ass)=>
             {
                 if (DialogResult.OK==fAddUser.DialogResult)
                 {
-                    
+                    this.Enabled = true;    
+                    loadData();
+                }
+                if (DialogResult.Cancel==fAddUser.DialogResult)
+                {
+                    this.Enabled = true;
+                    loadData();
                 }
             };
             fAddUser.Show();

@@ -50,6 +50,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminEditAccunt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminEditAccunt.Designer.cs">
+      <DependentUpon>AdminEditAccunt.cs</DependentUpon>
+    </Compile>
     <Compile Include="Admin_AddIdentitas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -133,8 +139,18 @@
     <Compile Include="FLogin.Designer.cs">
       <DependentUpon>FLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="FResetPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FResetPassword.Designer.cs">
+      <DependentUpon>FResetPassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helper\helper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AdminEditAccunt.resx">
+      <DependentUpon>AdminEditAccunt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Admin_AddIdentitas.resx">
       <DependentUpon>Admin_AddIdentitas.cs</DependentUpon>
     </EmbeddedResource>
@@ -173,6 +189,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FLogin.resx">
       <DependentUpon>FLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FResetPassword.resx">
+      <DependentUpon>FResetPassword.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

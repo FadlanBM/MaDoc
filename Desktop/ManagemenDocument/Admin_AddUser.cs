@@ -211,5 +211,11 @@ namespace ManagemenDocument
         {
             logicck();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            DialogResult= DialogResult.Cancel;
+            this.Close();
+        }
     }
 }

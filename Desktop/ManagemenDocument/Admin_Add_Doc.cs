@@ -227,6 +227,29 @@ namespace ManagemenDocument
         private void Admin_Add_Doc_Load(object sender, EventArgs e)
         {
             LoadData();
+            loadautoCom();
+        }
+
+        private void loadautoCom() { 
+            AutoCompleteStringCollection ac=new AutoCompleteStringCollection();
+
+            
+            var user=(from u in context.tb_users
+                      select new { 
+                        u.name
+                      }).ToList();
+            foreach (var u in user)
+            {
+                ac.Add(u.name);
+            }
+
+            tb_pemilik.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            tb_pemilik.AutoCompleteSource=AutoCompleteSource.CustomSource;
+            tb_pemilik.AutoCompleteCustomSource = ac;
+
+            tb_penerima.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            tb_penerima.AutoCompleteSource=AutoCompleteSource.CustomSource;
+            tb_penerima.AutoCompleteCustomSource=ac;
         }
 
         private void dt_tgldocumen_ValueChanged(object sender, EventArgs e)
@@ -302,6 +325,7 @@ namespace ManagemenDocument
         private void button2_Click(object sender, EventArgs e)
         {
             DialogResult=DialogResult.Cancel;
+            this.Close();
         }
     }
 }
