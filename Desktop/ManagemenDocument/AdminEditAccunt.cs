@@ -28,6 +28,7 @@ namespace ManagemenDocument
             tb_username.Text = data.username;
             tb_noIdentitas.Text = data.no_identitas;
             tb_phoneNumber.Text = data.phoneNumber;
+            tb_alamat.Text= data.alamat;    
             cb_nameidentitas.Text = identitas.nameIdentitas;
         }
 
@@ -50,6 +51,11 @@ namespace ManagemenDocument
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

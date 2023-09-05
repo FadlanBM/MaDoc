@@ -33,6 +33,11 @@ namespace ManagemenDocument
             {
                 if (tb_passwordNew.Text == tb_confrimPass.Text) { 
                     pass.password=getSHA(tb_passwordNew.Text);
+                    context.SubmitChanges();
+                    MessageBox.Show("Berhasil Ubah password", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Anda harus login lagi", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    new FLogin().Show();
+                    this.Close();
                     return;
                 }
                 else
@@ -60,6 +65,11 @@ namespace ManagemenDocument
                 }
             }
             return sb.ToString();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

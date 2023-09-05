@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SettingsActivity">
+<androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/_10sdp"
+    android:layout_marginHorizontal="@dimen/_10sdp"
+    app:cardCornerRadius="@dimen/_20sdp">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:padding="@dimen/_10sdp"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Accunt Settings"
+        android:textSize="@dimen/_14sdp"
+        android:fontFamily="@font/poppinsbold"
+        android:textColor="#34000000"/>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_editProfile"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp"
+        style="@style/Widget.Material3.Button.OutlinedButton"
+        android:layout_marginTop="@dimen/_20sdp"
+        app:cornerRadius="@dimen/_10sdp"
+        android:text="Edit Profile"
+        android:textAlignment="textStart"
+        android:textSize="@dimen/_12sdp"
+        android:fontFamily="@font/poppinsbold"/>
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp"
+        style="@style/Widget.Material3.Button.OutlinedButton"
+        app:cornerRadius="@dimen/_10sdp"
+        android:text="Reset Password"
+        android:textAlignment="textStart"
+        android:textSize="@dimen/_12sdp"
+        android:fontFamily="@font/poppinsbold"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="More"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:textSize="@dimen/_14sdp"
+        android:fontFamily="@font/poppinsbold"
+        android:textColor="#34000000"/>
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp"
+        style="@style/Widget.Material3.Button.OutlinedButton"
+        android:layout_marginTop="@dimen/_20sdp"
+        app:cornerRadius="@dimen/_10sdp"
+        android:text="About Us"
+        android:textAlignment="textStart"
+        android:textSize="@dimen/_12sdp"
+        android:fontFamily="@font/poppinsbold"/>
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp"
+        style="@style/Widget.Material3.Button.OutlinedButton"
+        app:cornerRadius="@dimen/_10sdp"
+        android:text="Privacy Policy"
+        android:textAlignment="textStart"
+        android:textSize="@dimen/_12sdp"
+        android:fontFamily="@font/poppinsbold"/>
+</LinearLayout>
+</androidx.cardview.widget.CardView>
+</RelativeLayout>

@@ -157,6 +157,7 @@
             this.Controls.Add(this.tb_username);
             this.Controls.Add(this.label3);
             this.Name = "FLogin";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login Admin";
             this.Load += new System.EventHandler(this.FLogin_Load);
             this.panel1.ResumeLayout(false);

@@ -5,9 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SplashSuccessActivity">
-<ImageView
-    android:layout_width="@dimen/_400sdp"
-    android:layout_height="@dimen/_400sdp"
-    android:layout_marginTop="@dimen/_50sdp"
-    android:src="@drawable/logo_success"/>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        app:lottie_rawRes="@raw/animationsuccess"
+        app:lottie_autoPlay="true"
+        />
+
+
 </RelativeLayout>

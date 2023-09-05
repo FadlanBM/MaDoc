@@ -379,6 +379,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(816, 491);
+            this.ControlBox = false;
             this.Controls.Add(this.tb_penerimaAwal);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.button1);

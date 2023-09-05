@@ -107,8 +107,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(646, 450);
+            this.ControlBox = false;
             this.Controls.Add(this.dataGridView1);
             this.Name = "BrowserDataCustomer";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BrowserDataCustomer";
             this.Load += new System.EventHandler(this.BrowserDataCustomer_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

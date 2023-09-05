@@ -103,6 +103,7 @@
             this.button2.TabIndex = 72;
             this.button2.Text = "Cancel";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // label5
             // 
@@ -177,6 +178,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(474, 441);
+            this.ControlBox = false;
             this.Controls.Add(this.label9);
             this.Controls.Add(this.tb_username);
             this.Controls.Add(this.cb_nameidentitas);

@@ -54,6 +54,7 @@
             this.tb_passwordNew.Name = "tb_passwordNew";
             this.tb_passwordNew.Size = new System.Drawing.Size(408, 20);
             this.tb_passwordNew.TabIndex = 89;
+            this.tb_passwordNew.UseSystemPasswordChar = true;
             // 
             // label3
             // 
@@ -70,6 +71,7 @@
             this.tb_confrimPass.Name = "tb_confrimPass";
             this.tb_confrimPass.Size = new System.Drawing.Size(408, 20);
             this.tb_confrimPass.TabIndex = 87;
+            this.tb_confrimPass.UseSystemPasswordChar = true;
             // 
             // label2
             // 
@@ -86,6 +88,7 @@
             this.tb_passwordOld.Name = "tb_passwordOld";
             this.tb_passwordOld.Size = new System.Drawing.Size(408, 20);
             this.tb_passwordOld.TabIndex = 85;
+            this.tb_passwordOld.UseSystemPasswordChar = true;
             // 
             // button1
             // 
@@ -115,12 +118,14 @@
             this.button2.TabIndex = 93;
             this.button2.Text = "Cancel";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // FResetPassword
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(475, 285);
+            this.ControlBox = false;
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);

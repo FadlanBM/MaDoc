@@ -117,7 +117,7 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when(item.itemId){
             R.id.tb_settings->{
-                Toast.makeText(this, "Click Settigns", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this,SettingsActivity::class.java))
                 return true
             }
             R.id.tb_logout->{
@@ -125,7 +125,8 @@ class MainActivity : AppCompatActivity() {
                 message.setTitle("Warning")
                 message.setMessage("Apakah anda yakin ingin logout ?")
                 message.setPositiveButton("Yes"){_,_->
-                Toast.makeText(this,"Logout",Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(this,LoginActivity::class.java))
+                    SharePref.getInstance(this).setToken("")
                 }
                 message.setNegativeButton("No",null)
                 message.show()

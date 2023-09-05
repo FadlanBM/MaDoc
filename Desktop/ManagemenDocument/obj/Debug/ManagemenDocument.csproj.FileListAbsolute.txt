@@ -97,3 +97,5 @@ D:\htdocs\DesktopC#\MaDoc\Desktop\ManagemenDocument\obj\Debug\ManagemenDocument.
 D:\htdocs\DesktopC#\MaDoc\Desktop\ManagemenDocument\obj\Debug\ManagemenDocument.pdb
 D:\htdocs\DesktopC#\MaDoc\Desktop\ManagemenDocument\obj\Debug\ManagemenDocument.AdminEditAccunt.resources
 D:\htdocs\DesktopC#\MaDoc\Desktop\ManagemenDocument\obj\Debug\ManagemenDocument.FResetPassword.resources
+C:\laragon\www\Desktop_c#\MacDoc\ManagemenDocument\Desktop\ManagemenDocument\obj\Debug\ManagemenDocument.AdminEditAccunt.resources
+C:\laragon\www\Desktop_c#\MacDoc\ManagemenDocument\Desktop\ManagemenDocument\obj\Debug\ManagemenDocument.FResetPassword.resources

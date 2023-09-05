@@ -116,13 +116,45 @@ namespace ManagemenDocument
 
         private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new FLogin().Show();
-            this.Close();
+            DialogResult result = MessageBox.Show("Apakah anda yakin ingin Logout ?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (DialogResult.Yes == result)
+            {
+                new FLogin().Show();
+                this.Close();
+            }
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Environment.Exit(0);
+
+            DialogResult result = MessageBox.Show("Apakah anda yakin ingin keluar dari applikasi ?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (DialogResult.Yes == result)
+                Environment.Exit(0);
+        }
+
+        private void toolStripLabel1_Click_1(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Apakah anda yakin ingin Logout ?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (DialogResult.Yes == result)
+            {
+                new FLogin().Show();
+                this.Close();
+            }                
+        }
+
+        private void toolStripLabel3_Click_1(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Apakah anda yakin ingin keluar dari applikasi ?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if(DialogResult.Yes==result)
+                Environment.Exit(0);
+        }
+
+        private void toolStripButton1_Click_1(object sender, EventArgs e)
+        {
+            var FMangenetDoc = new Admin_Management_Doc();
+            FMangenetDoc.MdiParent=this;
+            FMangenetDoc.StartPosition= FormStartPosition.CenterParent;
+            FMangenetDoc.Show();
         }
     }
 }

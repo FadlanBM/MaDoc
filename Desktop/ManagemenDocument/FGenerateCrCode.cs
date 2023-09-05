@@ -33,14 +33,7 @@ namespace ManagemenDocument
 
         private void button1_Click(object sender, EventArgs e)
         {           
-            if (!Directory.Exists(path)) 
-                Directory.CreateDirectory(path);
-            var nameImage = DateTime.Now.Ticks.ToString()+".jpg";
-            var saveImage=context.tb_dokumens.Where(d=>d.id_dokumen==getId).FirstOrDefault();
-            cusimage.Save(path+"\\"+nameImage);
-            DialogResult = DialogResult.OK;
-            saveImage.imageQrCode = nameImage;
-            context.SubmitChanges();
+            DialogResult result = DialogResult.OK;  
             this.Close();
         }
 
@@ -53,6 +46,15 @@ namespace ManagemenDocument
                 cusimage = qrdraw.Draw(token.token_dokumen, 200);
                 pictureBox1.Image = cusimage;
             }
+
+            if (!Directory.Exists(path))
+                Directory.CreateDirectory(path);
+            var nameImage = DateTime.Now.Ticks.ToString() + ".jpg";
+            var saveImage = context.tb_dokumens.Where(d => d.id_dokumen == getId).FirstOrDefault();
+            cusimage.Save(path + "\\" + nameImage);
+            DialogResult = DialogResult.OK;
+            saveImage.imageQrCode = nameImage;
+            context.SubmitChanges();
         }
         private string createToken(string p)
         {
